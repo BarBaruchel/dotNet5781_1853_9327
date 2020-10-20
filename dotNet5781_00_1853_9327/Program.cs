@@ -10,8 +10,15 @@ namespace dotNet5781_00_1853_9327
     {
         static void Main(string[] args)
         {
+             Stam();
+             Console.ReadKey();
+        }
+
+        static void Stam()
+        {
             Console.WriteLine("Hell Oh World!!");
-            Console.ReadKey();
+            Console.WriteLine("welcome to the ZOO");
+
         }
     }
 }
