@@ -15,7 +15,7 @@ namespace dotNet5781_00_1853_9327
             Console.ReadKey();
         }
         static partial void Welcome9327();
-        static void Welcome1853()
+        private static void Welcome1853()
         {
             Console.Write("Enter your name: ");
             string name =Console.ReadLine();
