@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace dotNet5781_00_1853_9327
 {
-    class Program
+    partial class Program
     {
-        static void Main(string[] args)
+        static partial void Welcome9327()
         {
-            Console.WriteLine("Hell Oh World!!");
-            Console.ReadKey();
+            Console.WriteLine("I am also here");
         }
+
     }
 }
