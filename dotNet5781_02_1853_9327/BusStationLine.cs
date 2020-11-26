@@ -27,7 +27,7 @@ namespace dotNet5781_02_1853_9327
 
         public override string ToString()
         {   
-            return base.ToString();
+            return base.ToString()+"  "+ TravelTimeFromTheLastStation;
         }
     }
 }

@@ -27,11 +27,11 @@ namespace dotNet5781_03A_1853_9327
         public MainWindow()
         {
             InitializeComponent();
-            lbBusLineStations.Foreground = Brushes.RoyalBlue;
+            lbBusLineStations.Foreground = Brushes.RoyalBlue;  // designing the window
             cbBusLines.Foreground = Brushes.BlueViolet;
             tbArea.Foreground = Brushes.BlueViolet;
 
-            busCompany = new BusCompany();
+            busCompany = new BusCompany();  // create variable from BusCompny type
             initializeBuses(busCompany);
             initComboBox();
         }
@@ -42,7 +42,7 @@ namespace dotNet5781_03A_1853_9327
         {
             cbBusLines.ItemsSource = busCompany.busses;
             cbBusLines.DisplayMemberPath = "Number";
-            cbBusLines.SelectedIndex = 0;
+            cbBusLines.SelectedIndex = 0;  // choose by defult the first if the user still not press on any number in the comboBox 
 
         }
 
@@ -55,7 +55,7 @@ namespace dotNet5781_03A_1853_9327
         private void ShowBusLine(int busLineNum)
         {
             currentDisplayBusLine = busCompany[busLineNum];
-            UpGrid.DataContext = currentDisplayBusLine;
+            UpGrid.DataContext = currentDisplayBusLine; // upgade on the screen the bus`s number that the user choose
             lbBusLineStations.DataContext = currentDisplayBusLine.Stations;
         }
 
@@ -139,5 +139,5 @@ namespace dotNet5781_03A_1853_9327
         }
 
 
-    }// <!-- Icon="IMAGES/"--> Icon="BUS ICON.jfif"
+    }
 }
