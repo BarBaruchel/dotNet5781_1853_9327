@@ -16,9 +16,7 @@ using dotNet5781_02_1853_9327;
 
 namespace dotNet5781_03A_1853_9327
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+  
     public partial class MainWindow : Window
     {
         BusCompany busCompany;
