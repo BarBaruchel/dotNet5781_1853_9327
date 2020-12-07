@@ -1,0 +1,82 @@
+﻿<Window x:Class="dotNet5781_03B_1853_9327.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_1853_9327"
+        mc:Ignorable="d"
+        Title="Buses List"  Height="400" Width="1000" Icon="BUS ICON...jpg" FontWeight="ExtraBold"
+        >
+    <Window.Background>
+        <ImageBrush ImageSource="FewBuses.jpg" TileMode="FlipY"/>
+    </Window.Background>
+
+    <Grid >
+        <Grid.Background>
+            <ImageBrush ImageSource="FewBuses.jpg" Opacity="0.7" Stretch="Uniform" TileMode="FlipX"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="176*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="BusesDataGrid"  MouseDoubleClick="BusesDataGrid_MouseDoubleClick"  SourceUpdated="BusesDataGrid_TargetUpdated" AutoGenerateColumns="False" CanUserResizeColumns="False" IsReadOnly="True"  HorizontalAlignment="Left" Height="255" VerticalAlignment="Top" Width="926"  Margin="10,53,0,0" Grid.ColumnSpan="2">
+            <DataGrid.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2F9431" Offset="0"/>
+                    <GradientStop Color="#FF19C110" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.Foreground>
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Rishuy" Binding="{Binding Rishuy}" Width="*" FontFamily="Cooper Black" />
+                <DataGridTextColumn Header="Total Kilometrage" Binding="{Binding Kilometrage}" Width="1.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Fuel" Binding="{Binding Delek}" Width="0.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Last Treatment" Width="*" Binding="{Binding  l_treatment.Date, StringFormat={}{0:dd/MM/yyyy}}" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Kilometrage" Width="*" Binding="{Binding l_treatment.KilFromTreat}"  FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="1.5*" FontFamily="Cooper Black"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="TravelBtn" Background="Green" Content="Travel" Click="TravelBtnButtonClick" FontFamily="Century Gothic"></Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="TidlukBtn" Background="Green"  Content="Tidluk" Click="TidlukBtn_Click" FontFamily="Century Gothic"></Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="READYFORRIDE">
+                            <Setter Property="Background" Value="GreenYellow"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+
+
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="BurlyWood"></Setter>
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                    <Setter Property="BorderThickness" Value="0.8"></Setter>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Button Content="Add Bus" Grid.Column="1" HorizontalAlignment="Left" Margin="360.667,313,0,0" VerticalAlignment="Top" Width="157" Height="48" Click="Button_Click" BorderBrush="#FF423B3B" Background="#FF87D998" FontSize="16" FontFamily="Cooper Black"/>
+
+
+    </Grid>
+</Window>

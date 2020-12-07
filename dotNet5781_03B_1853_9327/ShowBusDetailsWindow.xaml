@@ -1,0 +1,38 @@
+﻿<Window x:Class="dotNet5781_03B_1853_9327.ShowBusDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dotNet5781_03B_1853_9327"
+        mc:Ignorable="d"
+        Title="ShowBusDetailsWindow" Height="450" Width="800" Icon="Details-bus.jpg">
+    <Grid x:Name="Grid" Background="#FFEBD0B9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="228*"/>
+            <ColumnDefinition Width="169*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Rishuy Number :" FontSize="22"  HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Height="40" Width="173" RenderTransformOrigin="0.644,-0.104" FontFamily="Californian FB"/>
+        <Label Content="Total Kilometrage :" FontSize="22" HorizontalAlignment="Left" Margin="63,55,0,0" VerticalAlignment="Top" Height="47" Width="199" FontFamily="Californian FB"/>
+        <Label Content="Start Peilut :" FontSize="22" HorizontalAlignment="Left" Margin="63,102,0,0" VerticalAlignment="Top" Height="38" Width="145" FontFamily="Californian FB"/>
+        <Label HorizontalAlignment="Left" Margin="-565,402,0,0" VerticalAlignment="Top" FontFamily="Californian FB"/>
+        <Label Content="fuel :" FontSize="22" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" Height="39" Width="108" FontFamily="Californian FB"/>
+        <Label Content="Kilometrage From Last Treatment :" FontSize="22" HorizontalAlignment="Left" Margin="63,189,0,0" VerticalAlignment="Top" Width="358" FontFamily="Californian FB"/>
+        <Label Content="Last Treatment :" FontSize="22" HorizontalAlignment="Left" Margin="63,233,0,0" VerticalAlignment="Top" Height="37" Width="199" FontFamily="Californian FB"/>
+        <Label Content="Status :" FontSize="22" HorizontalAlignment="Left" Margin="63,275,0,0" VerticalAlignment="Top" Height="40" Width="199" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="269,19,0,0" TextWrapping="Wrap" Text="{Binding Rishuy}" VerticalAlignment="Top" Height="31" Width="107" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="269,67,0,0" TextWrapping="Wrap" Text="{Binding Kilometrage}" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.5,0.5" Width="154" FontFamily="Californian FB"/>
+
+        <TextBlock Margin="241,114,108.333,0" TextWrapping="Wrap" Text="{Binding StartPeilut, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="26" FontFamily="Californian FB">
+
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="214,166,0,0" TextWrapping="Wrap" Text="{Binding Delek}" VerticalAlignment="Top" Height="23" Width="98" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="426,199,0,0" TextWrapping="Wrap" Text="{Binding l_treatment.KilFromTreat}" VerticalAlignment="Top" Height="26" Width="120" Grid.ColumnSpan="2" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="269,243,0,0" TextWrapping="Wrap" Text="{Binding l_treatment.Date, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Top" Height="27" Width="131" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="214,288,0,0" TextWrapping="Wrap" Text="{Binding Status}" VerticalAlignment="Top" Height="27" Width="114" FontFamily="Californian FB"/>
+        <Button Content="Treatment" Name="TreatmentBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,368,0,0" VerticalAlignment="Top" Width="75" Click="TreatmentBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
+        <Button Content="Tidluk" Name="TidlukBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,324,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
+        <Label Content="Remaining Time:" FontSize="22" HorizontalAlignment="Left" Margin="63,330,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,-0.288" Width="173" Height="59" FontFamily="Californian FB"/>
+        <TextBlock HorizontalAlignment="Left" Margin="287,330,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="54" Width="158" FontFamily="Californian FB"/>
+
+    </Grid>
+</Window>
