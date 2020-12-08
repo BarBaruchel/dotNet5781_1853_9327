@@ -39,6 +39,7 @@ namespace dotNet5781_03B_1853_9327
                 {
                     Thread travelThread = new Thread(new ParameterizedThreadStart(currentBus.Travel));
                     travelThread.Start(Convert.ToInt32(DistanceSlider.Value));
+                    Thread.Sleep(2000);
                    
                 }
                 catch(Exception ex)
