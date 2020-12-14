@@ -14,6 +14,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
+        <!--definition of the slider button to rendition the distance for the ride in the the requested bus-->
         <Slider x:Name="DistanceSlider" KeyDown="DistanceSlider_KeyDown"  IsSelectionRangeEnabled="True" SelectionEnd="1200"  IsSnapToTickEnabled="True" Minimum="1" Maximum="1200" Value="1" HorizontalAlignment="Left" Margin="58.048,167,0,0" VerticalAlignment="Top" Height="61" Width="543" Background="#00000000" Grid.Column="1">
             <Slider.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -27,7 +28,7 @@
             </Slider.Resources>
         </Slider>
         <TextBlock   FontFamily="Haettenschweiler" HorizontalAlignment="Left" Margin="227.667,39,0,0" TextWrapping="Wrap" Text="Choose travel distance" FontSize="27" VerticalAlignment="Top" Height="61" Width="199" Grid.Column="1"/>
-        <TextBlock FontSize="22" FontFamily="Haettenschweiler" HorizontalAlignment="Left" Margin="227.048,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="119" Text="{Binding ElementName=DistanceSlider, Path=Value}" Grid.Column="1"/>
+        <!--Displays the distance selected by the user from the slider key--> <TextBlock FontSize="22" FontFamily="Haettenschweiler" HorizontalAlignment="Left" Margin="227.048,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="119" Text="{Binding ElementName=DistanceSlider, Path=Value}" Grid.Column="1"/>
         <Label Content="The distance to travel:" FontSize="22" HorizontalAlignment="Left" Margin="31.048,259,0,0" VerticalAlignment="Top" Height="58" Width="191"  FontFamily="Haettenschweiler" Grid.Column="1"/>
        
 

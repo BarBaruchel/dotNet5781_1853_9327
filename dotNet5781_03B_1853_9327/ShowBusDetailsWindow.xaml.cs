@@ -32,31 +32,31 @@ namespace dotNet5781_03B_1853_9327
             Grid.DataContext = ((MainWindow)Application.Current.MainWindow).currentBuses[currentIndex];
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) //definition of the theard when the user press on the tidluk button
         {
-            worker = new BackgroundWorker();
-            worker.DoWork += Worker_DoWork;
-            worker.ProgressChanged += Worker_ProgressChanged;
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            worker = new BackgroundWorker();  //Initialize the name of the process
+            worker.DoWork += Worker_DoWork; // go to the function that activate the clock
+            worker.ProgressChanged += Worker_ProgressChanged;  //update changes
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted; // when the clock finish go to the finish of the theard function
             worker.WorkerReportsProgress = true;
             if (worker.IsBusy != true)
-                worker.RunWorkerAsync(12);
+                worker.RunWorkerAsync(12);  //how many second the theard will be
             Thread tidlukThread = new Thread(((MainWindow)Application.Current.MainWindow).currentBuses[currentIndex].tidluk);
-            tidlukThread.Start();
+            tidlukThread.Start();  // activate the theard
 
         }
 
         private void TreatmentBtn_Click(object sender, RoutedEventArgs e)
         {
-            worker2 = new BackgroundWorker();
-            worker2.DoWork += Worker2_DoWork;
-            worker2.ProgressChanged += Worker1_ProgressChanged;
-            worker2.RunWorkerCompleted += Worker2_RunWorkerCompleted;
+            worker2 = new BackgroundWorker();  //Initialize the name of the process
+            worker2.DoWork += Worker2_DoWork; // go to the function that activate the clock
+            worker2.ProgressChanged += Worker1_ProgressChanged;//update changes
+            worker2.RunWorkerCompleted += Worker2_RunWorkerCompleted; // when the clock finish go to the finish of the theard function
             worker2.WorkerReportsProgress = true;
             if (worker2.IsBusy != true)
-                worker2.RunWorkerAsync(144);
+                worker2.RunWorkerAsync(144); //how many second the theard will be
             Thread treatmentThread = new Thread(((MainWindow)Application.Current.MainWindow).currentBuses[currentIndex].treatment);
-            treatmentThread.Start();
+            treatmentThread.Start(); // activate the theard
         }
 
 
@@ -87,7 +87,7 @@ namespace dotNet5781_03B_1853_9327
             Stopwatch stopwatch2 = new Stopwatch();
             stopwatch2.Start();
 
-            // BackgroundWorker worker = sender as BackgroundWorker;
+            
 
             int length = (int)e.Argument;
 
@@ -102,17 +102,17 @@ namespace dotNet5781_03B_1853_9327
 
             e.Result = stopwatch2.ElapsedMilliseconds;
         }
-        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e) //With each change in the  tidluk`s clock in this function will be activated, setting the color and visibility of the clock on the screen
         {
             int progress = e.ProgressPercentage;
-            RemainingTimeTidlukTb.Foreground = Brushes.Green;
+            RemainingTimeTidlukTb.Foreground = Brushes.DarkMagenta;
             RemainingTimeTidlukTb.Text = "00:00:" + progress.ToString();
         }
 
-        private void Worker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void Worker1_ProgressChanged(object sender, ProgressChangedEventArgs e) //With each change in the treatment`s clock this function will be activated, setting the color and visibility of the clock on the screen
         {
             int progress = e.ProgressPercentage;
-            RemainingTimeTreatTb.Foreground = Brushes.Green;
+            RemainingTimeTreatTb.Foreground = Brushes.DarkMagenta;
             int minutes = progress / 60;
             int seconds = progress % 60;
             RemainingTimeTreatTb.Text = "00:0" + minutes + ":" + seconds;
@@ -121,7 +121,7 @@ namespace dotNet5781_03B_1853_9327
 
 
 
-        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) // When the watch has finished this function will be activated, the end message setting of visibility and color
         {
             RemainingTimeTidlukTb.Foreground = Brushes.Black;
             RemainingTimeTidlukTb.Text = "Completed!";

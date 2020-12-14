@@ -29,7 +29,7 @@
             </DataGrid.Foreground>
 
             <DataGrid.Columns>
-
+                <!-- The data on the buses order by columns in the main window-->
                 <DataGridTextColumn Header="Rishuy" Binding="{Binding Rishuy}" Width="*" FontFamily="Cooper Black" />
                 <DataGridTextColumn Header="Total Kilometrage" Binding="{Binding Kilometrage}" Width="1.5*" FontFamily="Cooper Black"/>
                 <DataGridTextColumn Header="Fuel" Binding="{Binding Delek}" Width="0.5*" FontFamily="Cooper Black"/>
@@ -39,6 +39,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
+                            <!-- Add travel button to all the rows, for each bus in the list -->
                             <Button x:Name="TravelBtn" Background="Green" Content="Travel" Click="TravelBtnButtonClick" FontFamily="Century Gothic"></Button>
 
                         </DataTemplate>
@@ -47,6 +48,7 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
+                            <!-- Add tidluk button to all the rows, for each bus in the list -->
                             <Button x:Name="TidlukBtn" Background="Green"  Content="Tidluk" Click="TidlukBtn_Click" FontFamily="Century Gothic"></Button>
 
                         </DataTemplate>
@@ -58,6 +60,7 @@
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
+                        <!-- mark all the buses that thier status are ready for ride in specific color -->
                         <DataTrigger Binding="{Binding Status}" Value="READYFORRIDE">
                             <Setter Property="Background" Value="GreenYellow"/>
                         </DataTrigger>
@@ -67,6 +70,7 @@
                 </Style>
             </DataGrid.RowStyle>
             <DataGrid.Resources>
+                <!-- We defined the colors of the rows,columns in the table -->
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="Background" Value="BurlyWood"></Setter>
                     <Setter Property="Foreground" Value="Black"></Setter>

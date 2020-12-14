@@ -35,25 +35,52 @@ namespace dotNet5781_03B_1853_9327
         {
             if (e.Key == Key.Return)
             {
-                try
-                {
-                    Thread travelThread = new Thread(new ParameterizedThreadStart(currentBus.Travel));
-                    travelThread.Start(Convert.ToInt32(DistanceSlider.Value));
-                    Thread.Sleep(2000);
-                   
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-                MessageBox.Show("Success!");
-                   
                 
+
+                Thread travelThread = new Thread(new ParameterizedThreadStart(currentBus.Travel));
+                travelThread.Start(Convert.ToInt32(DistanceSlider.Value));
+                //Thread.Sleep(2000);
+
+
+                //check the choosen distance and will act and publish an appropriate text message
+                if (currentBus.Status == STATUS.INTREATMENT)
+                {
+                    MessageBox.Show("The bus needs a treatment!");
+                    
                
+
+                }
+                else
+                {
+                    if (currentBus.Delek < Convert.ToInt32(DistanceSlider.Value))
+                        MessageBox.Show("The bus needs a tidluk!");
+                 
+                    else
+                    {
+                        if (currentBus.Status == STATUS.MIDDLERIDE)
+                        {
+
+                            MessageBox.Show("The bus is in another ride!");
+                           
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Success!");
+                        }
+                    }
+                  
+
+                }
+
+
+              
+
             }
             Close();
 
         }
+
     }
+    
 }

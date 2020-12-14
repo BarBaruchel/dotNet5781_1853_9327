@@ -179,7 +179,7 @@ namespace dotNet5781_01_1853_9327
                 return false;
             }
 
-            else if (delek - distance <= 0)  // if the ride is more then 1200km then the bus can`t do the ride throw exception
+            else if (delek - distance < 0)  // if the ride is more then 1200km then the bus can`t do the ride throw exception
             {
                
                 return false;
@@ -198,13 +198,16 @@ namespace dotNet5781_01_1853_9327
             if (result== false)
             {
                 if (Status == STATUS.INTREATMENT)
-                    throw new Exception("The bus needs a treatment!");
+                    return;
+                //throw new Exception("The bus needs a treatment!");
                 else
-                    throw new Exception("The bus needs a tidluk!");
+                    return;   
+                // throw new Exception("The bus needs a tidluk!");
                
             }
             if (Status == STATUS.MIDDLERIDE)
-                throw new Exception("The bus is in another ride!");
+                return;
+                //throw new Exception("The bus is in another ride!");
             Random rand = new Random();
             int velocity = rand.Next(20, 51);
             int TimeToTravel = (distance / velocity) * 6; // In seconds
