@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -28,13 +26,15 @@ namespace DL
         //List<DO.Bus> Buses = new List<DO.Bus>();
         //List<DO.LineStation> lineStations = new List<LineStation>();
 
-        XElement LineStationRoot = new XElement("LineStations");
-        XElement BusRoot = new XElement("Buses");
+        static XElement LineStationRoot = new XElement("LineStations");
+        static XElement BusRoot = new XElement("Buses");
+        static XElement StationRoot = new XElement("Stations");
+        
+        static string BusPath = @"Bus.xml";
+        static string lineStationPath = @"LineStation.xml";
+        static string LinePath = @"Line.xml";
+        static string StationPath = @"Station.xml";
 
-        string BusPath = @"Bus.xml";
-        string lineStationPath = @"LineStation.xml";
-        string LinePath = @"Line.xml";
-        string StationPath = @"Station.xml";
         private DLXML()
         {
 
@@ -148,12 +148,21 @@ namespace DL
 
         public User getAdmin()
         {
-            throw new NotImplementedException();
+            User admin = new User { UserName = "Ranit", Password = "Bar", Admin = true };
+            return admin;
         }
 
         public void addStation(Station station)
         {
-            throw new NotImplementedException();
+            XElement stationXml = new XElement("Station",
+                new XElement("Code", station.Code),
+                new XElement("Latitude", station.Location.Latitude),
+                new XElement("Longitude", station.Location.Longitude),
+                new XElement("Name", station.Name),
+                new XElement("Address", station.Address)
+                );
+            StationRoot.Add(stationXml);
+            StationRoot.Save(StationPath);
         }
 
         public void AddLineStation(LineStation lineStation)
