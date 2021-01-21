@@ -13,7 +13,7 @@ namespace DLAPI
         void addBus(DO.Bus bus);
         void treatBus(DO.Bus bus);
         void fuelBus(DO.Bus bus);
-        IEnumerable<object> getAllBusses();
+        IEnumerable<DO.Bus> getAllBusses();
         void updateBus(DO.Bus bus);
         void deleteBus(DO.Bus bus);
         void Bedika(DO.Bus bus, int distance);
@@ -23,7 +23,7 @@ namespace DLAPI
 
         #region Lines
 
-        IEnumerable<object> getAllLines();
+        IEnumerable<DO.Line> getAllLines();
         void addLine(DO.Line line);
         void updateLine(DO.Line line);
         void deleteLine(DO.Line line);
@@ -40,7 +40,7 @@ namespace DLAPI
         #region Station
 
         void addStation(DO.Station station);
-        IEnumerable<object> getAllStations();
+        IEnumerable<DO.Station> getAllStations();
         void updateStation(DO.Station Station);
         void deleteStation(DO.Station Station);
        // Station ExistStation(int code);
@@ -52,7 +52,7 @@ namespace DLAPI
         void AddFollowingStation(DO.LineStation lineStation, double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing);
         void updateLineStation(DO.LineStation lineStation);
         double getDistanceBetweenTwoStations(DO.LineStation from, DO.LineStation to);
-        IEnumerable<object> getAllLineStations();
+        IEnumerable<DO.LineStation> getAllLineStations();
 
         #endregion LineStation
 

@@ -38,7 +38,7 @@ namespace DL
         {
             return DS.DataStore.Busses.FirstOrDefault(item => item.LicenseNum == license);
         }
-        public IEnumerable<object> getAllBusses()
+        public IEnumerable<DO.Bus> getAllBusses()
         {
             /// LINQ
             IEnumerable<Bus> result =
@@ -137,7 +137,7 @@ namespace DL
 
 
         #region Lines
-        public IEnumerable<object> getAllLines()
+        public IEnumerable<DO.Line> getAllLines()
         {
             /// LINQ
             IEnumerable<Line> result =
@@ -204,7 +204,7 @@ namespace DL
         {
             return DS.DataStore.Stations.FirstOrDefault(item => item.Code == code);
         }
-        public IEnumerable<object> getAllStations()
+        public IEnumerable<DO.Station> getAllStations()
         {
             /// LINQ
             IEnumerable<Station> result =
@@ -277,7 +277,7 @@ namespace DL
                 updateStations = DS.DataStore.LineStations.FirstOrDefault(x => (x.LineId == updateStations.LineId) && (x.Station == updateStations.NextStation));
             }
         }
-        public IEnumerable<object> getAllLineStations()
+        public IEnumerable<DO.LineStation> getAllLineStations()
         {
             IEnumerable<LineStation> result =
           from station in DS.DataStore.LineStations
