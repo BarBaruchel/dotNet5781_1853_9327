@@ -8,7 +8,7 @@
         Title="ShowALLBus" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.472,0.559">
 
-        <DataGrid MouseDoubleClick="BusesDataGrid_MouseDoubleClick" IsReadOnly="True"  AutoGenerateColumns="False" Name="BusesDataGrid" HorizontalAlignment="Left" Height="321" Margin="45,47,0,0" VerticalAlignment="Top" Width="532">
+        <DataGrid MouseDoubleClick="BusesDataGrid_MouseDoubleClick" IsReadOnly="True"  AutoGenerateColumns="False" Name="BusesDataGrid" HorizontalAlignment="Left" Height="271" Margin="45,47,0,0" VerticalAlignment="Top" Width="597">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="LicenseNumberCol" Header="License-Num" Binding="{Binding LicenseNum}" Width="*" FontFamily="Cooper Black" />
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="1.5*" FontFamily="Cooper Black"/>
@@ -16,9 +16,8 @@
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <!-- Add travel button to all the rows, for each bus in the list -->
-                            <Button x:Name="TreatBtn" Background="Green" Content="Travel" Click="TreatBtnButtonClick" FontFamily="Century Gothic"></Button>
-
+                            <!-- Add treat button to all the rows, for each bus in the list -->
+                            <Button x:Name="TreatBtn" Background="Green" Content="Treatment" Click="TreatButtonClick" FontFamily="Century Gothic"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -27,7 +26,6 @@
                         <DataTemplate>
                             <!-- Add tidluk button to all the rows, for each bus in the list -->
                             <Button x:Name="TidlukBtn" Background="Green"  Content="Tidluk" Click="TidlukBtn_Click" FontFamily="Century Gothic"></Button>
-
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

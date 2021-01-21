@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLAPI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,19 @@ namespace PL
     /// </summary>
     public partial class StationDetails : Window
     {
-        public StationDetails()
+        IBl bl;
+        BO.Station station;
+        List<BO.LineStation> BOLineStations;
+        public StationDetails(IBl bl,  BO.Station station,List<BO.LineStation> BOLineStations)
         {
             InitializeComponent();
+            this.bl = bl;
+            this.station = station;
+            this.BOLineStations =  BOLineStations;
+            AddressTextBlock.Text = station.Address;
+            LatTextBlock.Text = station.Location.Latitude.ToString();
+            LonTextBlock.Text = station.Location.Longitude.ToString();
+            StationDataGrid.ItemsSource = BOLineStations;
         }
     }
 }

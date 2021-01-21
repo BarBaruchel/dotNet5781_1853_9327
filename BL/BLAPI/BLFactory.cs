@@ -11,7 +11,7 @@ namespace BLAPI
     {
         public static IBl getBL()
         {
-            return new BL.BLimplementation();
+            return  BL.BLimplementation.Instance;
         }
     }
 }

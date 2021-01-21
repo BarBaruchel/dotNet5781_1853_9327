@@ -5,41 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="LineDetails" Height="450" Width="800">
+        Title="LineDetails" Height="450" Width="1100">
     <Grid x:Name="Grid" Background="#FFEBD0B9">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="228*"/>
-            <ColumnDefinition Width="169*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="ID:" FontSize="22"  HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Height="40" Width="173" RenderTransformOrigin="0.644,-0.104" FontFamily="Californian FB"/>
-        <Label Content="Code:" FontSize="22" HorizontalAlignment="Left" Margin="63,55,0,0" VerticalAlignment="Top" Height="47" Width="199" FontFamily="Californian FB"/>
-        <Label Content="Start Peilut :" FontSize="22" HorizontalAlignment="Left" Margin="63,102,0,0" VerticalAlignment="Top" Height="38" Width="145" FontFamily="Californian FB"/>
-
-        <Label Content="Area:" FontSize="22" HorizontalAlignment="Left" Margin="63,145,0,0" VerticalAlignment="Top" Height="39" Width="64" FontFamily="Californian FB"/>
-        <Label Content="First Station" FontSize="22" HorizontalAlignment="Left" Margin="63,189,0,0" VerticalAlignment="Top" Width="358" FontFamily="Californian FB"/>
-        <Label Content="Last Station:" FontSize="22" HorizontalAlignment="Left" Margin="63,233,0,0" VerticalAlignment="Top" Height="37" Width="199" FontFamily="Californian FB"/>
-
-        <TextBlock HorizontalAlignment="Left" Margin="269,19,0,0" TextWrapping="Wrap" Text="{Binding LicenseNum}" VerticalAlignment="Top" Height="31" Width="107" FontFamily="Californian FB"/>
-        <TextBlock HorizontalAlignment="Left" Margin="269,67,0,0" TextWrapping="Wrap" Text="{Binding Kilometrage}" VerticalAlignment="Top" Height="26" RenderTransformOrigin="0.5,0.5" Width="154" FontFamily="Californian FB"/>
-
-        <TextBlock Margin="241,114,108.333,0" TextWrapping="Wrap" Text="{Binding StartPeilut, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="26" FontFamily="Californian FB">
-
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="116,159,0,0" TextWrapping="Wrap" Text="{Binding Fuel}" VerticalAlignment="Top" Height="18" Width="76" FontFamily="Californian FB" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.289"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        <!--Binding the data of the bus to the lables-->
-        <TextBlock HorizontalAlignment="Left" Margin="426,199,0,0" TextWrapping="Wrap" Text="{Binding KiloFromLastTreat}" VerticalAlignment="Top" Height="26" Width="120" Grid.ColumnSpan="2" FontFamily="Californian FB"/>
-        <TextBlock HorizontalAlignment="Left" Margin="269,243,0,0" TextWrapping="Wrap" Text="{Binding LastTreat, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Top" Height="27" Width="131" FontFamily="Californian FB"/>
-        <TextBlock HorizontalAlignment="Left" Margin="154,286,0,0" TextWrapping="Wrap" Text="{Binding Status}" VerticalAlignment="Top" Height="24" Width="125" FontFamily="Californian FB"/>
-
+        <DataGrid Name="LineDetailsDataGrid" IsReadOnly="True"  AutoGenerateColumns="False"  HorizontalAlignment="Left" Height="211" Margin="23,92,0,0" VerticalAlignment="Top" Width="996">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code" Binding="{Binding Station}" Width="0.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.5*" FontFamily="Cooper Black" />
+                <DataGridTextColumn Header="Index " Binding="{Binding LineStationIndex }" Width="0.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Prev" Binding="{Binding PrevStation}" Width="0.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Next" Binding="{Binding NextStation}" Width="0.5*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Distance From Prev Station(KM)" Binding="{Binding DistanceFromTheLastStat}" Width="2.0*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Time From Prev Station(hh:mm)" Binding="{Binding TravelTimeFromTheLastStation, StringFormat=hh\\:mm}"  Width="2.0*" FontFamily="Cooper Black"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Add update distance button to all the rows, for each bus in the list -->
+                            <Button x:Name="UpdateDisBtn" Background="Green" Content="Update Dis" Click="UpdateDisBtn_Click" FontFamily="Century Gothic"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Add update time button to all the rows, for each bus in the list -->
+                            <Button x:Name="UpdateTimeBtn" Background="Green"  Content="Update Time" Click="UpdateTimeBtn_Click" FontFamily="Century Gothic"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="1.5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Add Following Station button to all the rows, for each bus in the list -->
+                            <Button x:Name="AddFollowingStationBtn" Background="Green"  Content="Add Following Station" Click="AddFollowingStationBtn_Click" FontFamily="Century Gothic"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Name="IdTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap"  RenderTransformOrigin="4.301,2.844" Margin="255,0,0,346.667" Height="32" VerticalAlignment="Bottom" Width="76" FontSize="18"/>
+        <Label Content="Line Id:" HorizontalAlignment="Left" Margin="181,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.654,-0.058" Height="32" Width="90" FontSize="18"/>
 
     </Grid>
 </Window>

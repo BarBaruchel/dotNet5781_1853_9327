@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="StationDetails" Height="450" Width="800">
     <Grid>
-
+        <Label Content=" Address:" HorizontalAlignment="Left" Margin="54,23,0,0" VerticalAlignment="Top" Height="37" Width="96"/>
+        <TextBlock Name="AddressTextBlock"   HorizontalAlignment="Left" Margin="189,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="306"/>
+        <Label Content=" Location Latitude:" HorizontalAlignment="Left" Margin="54,65,0,0" VerticalAlignment="Top" Width="96" Height="36"/>
+        <TextBlock  Name="LatTextBlock" HorizontalAlignment="Left" Margin="189,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="95"/>
+        <Label Content="Location Longitude:" HorizontalAlignment="Left" Margin="329,65,0,0" VerticalAlignment="Top" Width="135" Height="39"/>
+        <TextBlock  Name="LonTextBlock"  HorizontalAlignment="Left" Margin="469,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="122"/>
+        <DataGrid Name="StationDataGrid" Margin="36,130,62.333,42.667" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid.Columns>
+            <DataGridTextColumn  Header="Line`s Number" Binding="{Binding LineId}" Width="*" FontFamily="Cooper Black" />
+                <DataGridTextColumn Header="Last Station`s Name " Binding="{Binding LastStationName}" Width="1.5*" FontFamily="Cooper Black"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

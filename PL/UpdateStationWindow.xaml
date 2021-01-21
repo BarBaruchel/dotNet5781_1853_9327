@@ -1,0 +1,20 @@
+﻿<Window x:Class="PL.UpdateStationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="UpdateStationWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Enter station Name:" VerticalAlignment="Top" RenderTransformOrigin="2.915,2.507" Height="38" Margin="29,249,509.333,0"/>
+        <TextBox Name="NameTb" HorizontalAlignment="Left" Height="38" Margin="304,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <Label Content="Enter station Address:" HorizontalAlignment="Left" Margin="29,308,0,0" VerticalAlignment="Top" Width="270" Height="45"/>
+        <Button Content="Confirm Update" HorizontalAlignment="Left" Margin="617,333,0,0" VerticalAlignment="Top" Width="111" Height="44" Click="ConfirmUpdateButton_Click"/>
+        <TextBox Name="AddressTb" HorizontalAlignment="Left" Height="32" Margin="304,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <Label Content="Enter Latitud:(-90.00,90.00)" HorizontalAlignment="Left" Margin="29,175,0,0" VerticalAlignment="Top" Width="242" Height="43"/>
+        <TextBox x:Name="LatitudeTb" HorizontalAlignment="Left" Height="43" Margin="304,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+        <Label Content="Enter Longitude:(-90.00,90.00)" HorizontalAlignment="Left" Margin="29,108,0,0" VerticalAlignment="Top" Width="199" Height="39"/>
+        <TextBox x:Name="LongitudeTb" HorizontalAlignment="Left" Height="39" Margin="304,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156"/>
+    </Grid>
+</Window>

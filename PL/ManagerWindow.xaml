@@ -8,8 +8,8 @@
         Title="ManagerWindow" Height="450" Width="800">
     <Grid>
         <Button Name="ShowBuses" Content="Show Buses" HorizontalAlignment="Left" Margin="120,102,0,0" VerticalAlignment="Top" Width="165" Height="86" Click="ShowBuses_Click"/>
-        <Button Name="ShowLines" Content="Show Lines" HorizontalAlignment="Left" Margin="492,102,0,0" VerticalAlignment="Top" Width="156" Height="86"/>
-        <Button Name="ShowStations" Content="Show Stations" HorizontalAlignment="Left" Margin="312,223,0,0" VerticalAlignment="Top" Width="181" Height="83"/>
+        <Button Name="ShowLines" Content="Show Lines" HorizontalAlignment="Left" Margin="492,102,0,0" VerticalAlignment="Top" Width="156" Height="86" Click="ShowLines_Click"/>
+        <Button Name="ShowStations" Content="Show Stations" HorizontalAlignment="Left" Margin="312,223,0,0" VerticalAlignment="Top" Width="181" Height="83" Click="ShowStations_Click"/>
 
     </Grid>
 </Window>

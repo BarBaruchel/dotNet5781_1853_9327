@@ -36,36 +36,22 @@ namespace PL
             BusesDataGrid.ItemsSource = bl.getAllBusses();
         }
 
-        private void BusesDataGrid_TargetUpdated(object sender, DataTransferEventArgs e) //double click whit the mouse on one of the buses in the table will show the details on the bus
-        {
-            // BusesDataGrid.ItemsSource = currentBuses;
-        }
-        private void TreatBtnButtonClick(object sender, RoutedEventArgs e) // press on the one of the travel button  in one of the bus in the table start processor
+     
+        private void TreatButtonClick(object sender, RoutedEventArgs e) // press on the one of the treat button  in one of the bus in the table start processor
 
         {
             BO.Bus row = (BO.Bus)BusesDataGrid.SelectedItems[0];
             int licenseNum = row.LicenseNum;
             bl.treatBus(bl.getBusByLicense(licenseNum));
             RefreshBuses();
-            /*
-            int index = BusesDataGrid.SelectedIndex;
-            TravelWindow newWindow = new TravelWindow(index);
-            newWindow.Show();
-            */
         }
-
         private void TidlukBtn_Click(object sender, RoutedEventArgs e) // press on the one of the tidluk button  in one of the bus in the table start processor
         {
            BO.Bus row = (BO.Bus)BusesDataGrid.SelectedItems[0];
             int licenseNum = row.LicenseNum;
             bl.fuelBus(bl.getBusByLicense(licenseNum));
             RefreshBuses();
-            /*
-            Thread tidlukThread = new Thread(currentBuses[BusesDataGrid.SelectedIndex].tidluk);
-            tidlukThread.Start();
-            */
         }
-
         private void BusesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             BO.Bus row = (BO.Bus)BusesDataGrid.SelectedItems[0];
@@ -73,8 +59,6 @@ namespace PL
             BO.Bus BOBus = bl.getBusByLicense(licenseNum); 
             BusDetails busDetails = new BusDetails(BOBus);
             busDetails.Show();
-
-
         }
     }
 }

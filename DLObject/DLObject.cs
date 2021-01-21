@@ -13,7 +13,7 @@ namespace DL
     {
         #region Singleton
         static readonly DLObject instance = new DLObject();
-        static DLObject() 
+        static DLObject()
         {
             DS.DataStore.Init();
             DS.DataStore.InitRepostory();
@@ -21,14 +21,16 @@ namespace DL
         }// static ctor to ensure instance init is done just before first usage
         DLObject() { } // default => private
         public static IDL Instance { get => instance; }// The public Instance property to use
-        #endregion
-        public void addBus(Bus bus)
+        #endregion Singleton
+
+
+        #region Bus
+        public void addBus(DO.Bus bus)
         {
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle == null)
             {
                 DS.DataStore.Busses.Add(bus);
-
             }
             throw new AlreadyExistsException("The rishuy number already exist", vehicle.LicenseNum);
         }
@@ -36,8 +38,6 @@ namespace DL
         {
             return DS.DataStore.Busses.FirstOrDefault(item => item.LicenseNum == license);
         }
-
-
         public IEnumerable<object> getAllBusses()
         {
             /// LINQ
@@ -46,73 +46,35 @@ namespace DL
             select bus;
 
             return result;
-
-
         }
-
-
-        public void addStation(Station station)
-        {
-            Station stat = ExistStation(station.Code);
-            if (stat == null)
-            {
-                DS.DataStore.Stations.Add(station.Clone());
-
-            }
-            throw new AlreadyExistsException("The code number already exist", station.Code);
-        }
-
-        private Station ExistStation(int code)
-        {
-            return DS.DataStore.Stations.FirstOrDefault(item => item.Code == code);
-        }
-
-
-        public Bus getBusByLicenseNum(int licenseNum)
+        public DO.Bus getBusByLicenseNum(int licenseNum)
         {
             return DS.DataStore.Busses.Find(x => x.LicenseNum == licenseNum);
         }
-        public IEnumerable<object> getAllStations()
+        public DO.Line getLineById(int id)
         {
-            /// LINQ
-            IEnumerable<Station> result =
-            from station in DS.DataStore.Stations
-            select station;
-
-            return result;
+            return DS.DataStore.Lines.Find(x => x.Id == id);
         }
-
         public void Bedika(DO.Bus bus, int distance) //to check if the bus can do the track according to the conditions
         {
-
-            
-                if (DateTime.Now.Subtract(bus.LastTreat).TotalDays >= 365) // if the subtraction between the last time the bus does a treatment,then bus can`t do the ride throw exception
-                {
-                    bus.Status = STATUS.INTREATMENT;
-                     return;
-                }
-
-                else if (bus.KiloFromLastTreat + distance >= 20000) // if the kilometrage plus the ride is more then 20000km the the bus can`t do the ride throw exception
-                {
-                   bus.Status = STATUS.INTREATMENT;
-                   return;
-                }
-
-                else if (bus.Fuel - distance < 0)  // if the ride is more then 1200km then the bus can`t do the ride throw exception
-                {
-
-                   return;
-                }
-
-
-
-                bus.Status = STATUS.READYFORRIDE;
+            if (DateTime.Now.Subtract(bus.LastTreat).TotalDays >= 365) // if the subtraction between the last time the bus does a treatment,then bus can`t do the ride throw exception
+            {
+                bus.Status = STATUS.INTREATMENT;
                 return;
             }
-
-
-
-        public void treatBus(Bus bus)
+            else if (bus.KiloFromLastTreat + distance >= 20000) // if the kilometrage plus the ride is more then 20000km the the bus can`t do the ride throw exception
+            {
+                bus.Status = STATUS.INTREATMENT;
+                return;
+            }
+            else if (bus.Fuel - distance < 0)  // if the ride is more then 1200km then the bus can`t do the ride throw exception
+            {
+                return;
+            }
+            bus.Status = STATUS.READYFORRIDE;
+            return;
+        }
+        public void treatBus(DO.Bus bus)
         {
             // בשלב2 נבצע תהליכונים
 
@@ -129,183 +91,253 @@ namespace DL
             }
             throw new NotExistException("The rishuy number not exist", vehicle.LicenseNum);
         }
-
-        public void fuelBus(Bus bus)
+        public void fuelBus(DO.Bus bus)
         {
-           
-                Bus vehicle = ExistBus(bus.LicenseNum);
-                if (vehicle != null)
-                {
-                    vehicle.Fuel = 1200;
+            Bus vehicle = ExistBus(bus.LicenseNum);
+            if (vehicle != null)
+            {
+                vehicle.Fuel = 1200;
                 ///
                 /// update the status of the new bus
                 ///
                 if (DateTime.Now.Subtract(bus.LastTreat).TotalDays >= 365) // if the subtraction between the last time the bus does a treatment,then bus can`t do the ride throw exception
                 {
                     bus.Status = STATUS.INTREATMENT;
-
                 }
-
-                else if (bus.KiloFromLastTreat >= 20000) // if the kilometrage plus the ride is more then 20000km the the bus can`t do the ride throw exception
+                else if (bus.KiloFromLastTreat >= 20000) // if the kilometrage is more then 20000km the the bus can`t do the ride throw exception
                 {
                     bus.Status = STATUS.INTREATMENT;
-
                 }
-
-                else if (!(bus.Fuel < 0))  // if the ride is more then 1200km then the bus can`t do the ride throw exception
-                {
-
-                    bus.Status = STATUS.READYFORRIDE;
-                }
-
-              
-
+                bus.Status = STATUS.READYFORRIDE;
                 return;
-
-                }
-            
-            
+            }
             throw new NotExistException("The rishuy number not exist", vehicle.LicenseNum);
         }
-
-
-
-        public void updateBus(Bus bus)
+        public void updateBus(DO.Bus bus)
         {
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle != null)
             {
                 vehicle = bus.Clone();
-
+                return;
             }
             throw new NotExistException("The rishuy number not exist", vehicle.LicenseNum);
         }
-
-        public void deleteBus(Bus bus)
+        public void deleteBus(DO.Bus bus)
         {
-
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle != null)
             {
                 DS.DataStore.Busses.Remove(vehicle.Clone());
+                return;
             }
             throw new NotExistException("The rishuy number not exist", vehicle.LicenseNum);
         }
+        #endregion Bus
+
+
+        #region Lines
         public IEnumerable<object> getAllLines()
         {
             /// LINQ
             IEnumerable<Line> result =
-            from line in DS.DataStore.Line
+            from line in DS.DataStore.Lines
             select line;
 
             return result;
         }
-
-        public void addLine(Line line)
+        public void addLine(DO.Line line)
         {
-            Line lin = ExistLine(line.Id);
-            if (lin == null)
-            {
-                DS.DataStore.Line.Add(lin);
-
-            }
-            throw new AlreadyExistsException("The Id & code number already exist", line.Id, line.Code);
+            line.Id = ++DS.DataStore.RunningNum;
+             DS.DataStore.Lines.Add(line);
         }
-
         private Line ExistLine(int id)
         {
-            return DS.DataStore.Line.FirstOrDefault(item => item.Id == id);
+            return DS.DataStore.Lines.FirstOrDefault(item => item.Id == id);
         }
-
-
-        public void updateLine(Line line)
+        public void updateLine(DO.Line line)
+        {
+            DO.Line lineToUpdate = DS.DataStore.Lines.Find(x => x.Id == line.Id);
+           if (lineToUpdate != null)
+             {
+                lineToUpdate.Area = line.Area;
+                lineToUpdate.Code = line.Code;
+                lineToUpdate.FirstStation = line.FirstStation;
+                lineToUpdate.LastStation = line.LastStation;
+                return;
+             }
+             throw new NotExistException("The Id  number not exist", line.Id);
+        }
+        public void deleteLine(DO.Line line)
         {
             Line lin = ExistLine(line.Id);
             if (lin != null)
             {
-                lin = line.Clone();
-            }
-            throw new NotExistException("The Id  number not exist", line.Id);
-        }
-
-
-        public void deleteLine(Line line)
-        {
-            Line lin = ExistLine(line.Id);
-            if (lin != null)
-            {
-                DS.DataStore.Line.Remove(lin.Clone());
+                DS.DataStore.Lines.Remove(lin);
+                return;
             }
             throw new NotExistException("The Id number not exist", line.Id);
         }
+        #endregion Line
 
 
-
-        public double getDistanceBetweenTwoStations(Station from, Station to)
+        #region User
+        public User getAdmin()
         {
-            Station from_ = ExistStation(from.Code);
-            Station to_ = ExistStation(to.Code);
-            if (from_ == null)
-                throw new NotExistStationException("this code is not a exist", from.Code);
-            if (to_ == null)
-                throw new NotExistStationException("this code is not a exist", to.Code);
-
-            int indexOne = DS.DataStore.Stations.FindIndex(x => x.Code == from.Code);
-            int indexTwo = DS.DataStore.Stations.FindIndex(x => x.Code == to.Code);
-            double distanceF = 0; // the distance from the first station to station "from"
-            double distanceT = 0; // the distance from the first station to station "to"
-            for (int i = 1; i < indexOne; i++)
-            {
-                distanceF += DS.DataStore.Stations[i].DistanceFromTheLastStat;
-
-            }
-            for (int i = 1; i < indexTwo; i++)
-            {
-                distanceT += DS.DataStore.Stations[i].DistanceFromTheLastStat;
-
-            }
-            return Math.Abs(distanceF - distanceT);
+            return DS.DataStore.admin;
         }
+        #endregion User
 
 
+        #region Station
+        public void addStation(DO.Station station)
+        {
+            Station stat = ExistStation(station.Code);
+            if (stat == null)
+            {
+                DS.DataStore.Stations.Add(station);
+                return;
+            }
+            throw new AlreadyExistsException("The code number already exist", station.Code);
+        }
+        private Station ExistStation(int code)
+        {
+            return DS.DataStore.Stations.FirstOrDefault(item => item.Code == code);
+        }
+        public IEnumerable<object> getAllStations()
+        {
+            /// LINQ
+            IEnumerable<Station> result =
+            from station in DS.DataStore.Stations
+            select station;
 
-        public void updateStation(Station Station)
+            return result;
+        }
+        public void updateStation(DO.Station Station)
         {
             Station stat = ExistStation(Station.Code);
             if (stat != null)
             {
                 stat = Station.Clone();
+                List<DO.Station> stations = getAllStations().Cast<DO.Station>().ToList(); // DELET IN THE END
+                
+                return;
             }
             throw new NotExistException("The code number not exist", Station.Code);
         }
-
-        public void deleteStation(Station Station)
+        public void deleteStation(DO.Station Station)
         {
             Station stat = ExistStation(Station.Code);
             if (stat != null)
             {
                 DS.DataStore.Stations.Remove(stat.Clone());
+                return;
             }
             throw new NotExistException("The code number not exist", Station.Code);
         }
+        #endregion Station
 
-        public void updateLineStation(LineStation lineStation)
+
+        #region LineStation
+       public void AddFollowingStation(DO.LineStation lineStation, double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing)
         {
-            LineStation lineStat = ExistLineStation(lineStation.LineId);
+            DO.LineStation lineStationToUpdate = DS.DataStore.LineStations.Find(x => (x.LineId == lineStation.LineId) && (x.Station==lineStation.Station));
+            DO.LineStation nextStation= DS.DataStore.LineStations.Find(x => (x.LineId == lineStation.LineId)&&(x.Station == lineStationToUpdate.NextStation));
+            lineStationToUpdate.NextStation = lineStation.NextStation;
+            DO.LineStation newLineStation = new DO.LineStation();
+            if ((nextStation==null)&&(nextStation.NextStation==nextStation.Station) ) // if lineStationToUpdate is the last station in the ride
+            {
+                newLineStation.LineId = lineStationToUpdate.LineId;
+                newLineStation.LineStationIndex = lineStationToUpdate.LineStationIndex + 1;
+                newLineStation.Station = lineStationToUpdate.NextStation;
+                newLineStation.NextStation = newLineStation.Station;
+                newLineStation.PrevStation = lineStationToUpdate.Station;
+                newLineStation.DistanceFromTheLastStat = distanceFromThePrevToFollowing;
+                newLineStation.TravelTimeFromTheLastStation = timeFromThePrevToFollowing;
+                DS.DataStore.LineStations.Add(newLineStation);
+                return;
+            }
+            newLineStation.LineId = lineStationToUpdate.LineId;
+            newLineStation.LineStationIndex = lineStationToUpdate.LineStationIndex + 1;
+            newLineStation.Station = lineStationToUpdate.NextStation;
+            newLineStation.NextStation = nextStation.Station;
+            newLineStation.PrevStation = lineStationToUpdate.Station;
+            newLineStation.DistanceFromTheLastStat = distanceFromThePrevToFollowing;
+            newLineStation.TravelTimeFromTheLastStation = timeFromThePrevToFollowing;
+            DS.DataStore.LineStations.Add(newLineStation);
+            ++nextStation.LineStationIndex;
+            nextStation.PrevStation = newLineStation.Station;
+            //prev
+            DO.LineStation updateStations = DS.DataStore.LineStations.FirstOrDefault(x => (x.LineId == nextStation.LineId) && (x.Station == nextStation.NextStation));
+            while (updateStations!= null)                  // update the rest of LineStationIndex in the same LineId
+            {
+                ++updateStations.LineStationIndex;
+                if (updateStations.Station == updateStations.NextStation)
+                    break;
+                updateStations = DS.DataStore.LineStations.FirstOrDefault(x => (x.LineId == updateStations.LineId) && (x.Station == updateStations.NextStation));
+            }
+        }
+        public IEnumerable<object> getAllLineStations()
+        {
+            IEnumerable<LineStation> result =
+          from station in DS.DataStore.LineStations
+          select station;
+
+            return result;
+        }
+        public double getDistanceBetweenTwoStations(LineStation from, LineStation to)
+        {
+            LineStation from_ = ExistLineStation(from.LineId, from.Station);
+            LineStation to_ = ExistLineStation(to.LineId, to.Station);
+            if (from_ == null)
+                throw new NotExistStationException("this code is not a exist", from.LineId);
+            if (to_ == null)
+                throw new NotExistStationException("this code is not a exist", to.LineId);
+            int indexOne = DS.DataStore.LineStations.FindIndex(x => x.LineId == from.LineId);
+            int indexTwo = DS.DataStore.LineStations.FindIndex(x => x.LineId == to.LineId);
+            double distanceF = 0; // the distance from the first station to station "from"
+            double distanceT = 0; // the distance from the first station to station "to"
+            for (int i = 1; i < indexOne; i++)
+            {
+                distanceF += DS.DataStore.LineStations[i].DistanceFromTheLastStat;
+            }
+            for (int i = 1; i < indexTwo; i++)
+            {
+                distanceT += DS.DataStore.LineStations[i].DistanceFromTheLastStat;
+            }
+            return Math.Abs(distanceF - distanceT);
+        }
+        public void updateLineStation(DO.LineStation lineStation)
+        {
+            LineStation lineStat = ExistLineStation(lineStation.LineId, lineStation.Station);
             if (lineStat != null)
             {
                 lineStat = lineStation.Clone();
+                return;
             }
             throw new NotExistException("The Id station number not exist", lineStat.LineId, lineStat.Station);
         }
+        private LineStation ExistLineStation(int lineId, int station)
+        {
+            return DS.DataStore.LineStations.FirstOrDefault(item => item.LineId == lineId && item.Station == station);
+        }
+        #endregion LineStation
 
-        public User getAdmin()
-        {
-            return DS.DataStore.admin;
-        }
-        private LineStation ExistLineStation(int lineId)
-        {
-            return DS.DataStore.LineStation.FirstOrDefault(item => item.LineId == lineId);
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
     }
 }

@@ -32,5 +32,17 @@ namespace PL
             ShowALLBuses window = new ShowALLBuses(bl);
             window.Show();
         }
+
+        private void ShowLines_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAllLines window = new ShowAllLines(bl);
+            window.Show();
+        }
+
+        private void ShowStations_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAllStations window = new ShowAllStations(bl);
+            window.ShowDialog();
+        }
     }
 }

@@ -30,8 +30,7 @@ namespace DL
                 Code = source.Code,
                 Location = source.Location,
                 Address = source.Address,
-                TravelTimeFromTheLastStation = source.TravelTimeFromTheLastStation,
-                DistanceFromTheLastStat = source.DistanceFromTheLastStat
+                Name = source.Name
             };
         }
         public static AdjacentStations Clone(this AdjacentStations source)
@@ -75,11 +74,14 @@ namespace DL
         {
             return new LineStation
             {
+                // בקובץ DAL אין NAME
                 LineId = source.LineId,
                 Station = source.Station,
                 LineStationIndex = source.LineStationIndex,
                 PrevStation = source.PrevStation,
-                NextStation = source.NextStation
+                NextStation = source.NextStation,
+                TravelTimeFromTheLastStation = source.TravelTimeFromTheLastStation,
+                DistanceFromTheLastStat = source.DistanceFromTheLastStat
             };
         }
         public static LineTrip Clone(this LineTrip source)

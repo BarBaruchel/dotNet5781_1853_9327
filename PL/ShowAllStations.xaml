@@ -1,0 +1,26 @@
+﻿<Window x:Class="PL.ShowAllStations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="ShowAllStations" Height="450" Width="800">
+    <Grid>
+        <DataGrid MouseDoubleClick="ShowAllStationsDataGrid_MouseDoubleClick" IsReadOnly="True"  AutoGenerateColumns="False" Name="ShowAllStationsDataGrid" HorizontalAlignment="Left" Height="271" Margin="45,47,0,0" VerticalAlignment="Top" Width="597">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Code" Header="Code" Binding="{Binding Code}" Width="*" FontFamily="Cooper Black" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.5*" FontFamily="Cooper Black"/>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <!-- Add update button to all the rows, for each bus in the list -->
+                            <Button x:Name="UpdateBtn" Background="Green"  Content="Update" Click="UpdateBtn_Click" FontFamily="Century Gothic"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Add Station" HorizontalAlignment="Left" Margin="640,348,0,0" VerticalAlignment="Top" Width="111" Height="40" Click="AddStationButton_Click"/>
+    </Grid>
+</Window>

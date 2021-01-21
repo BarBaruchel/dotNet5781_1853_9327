@@ -9,11 +9,9 @@ namespace BO
 {
     public class Station
     {
-
-        public GeoCoordinate Location { get; set; }
+        public int Code { get; set; }
+        public GeoCoordinate Location { get; set; } = new GeoCoordinate();
         public string Address { get; set; }
-
-        public double DistanceFromTheLastStat { get; set; } // distance from previous BusStation
-        public TimeSpan TravelTimeFromTheLastStation { get; set; }  // Travel time from previous BusStation
+        public string Name { get; set; }
     }
 }

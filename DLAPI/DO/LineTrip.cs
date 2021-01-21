@@ -15,10 +15,5 @@ namespace DO
         public TimeSpan Frequency { get; set; }
 
 
-
-
-
-
-
     }
 }

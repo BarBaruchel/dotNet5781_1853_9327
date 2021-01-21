@@ -23,7 +23,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{CDD9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2EA7F5E1-606A-42C2-A5C3-74AAC9784543}"
 	ProjectSection(SolutionItems) = preProject
+		bin\Xml\AdjacentStations.xml = bin\Xml\AdjacentStations.xml
+		bin\Xml\Bus.xml = bin\Xml\Bus.xml
+		bin\Xml\BusOnTrip.xml = bin\Xml\BusOnTrip.xml
 		bin\config.xml = bin\config.xml
+		bin\Xml\Enums.xml = bin\Xml\Enums.xml
+		bin\Xml\Line.xml = bin\Xml\Line.xml
+		bin\Xml\LineStation.xml = bin\Xml\LineStation.xml
+		bin\Xml\LineTrip.xml = bin\Xml\LineTrip.xml
+		bin\Xml\Station.xml = bin\Xml\Station.xml
+		bin\Xml\Trip.xml = bin\Xml\Trip.xml
+		bin\Xml\User.xml = bin\Xml\User.xml
+		bin\Xml\UserTrips.xml = bin\Xml\UserTrips.xml
 	EndProjectSection
 EndProject
 Global
