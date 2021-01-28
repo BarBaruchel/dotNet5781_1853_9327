@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLObject", "DLObject\DLObje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{CDD95F44-5E22-4A42-9480-FBFB58631EAE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2EA7F5E1-606A-42C2-A5C3-74AAC9784543}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bin", "bin", "{2EA7F5E1-606A-42C2-A5C3-74AAC9784543}"
 	ProjectSection(SolutionItems) = preProject
 		bin\Xml\AdjacentStations.xml = bin\Xml\AdjacentStations.xml
 		bin\Xml\Bus.xml = bin\Xml\Bus.xml
@@ -31,6 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		bin\Xml\Line.xml = bin\Xml\Line.xml
 		bin\Xml\LineStation.xml = bin\Xml\LineStation.xml
 		bin\Xml\LineTrip.xml = bin\Xml\LineTrip.xml
+		RunningNumbers.xml = RunningNumbers.xml
 		bin\Xml\Station.xml = bin\Xml\Station.xml
 		bin\Xml\Trip.xml = bin\Xml\Trip.xml
 		bin\Xml\User.xml = bin\Xml\User.xml

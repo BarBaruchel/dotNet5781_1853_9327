@@ -76,6 +76,10 @@ namespace BO
     {
         public int CODE;
 
+        public NotExistStationException(string message, int id): base(message)
+        {
+            CODE = id;
+        }
 
         public NotExistStationException(string message, Exception innerException) : base(message, innerException)
         {

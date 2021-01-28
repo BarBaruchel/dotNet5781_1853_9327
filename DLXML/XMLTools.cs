@@ -102,7 +102,17 @@ namespace DL
                 new XElement("DistanceFromTheLastStat", lineStation.DistanceFromTheLastStat),
                 new XElement("TravelTimeFromTheLastStation", lineStation.TravelTimeFromTheLastStation.ToString()));
         }
-
+        public static XElement BusToXML(this DO.Bus bus)
+        {
+            return new XElement("Bus",
+                new XElement("StartPeilut", bus.StartPeilut.ToString()),
+                    new XElement("LastTreat", bus.LastTreat.ToString()),
+                new XElement("KiloFromLastTreat", bus.KiloFromLastTreat),
+                new XElement("LicenseNum", bus.LicenseNum),
+                new XElement("Kilometrage", bus.Kilometrage),
+                new XElement("Fuel", bus.Fuel),
+                new XElement("Status", bus.Status) );
+        }
 
     }
 }

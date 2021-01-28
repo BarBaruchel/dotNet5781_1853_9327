@@ -66,7 +66,20 @@ namespace BL
             newBus = BOBusToDoBus(bus); // Convert to DO type
             try
             {
-                dal.fuelBus(newBus);
+                newBus.Fuel = 1200;
+                ///
+                /// update the status of the new bus
+                ///
+                if (DateTime.Now.Subtract(newBus.LastTreat).TotalDays >= 365) // if the subtraction between the last time the bus does a treatment,then bus can`t do the ride throw exception
+                {
+                    newBus.Status = (DO.STATUS)STATUS.INTREATMENT;
+                }
+                else if (newBus.KiloFromLastTreat >= 20000) // if the kilometrage is more then 20000km the the bus can`t do the ride throw exception
+                {
+                    newBus.Status = (DO.STATUS)STATUS.INTREATMENT;
+                }
+                newBus.Status = (DO.STATUS)STATUS.READYFORRIDE;
+                dal.updateBus(newBus);
 
             }
             catch (DO.NotExistException ex)
@@ -116,7 +129,12 @@ namespace BL
             newBus = BOBusToDoBus(bus);
             try
             {
-                dal.treatBus(newBus);
+                newBus.LicenseNum = bus.LicenseNum;
+                newBus.LastTreat = DateTime.Now;
+                newBus.KiloFromLastTreat = 0;
+                newBus.Fuel = 1200;
+                newBus.Status = (DO.STATUS)STATUS.READYFORRIDE;
+                dal.updateBus(newBus);
 
             }
             catch (DO.NotExistException ex)
@@ -308,37 +326,98 @@ namespace BL
         }
         public double getDistanceBetweenTwoStations(BO.LineStation from, BO.LineStation to)
         {
-
-            DO.LineStation newLineStationFrom = new DO.LineStation();
-            DO.LineStation newLineStationTo = new DO.LineStation();
-            double distanc;
-            try
+            List<DO.LineStation> lineStations = dal.getAllLineStations().ToList();
+            DO.LineStation from_ = lineStations.Find(x => x.LineId == from.LineId && x.Station == from.Station);
+            DO.LineStation to_ = lineStations.Find(x => x.LineId == to.LineId && x.Station == to.Station);
+            if (from_ == null)
+                throw new NotExistStationException("this code is not a exist",from.LineId);
+            if (to_ == null)
+                throw new NotExistStationException("this code is not a exist", to.LineId);
+            int indexOne = lineStations.FindIndex(x => x.LineId == from.LineId);
+            int indexTwo = lineStations.FindIndex(x => x.LineId == to.LineId);
+            double distanceF = 0; // the distance from the first station to station "from"
+            double distanceT = 0; // the distance from the first station to station "to"
+            for (int i = 1; i < indexOne; i++)
             {
-                distanc = dal.getDistanceBetweenTwoStations(newLineStationFrom, newLineStationTo);
-
+                distanceF += lineStations[i].DistanceFromTheLastStat;
             }
-            catch (DO.NotExistException ex)
+            for (int i = 1; i < indexTwo; i++)
             {
-                throw new BO.NotExistStationException("This station does not exist!", ex);
+                distanceT += lineStations[i].DistanceFromTheLastStat;
             }
-            return distanc;
+            return Math.Abs(distanceF - distanceT);
         }
         #endregion Station
 
 
         #region LineStation
-       public void AddFollowingStation(BO.LineStation lineStation , double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing)
+        public void AddFollowingStation(BO.LineStation lineStation , double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing)
         {
-            DO.LineStation newLineStation = new DO.LineStation();
-            newLineStation = BOLineStationToDOLineStation(lineStation); // Convert to DO type
+            List<DO.LineStation> lineStations = dal.getAllLineStations().ToList();
+            DO.LineStation lineStationToUpdate = lineStations.Find(x => (x.LineId == lineStation.LineId) && (x.Station == lineStation.Station));
+            DO.LineStation nextStation = lineStations.Find(x => (x.LineId == lineStation.LineId) && (x.Station == lineStationToUpdate.NextStation));
+            lineStationToUpdate.NextStation = lineStation.NextStation;
             try
             {
-                dal.AddFollowingStation(newLineStation, distanceFromThePrevToFollowing, timeFromThePrevToFollowing);
-
+                dal.updateLineStation(lineStationToUpdate);
             }
             catch (DO.NotExistException ex)
             {
                 throw new BO.NotExistException("This line does not exist!", ex);
+            }
+            DO.LineStation newLineStation = new DO.LineStation();
+            if ((nextStation == null) && (nextStation.NextStation == nextStation.Station)) // if lineStationToUpdate is the last station in the ride
+            {
+                newLineStation.LineId = lineStationToUpdate.LineId;
+                newLineStation.LineStationIndex = lineStationToUpdate.LineStationIndex + 1;
+                newLineStation.Station = lineStationToUpdate.NextStation;
+                newLineStation.NextStation = newLineStation.Station;
+                newLineStation.PrevStation = lineStationToUpdate.Station;
+                newLineStation.DistanceFromTheLastStat = distanceFromThePrevToFollowing;
+                newLineStation.TravelTimeFromTheLastStation = timeFromThePrevToFollowing;
+                try
+                {
+                    dal.addLineStation(newLineStation);
+                }
+                catch (DO.NotExistException ex)
+                {
+                    throw new BO.NotExistException("This line does not exist!", ex);
+                }
+                return;
+            }
+            newLineStation.LineId = lineStationToUpdate.LineId;
+            newLineStation.LineStationIndex = lineStationToUpdate.LineStationIndex + 1;
+            newLineStation.Station = lineStationToUpdate.NextStation;
+            newLineStation.NextStation = nextStation.Station;
+            newLineStation.PrevStation = lineStationToUpdate.Station;
+            newLineStation.DistanceFromTheLastStat = distanceFromThePrevToFollowing;
+            newLineStation.TravelTimeFromTheLastStation = timeFromThePrevToFollowing;
+            try
+            {
+                dal.addLineStation(newLineStation);
+            }
+            catch (DO.NotExistException ex)
+            {
+                throw  new BO.NotExistException("This line does not exist!", ex);
+            }
+            ++nextStation.LineStationIndex;
+            nextStation.PrevStation = newLineStation.Station;
+            //prev
+            DO.LineStation updateStations = lineStations.FirstOrDefault(x => (x.LineId == nextStation.LineId) && (x.Station == nextStation.NextStation));
+            while (updateStations != null)                  // update the rest of LineStationIndex in the same LineId
+            {
+                updateStations.LineStationIndex++;
+                try
+                {
+                    dal.updateLineStation(updateStations);
+                }
+                catch (DO.NotExistException ex)
+                {
+                    throw new BO.NotExistException("This line does not exist!", ex);
+                }
+                if (updateStations.Station == updateStations.NextStation)
+                    break;
+                updateStations = lineStations.FirstOrDefault(x => (x.LineId == updateStations.LineId) && (x.Station == updateStations.NextStation));
             }
         }
         public IEnumerable<object> getLineStationByCode(int code)

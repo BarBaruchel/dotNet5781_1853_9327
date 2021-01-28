@@ -11,12 +11,9 @@ namespace DLAPI
     {
         #region Bus
         void addBus(DO.Bus bus);
-        void treatBus(DO.Bus bus);
-        void fuelBus(DO.Bus bus);
         IEnumerable<DO.Bus> getAllBusses();
         void updateBus(DO.Bus bus);
         void deleteBus(DO.Bus bus);
-        void Bedika(DO.Bus bus, int distance);
         DO.Bus getBusByLicenseNum(int licenseNum);
         
         #endregion Bus
@@ -41,17 +38,16 @@ namespace DLAPI
 
         void addStation(DO.Station station);
         IEnumerable<DO.Station> getAllStations();
-        void updateStation(DO.Station Station);
-        void deleteStation(DO.Station Station);
-       // Station ExistStation(int code);
+        void updateStation(DO.Station station);
+        void deleteStation(DO.Station station);
+       
 
         #endregion Station
 
 
         #region LineStation
-        void AddFollowingStation(DO.LineStation lineStation, double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing);
+        void addLineStation(DO.LineStation lineStation);
         void updateLineStation(DO.LineStation lineStation);
-        double getDistanceBetweenTwoStations(DO.LineStation from, DO.LineStation to);
         IEnumerable<DO.LineStation> getAllLineStations();
 
         #endregion LineStation

@@ -13,66 +13,90 @@ namespace DL
     {
         #region singleton
         static readonly DLXML instance = new DLXML();
-        public static DLXML Instance { get => instance; }
-        static string dir = @"xml\";
+        public static IDL Instance { get => instance; }
+     
 
         static DLXML()
         {
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
+            /*
+          
+            DS.DataStore.Init();
+            DS.DataStore.InitRepostory();
+
+            //DS.DataStore.Init();
+            //DS.DataStore.InitRepostory();
+
+            List<DO.Bus> buses = DS.DataStore.Busses;
+            XElement bussesRoot = XMLTools.LoadListFromXMLElement(dir + BusPath);
+            foreach (Bus bus in buses)
+            {
+                bussesRoot.Add(XMLTools.BusToXML(bus));
+            }
+            bussesRoot.Save(dir + BusPath);
+
+            */
 
         }
-        #endregion
-        //List<DO.Bus> Buses = new List<DO.Bus>();
-        //List<DO.LineStation> lineStations = new List<LineStation>();
+        #endregion singleton
+
 
         static XElement LineStationRoot = new XElement("LineStations");
         static XElement BusRoot = new XElement("Buses");
         static XElement StationRoot = new XElement("Stations");
-        
+        static XElement RunningNumbersRoot = new XElement("IDS");
+
         static string BusPath = @"Bus.xml";
         static string lineStationPath = @"LineStation.xml";
         static string LinePath = @"Line.xml";
         static string StationPath = @"Station.xml";
+        static string RunningNumbersPath = @"RunningNumbers.xml";
+        //List<DO.Bus> Buses = new List<DO.Bus>();
+        //List<DO.LineStation> lineStations = new List<LineStation>();
 
+   
         private DLXML()
         {
-
-            // BusRoot.Save(BusPath);
-            // SaveToXML(Buses, BusPath);
+    
         }
+        //public void AddPerson(DO.Person person)
+        //{
+        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
 
+        //    XElement per1 = (from p in personsRootElem.Elements()
+        //                     where int.Parse(p.Element("ID").Value) == person.ID
+        //                     select p).FirstOrDefault();
+
+        //    if (per1 != null)
+        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
+
+        //    XElement personElem = new XElement("Person", new XElement("ID", person.ID),
+        //                          new XElement("Name", person.Name),
+        //                          new XElement("Street", person.Street),
+        //                          new XElement("HouseNumber", person.HouseNumber.ToString()),
+        //                          new XElement("City", person.City),
+        //                          new XElement("BirthDate", person.BirthDate),
+        //                          new XElement("PersonalStatus", person.PersonalStatus.ToString()),
+        //                          new XElement("Duration", person.Duration.ToString()));
+
+        //    personsRootElem.Add(personElem);
+
+        //    XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
+        //}
         public void addBus(Bus bus)
         {
-            //bus.id = 
             List<DO.Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
             if (buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum) != null)
                 throw new AlreadyExistsException("This license num already exists!", bus.LicenseNum);
 
             buses.Add(bus);
             XMLTools.SaveListToXMLSerializer<Bus>(buses, BusPath);
-
         }
-
-
-
         DO.Bus ConvertBus(XElement element)  // convert xml object to Bus Type 
         {
             Bus bus = new Bus();
             var ser = new XmlSerializer(typeof(Bus));
             return (Bus)ser.Deserialize(element.CreateReader());
         }
-
-        public void treatBus(Bus bus)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void fuelBus(Bus bus)
-        {
-            throw new NotImplementedException();
-        }
-
         public IEnumerable<DO.Bus> getAllBusses()
         {
             List<DO.Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
@@ -80,21 +104,17 @@ namespace DL
             return from bus in buses
                    select bus;
         }
-
         public void updateBus(Bus bus)
         {
-
-
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
-            Bus busToDelete = buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum);
-            if (busToDelete == null)
+            Bus busToUpdate = buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum);
+            if (busToUpdate == null)
                 throw new NotExistException("This license num doenst exist", bus.LicenseNum);
-            buses.Remove(busToDelete);
+            buses.Remove(busToUpdate);
             buses.Add(bus);
             XMLTools.SaveListToXMLSerializer<Bus>(buses, BusPath);
 
         }
-
         public void deleteBus(Bus bus)
         {
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
@@ -104,8 +124,6 @@ namespace DL
             buses.Remove(busToDelete);
             XMLTools.SaveListToXMLSerializer<Bus>(buses, BusPath);
         }
-
-
         public Bus getBusByLicenseNum(int licenseNum)
         {
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
@@ -125,25 +143,46 @@ namespace DL
             return from line in lines
                    select line;
         }
-
         public void addLine(Line line)
         {
-            throw new NotImplementedException();
+            List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
+            XElement RunningNumbersRoot = XMLTools.LoadListFromXMLElement(RunningNumbersPath);
+            int id = Convert.ToInt32(RunningNumbersRoot.Element("IDS").Element("LineId").Value);
+            RunningNumbersRoot.Element("IDS").Element("LineId").Value = (++id).ToString();
+            line.Id = id;
+            lines.Add(line);
+            XMLTools.SaveListToXMLSerializer<Line>(lines, LinePath);
+            XMLTools.SaveListToXMLElement(RunningNumbersRoot, RunningNumbersPath);
         }
 
         public void updateLine(Line line)
         {
-            throw new NotImplementedException();
+            List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
+            Line lineToUpdate = lines.FirstOrDefault(x => x.Id == line.Id);
+            if (lineToUpdate == null)
+                throw new NotExistException("The Id  number not exist", line.Id);
+            lines.Remove(lineToUpdate);
+            lines.Add(line);
+            XMLTools.SaveListToXMLSerializer<Line>(lines, LinePath);
         }
 
         public void deleteLine(Line line)
         {
-            throw new NotImplementedException();
+            List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
+            Line lineToDelete = lines.FirstOrDefault(x => x.Id == line.Id);
+            if (lineToDelete == null)
+                throw new NotExistException("The Id  number not exist", line.Id);
+            lines.Remove(lineToDelete);
+            XMLTools.SaveListToXMLSerializer<Line>(lines, LinePath);
         }
 
         public Line getLineById(int id)
         {
-            throw new NotImplementedException();
+            List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
+            Line lineToReturn = (from line in lines
+                                 where line.Id == id
+                                 select line).FirstOrDefault();
+            return lineToReturn;
         }
 
         public User getAdmin()
@@ -154,18 +193,24 @@ namespace DL
 
         public void addStation(Station station)
         {
-            XElement stationXml = new XElement("Station",
+            List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<Station>(StationPath);
+            if (stations.FirstOrDefault(x => x.Code == station.Code) != null)
+            {
+                XElement stationXml = new XElement("Station",
                 new XElement("Code", station.Code),
                 new XElement("Latitude", station.Location.Latitude),
                 new XElement("Longitude", station.Location.Longitude),
                 new XElement("Name", station.Name),
                 new XElement("Address", station.Address)
                 );
-            StationRoot.Add(stationXml);
-            StationRoot.Save(StationPath);
+                StationRoot.Add(stationXml);
+                StationRoot.Save(StationPath);
+            }
+            throw new AlreadyExistsException("The code number already exist", station.Code);
+
         }
 
-        public void AddLineStation(LineStation lineStation)
+        public void addLineStation(LineStation lineStation)
         {
             XElement lineStationRoot = XMLTools.LoadListFromXMLElement(lineStationPath);
 
@@ -187,21 +232,27 @@ namespace DL
                    select station;
         }
 
-        public void updateStation(Station Station)
+        public void updateStation(Station station)
         {
-            throw new NotImplementedException();
+            List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<DO.Station>(StationPath);
+            Station stationToUpdate = stations.FirstOrDefault(x => x.Code == station.Code);
+            if (stationToUpdate == null)
+                throw new NotExistException("The code number not exist", station.Code);
+            stations.Remove(stationToUpdate);
+            stations.Add(station);
+            XMLTools.SaveListToXMLSerializer<Station>(stations, StationPath);
         }
 
-        public void deleteStation(Station Station)
+        public void deleteStation(Station station)
         {
-            throw new NotImplementedException();
-        }
+            List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<DO.Station>(StationPath);
+            Station stationToDelete = stations.FirstOrDefault(x => x.Code == station.Code);
+            if (stationToDelete == null)
+                throw new NotExistException("The code number not exist", station.Code);
+            stations.Remove(stationToDelete);
+            XMLTools.SaveListToXMLSerializer<Station>(stations, StationPath);
 
-        public void AddFollowingStation(LineStation lineStation, double distanceFromTheFollowingToTheNext, TimeSpan timeFromTheFollowingToTheNext)
-        {
-            throw new NotImplementedException();
         }
-
         public void updateLineStation(LineStation lineStation)
         {
             XElement lineStationRootElem = XMLTools.LoadListFromXMLElement(lineStationPath);
@@ -225,10 +276,10 @@ namespace DL
 
         }
 
-        public double getDistanceBetweenTwoStations(LineStation from, LineStation to)
+        /*public double getDistanceBetweenTwoStations(LineStation from, LineStation to)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public IEnumerable<DO.LineStation> getAllLineStations()
         {
@@ -248,12 +299,5 @@ namespace DL
             return lineStations;
 
         }
-
-        public void Bedika(Bus bus, int distance)
-        {
-            throw new NotImplementedException();
-        }
-
- 
     }
 }
