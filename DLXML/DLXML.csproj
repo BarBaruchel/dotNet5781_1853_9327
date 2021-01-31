@@ -51,10 +51,6 @@
       <Project>{ec3145a7-0ef9-479e-8291-287fedb325d5}</Project>
       <Name>DLAPI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DLObject\DLObject.csproj">
-      <Project>{1b377bde-3adb-4c02-be3a-ced83c11c9d3}</Project>
-      <Name>DLObject</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

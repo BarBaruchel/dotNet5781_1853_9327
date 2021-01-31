@@ -1,93 +1,93 @@
 <?xml version="1.0"?>
 <ArrayOfBus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Bus>
-    <StartPeilut>2019-08-10T00:00:00</StartPeilut>
-    <LastTreat>2020-07-05T00:00:00</LastTreat>
-    <KiloFromLastTreat>21209</KiloFromLastTreat>
-    <LicenseNum>46417727</LicenseNum>
-    <Kilometrage>1979118816</Kilometrage>
-    <Fuel>461</Fuel>
+    <StartPeilut>2015-02-17T00:00:00</StartPeilut>
+    <LastTreat>2017-07-20T00:00:00</LastTreat>
+    <KiloFromLastTreat>4585</KiloFromLastTreat>
+    <LicenseNum>7962072</LicenseNum>
+    <Kilometrage>1796906124</Kilometrage>
+    <Fuel>867</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>1999-09-16T00:00:00</StartPeilut>
-    <LastTreat>2021-01-28T21:39:34.8334313+02:00</LastTreat>
-    <KiloFromLastTreat>19000</KiloFromLastTreat>
-    <LicenseNum>4952586</LicenseNum>
-    <Kilometrage>1320949599</Kilometrage>
-    <Fuel>428</Fuel>
-    <Status>READYFORRIDE</Status>
-  </Bus>
-  <Bus>
-    <StartPeilut>2009-09-09T00:00:00</StartPeilut>
-    <LastTreat>2019-07-06T00:00:00</LastTreat>
-    <KiloFromLastTreat>24530</KiloFromLastTreat>
-    <LicenseNum>9116169</LicenseNum>
-    <Kilometrage>1245009422</Kilometrage>
-    <Fuel>664</Fuel>
+    <StartPeilut>2000-12-25T00:00:00</StartPeilut>
+    <LastTreat>2005-11-09T00:00:00</LastTreat>
+    <KiloFromLastTreat>567</KiloFromLastTreat>
+    <LicenseNum>2791063</LicenseNum>
+    <Kilometrage>63876559</Kilometrage>
+    <Fuel>665</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
     <StartPeilut>2021-01-03T00:00:00</StartPeilut>
-    <LastTreat>2021-01-28T21:39:34.8334313+02:00</LastTreat>
-    <KiloFromLastTreat>17332</KiloFromLastTreat>
-    <LicenseNum>7221590</LicenseNum>
-    <Kilometrage>1776383974</Kilometrage>
+    <LastTreat>2021-01-28T23:24:04.8366404+02:00</LastTreat>
+    <KiloFromLastTreat>3495</KiloFromLastTreat>
+    <LicenseNum>1764342</LicenseNum>
+    <Kilometrage>2123380942</Kilometrage>
     <Fuel>1</Fuel>
     <Status>READYFORRIDE</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2019-02-04T00:00:00</StartPeilut>
-    <LastTreat>2019-06-07T00:00:00</LastTreat>
-    <KiloFromLastTreat>6962</KiloFromLastTreat>
-    <LicenseNum>61621512</LicenseNum>
-    <Kilometrage>23935464</Kilometrage>
-    <Fuel>853</Fuel>
+    <StartPeilut>2003-10-28T00:00:00</StartPeilut>
+    <LastTreat>2008-09-27T00:00:00</LastTreat>
+    <KiloFromLastTreat>8863</KiloFromLastTreat>
+    <LicenseNum>5943178</LicenseNum>
+    <Kilometrage>1874346935</Kilometrage>
+    <Fuel>373</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2009-12-27T00:00:00</StartPeilut>
-    <LastTreat>2019-11-01T00:00:00</LastTreat>
-    <KiloFromLastTreat>23711</KiloFromLastTreat>
-    <LicenseNum>2265317</LicenseNum>
-    <Kilometrage>327724518</Kilometrage>
-    <Fuel>632</Fuel>
+    <StartPeilut>2008-06-06T00:00:00</StartPeilut>
+    <LastTreat>2014-06-06T00:00:00</LastTreat>
+    <KiloFromLastTreat>15484</KiloFromLastTreat>
+    <LicenseNum>8884201</LicenseNum>
+    <Kilometrage>79837439</Kilometrage>
+    <Fuel>281</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2008-06-12T00:00:00</StartPeilut>
-    <LastTreat>2014-05-19T00:00:00</LastTreat>
-    <KiloFromLastTreat>37822</KiloFromLastTreat>
-    <LicenseNum>5749801</LicenseNum>
-    <Kilometrage>1727195415</Kilometrage>
-    <Fuel>521</Fuel>
+    <StartPeilut>2001-01-06T00:00:00</StartPeilut>
+    <LastTreat>2008-07-12T00:00:00</LastTreat>
+    <KiloFromLastTreat>12917</KiloFromLastTreat>
+    <LicenseNum>3751456</LicenseNum>
+    <Kilometrage>1358908602</Kilometrage>
+    <Fuel>610</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2017-10-28T00:00:00</StartPeilut>
-    <LastTreat>2020-08-02T00:00:00</LastTreat>
-    <KiloFromLastTreat>6412</KiloFromLastTreat>
-    <LicenseNum>1322462</LicenseNum>
-    <Kilometrage>36667478</Kilometrage>
-    <Fuel>86</Fuel>
-    <Status>READYFORRIDE</Status>
+    <StartPeilut>2012-06-01T00:00:00</StartPeilut>
+    <LastTreat>2017-03-05T00:00:00</LastTreat>
+    <KiloFromLastTreat>18956</KiloFromLastTreat>
+    <LicenseNum>9637109</LicenseNum>
+    <Kilometrage>1189819608</Kilometrage>
+    <Fuel>862</Fuel>
+    <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2011-10-14T00:00:00</StartPeilut>
-    <LastTreat>2018-12-20T00:00:00</LastTreat>
-    <KiloFromLastTreat>4558</KiloFromLastTreat>
-    <LicenseNum>1813587</LicenseNum>
-    <Kilometrage>678600659</Kilometrage>
-    <Fuel>385</Fuel>
+    <StartPeilut>2013-03-10T00:00:00</StartPeilut>
+    <LastTreat>2017-11-11T00:00:00</LastTreat>
+    <KiloFromLastTreat>13910</KiloFromLastTreat>
+    <LicenseNum>3887698</LicenseNum>
+    <Kilometrage>1935774918</Kilometrage>
+    <Fuel>449</Fuel>
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
     <StartPeilut>2019-01-03T00:00:00</StartPeilut>
     <LastTreat>2019-02-03T00:00:00</LastTreat>
-    <KiloFromLastTreat>1989194578</KiloFromLastTreat>
-    <LicenseNum>52802990</LicenseNum>
-    <Kilometrage>1989194578</Kilometrage>
+    <KiloFromLastTreat>258997106</KiloFromLastTreat>
+    <LicenseNum>27599918</LicenseNum>
+    <Kilometrage>258997106</Kilometrage>
     <Fuel>0</Fuel>
     <Status>INTREATMENT</Status>
+  </Bus>
+  <Bus>
+    <StartPeilut>2019-06-21T00:00:00</StartPeilut>
+    <LastTreat>2021-01-28T23:24:04.8366404+02:00</LastTreat>
+    <KiloFromLastTreat>19000</KiloFromLastTreat>
+    <LicenseNum>98739119</LicenseNum>
+    <Kilometrage>0</Kilometrage>
+    <Fuel>1200</Fuel>
+    <Status>READYFORRIDE</Status>
   </Bus>
 </ArrayOfBus>

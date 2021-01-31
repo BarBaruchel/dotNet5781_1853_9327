@@ -839,6 +839,7 @@ namespace DS
             newLS.DistanceFromTheLastStat = 0;
             newLS.TravelTimeFromTheLastStation = new TimeSpan(0);
             lineStations.Add(newLS);
+            newLS = new LineStation();
             newLS.LineId = Lines[5].Id;              
             newLS.Station = 38905;
             newLS.LineStationIndex = 2;
@@ -886,6 +887,7 @@ namespace DS
             newLS.DistanceFromTheLastStat = 0;
             newLS.TravelTimeFromTheLastStation = new TimeSpan(0);
             lineStations.Add(newLS);
+            newLS = new LineStation();
             newLS.LineId = Lines[6].Id;             
             newLS.Station = 39041;
             newLS.LineStationIndex = 2;

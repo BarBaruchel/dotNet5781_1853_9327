@@ -12,8 +12,7 @@ namespace BO
         public DateTime StartPeilut { get; set; }
         public DateTime LastTreat { get; set; }
         public int KiloFromLastTreat { get; set; }
-
-
+        public int Kilometrage { get; set; }
         public int Fuel { get; set; }
         public STATUS Status { get; set; }
     }

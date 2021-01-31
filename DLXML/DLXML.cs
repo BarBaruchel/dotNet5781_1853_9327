@@ -41,7 +41,7 @@ namespace DL
 
 
         static XElement LineStationRoot = new XElement("LineStations");
-        static XElement BusRoot = new XElement("Buses");
+        static XElement BusRoot = new XElement("Busses");
         static XElement StationRoot = new XElement("Stations");
         static XElement RunningNumbersRoot = new XElement("IDS");
 
@@ -284,16 +284,16 @@ namespace DL
         public IEnumerable<DO.LineStation> getAllLineStations()
         {
             XElement lineStationRootElem = XMLTools.LoadListFromXMLElement(lineStationPath);
-            List<LineStation> lineStations = (from p in lineStationRootElem.Elements()
+            List<DO.LineStation> lineStations = (from p in lineStationRootElem.Elements()
                                               select new LineStation()
                                               {
                                                   LineId = Convert.ToInt32(p.Element("LineId").Value),
-                                                  LineStationIndex = Convert.ToInt32(p.Element("LineStationIndex")),
-                                                  Station = Convert.ToInt32(p.Element("Station")),
-                                                  DistanceFromTheLastStat = Convert.ToDouble(p.Element("DistanceFromTheLastStat")),
-                                                  NextStation = Convert.ToInt32(p.Element("NextStation")),
-                                                  TravelTimeFromTheLastStation = TimeSpan.Parse(p.Element("TravelTimeFromTheLastStation").ToString()),
-                                                  PrevStation = Convert.ToInt32(p.Element("PrevStation"))
+                                                  LineStationIndex = Convert.ToInt32(p.Element("LineStationIndex").Value),
+                                                  Station = Convert.ToInt32(p.Element("Station").Value),
+                                                  DistanceFromTheLastStat = Convert.ToDouble(p.Element("DistanceFromTheLastStat").Value),
+                                                  NextStation = Convert.ToInt32(p.Element("NextStation").Value),
+                                                  TravelTimeFromTheLastStation = TimeSpan.Parse(p.Element("TravelTimeFromTheLastStation").Value.ToString()),
+                                                  PrevStation = Convert.ToInt32(p.Element("PrevStation").Value)
                                               }).ToList();
 
             return lineStations;

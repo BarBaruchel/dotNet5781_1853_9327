@@ -158,6 +158,9 @@ namespace DL
             from station in DS.DataStore.Stations
             select station.Clone();
 
+            ////// delete after
+           // XMLTools.SaveListToXMLSerializer<DO.Station>(result.ToList(), "Station.xml");
+
             return result;
         }
         public void updateStation(DO.Station station)
@@ -200,6 +203,9 @@ namespace DL
             IEnumerable<LineStation> result =
           from station in DS.DataStore.LineStations
           select station.Clone();
+
+            ////// delete after
+            //XMLTools.SaveListToXMLSerializer<DO.LineStation>(result.ToList(), "LineStation.xml");
 
             return result;
         }

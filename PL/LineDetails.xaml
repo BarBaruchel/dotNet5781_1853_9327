@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="LineDetails" Height="450" Width="1100">
+        Title="LineDetails" Height="450" Width="1150">
     <Grid x:Name="Grid" Background="#FFEBD0B9">
-        <DataGrid Name="LineDetailsDataGrid" IsReadOnly="True"  AutoGenerateColumns="False"  HorizontalAlignment="Left" Height="211" Margin="23,92,0,0" VerticalAlignment="Top" Width="996">
+        <DataGrid Name="LineDetailsDataGrid" IsReadOnly="True"  AutoGenerateColumns="False"  HorizontalAlignment="Left" Height="211" Margin="23,92,0,0" VerticalAlignment="Top" Width="1100">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code" Binding="{Binding Station}" Width="0.5*" FontFamily="Cooper Black"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1.5*" FontFamily="Cooper Black" />
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="2.0*" FontFamily="Cooper Black" />
                 <DataGridTextColumn Header="Index " Binding="{Binding LineStationIndex }" Width="0.5*" FontFamily="Cooper Black"/>
                 <DataGridTextColumn Header="Prev" Binding="{Binding PrevStation}" Width="0.5*" FontFamily="Cooper Black"/>
                 <DataGridTextColumn Header="Next" Binding="{Binding NextStation}" Width="0.5*" FontFamily="Cooper Black"/>
                 <DataGridTextColumn Header="Distance From Prev Station(KM)" Binding="{Binding DistanceFromTheLastStat}" Width="2.0*" FontFamily="Cooper Black"/>
-                <DataGridTextColumn Header="Time From Prev Station(hh:mm)" Binding="{Binding TravelTimeFromTheLastStation, StringFormat=hh\\:mm}"  Width="2.0*" FontFamily="Cooper Black"/>
+                <DataGridTextColumn Header="Time From Prev Station(hh:mm)" Binding="{Binding TravelTimeFromTheLastStation, StringFormat=hh\\:mm}"  Width="2.2*" FontFamily="Cooper Black"/>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

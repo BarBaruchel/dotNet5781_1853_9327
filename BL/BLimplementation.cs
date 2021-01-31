@@ -104,6 +104,7 @@ namespace BL
             newBus.LicenseNum = bus.LicenseNum;
             newBus.Fuel = bus.Fuel;
             newBus.KiloFromLastTreat = bus.KiloFromLastTreat;
+            newBus.Kilometrage = bus.Kilometrage;
             newBus.LastTreat = bus.LastTreat;
             newBus.StartPeilut = bus.StartPeilut;
             newBus.Status = (BO.STATUS)bus.Status;
