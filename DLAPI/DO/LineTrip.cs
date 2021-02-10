@@ -13,7 +13,5 @@ namespace DO
         public TimeSpan StartAt { get; set; }
         public TimeSpan FinishAt { get; set; }
         public TimeSpan Frequency { get; set; }
-
-
     }
 }

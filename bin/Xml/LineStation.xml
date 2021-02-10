@@ -16,7 +16,7 @@
     <PrevStation>38838</PrevStation>
     <NextStation>38840</NextStation>
     <DistanceFromTheLastStat>1047</DistanceFromTheLastStat>
-	<TravelTimeFromTheLastStation>17:27</TravelTimeFromTheLastStation>
+	<TravelTimeFromTheLastStation>00:27</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>1</LineId>
@@ -52,7 +52,7 @@
     <PrevStation>38842</PrevStation>
     <NextStation>38845</NextStation>
     <DistanceFromTheLastStat>99</DistanceFromTheLastStat>
-   <TravelTimeFromTheLastStation>01:39</TravelTimeFromTheLastStation>
+   <TravelTimeFromTheLastStation>00:39</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>1</LineId>
@@ -88,7 +88,7 @@
     <PrevStation>38834</PrevStation>
     <NextStation>38852</NextStation>
     <DistanceFromTheLastStat>1263</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>21:03</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:30</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>2</LineId>
@@ -97,7 +97,7 @@
     <PrevStation>38836</PrevStation>
     <NextStation>38856</NextStation>
     <DistanceFromTheLastStat>972</DistanceFromTheLastStat>
-  <TravelTimeFromTheLastStation>16:12</TravelTimeFromTheLastStation>
+  <TravelTimeFromTheLastStation>00:12</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>2</LineId>
@@ -106,7 +106,7 @@
     <PrevStation>38852</PrevStation>
     <NextStation>38867</NextStation>
     <DistanceFromTheLastStat>439</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>07:19</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:19</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>2</LineId>
@@ -115,7 +115,7 @@
     <PrevStation>38856</PrevStation>
     <NextStation>38837</NextStation>
     <DistanceFromTheLastStat>107</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>01:47</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:47</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>2</LineId>
@@ -124,7 +124,7 @@
     <PrevStation>38867</PrevStation>
     <NextStation>38837</NextStation>
     <DistanceFromTheLastStat>236</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>03:56</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:56</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>3</LineId>
@@ -151,7 +151,7 @@
     <PrevStation>38860</PrevStation>
     <NextStation>38866</NextStation>
     <DistanceFromTheLastStat>3531</DistanceFromTheLastStat>
-   <TravelTimeFromTheLastStation>10:51</TravelTimeFromTheLastStation>
+   <TravelTimeFromTheLastStation>00:42</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>3</LineId>
@@ -160,7 +160,7 @@
     <PrevStation>38865</PrevStation>
     <NextStation>38866</NextStation>
     <DistanceFromTheLastStat>190</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>03:10</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:31</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>4</LineId>
@@ -178,7 +178,7 @@
     <PrevStation>38836</PrevStation>
     <NextStation>38866</NextStation>
     <DistanceFromTheLastStat>3892</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>16:52</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:22</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>4</LineId>
@@ -187,7 +187,7 @@
     <PrevStation>38861</PrevStation>
     <NextStation>38866</NextStation>
     <DistanceFromTheLastStat>3449</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>09:29</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:29</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>5</LineId>
@@ -205,7 +205,7 @@
     <PrevStation>38881</PrevStation>
     <NextStation>38884</NextStation>
     <DistanceFromTheLastStat>115</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>01:55</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:55</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>5</LineId>
@@ -241,7 +241,7 @@
     <PrevStation>38904</PrevStation>
     <NextStation>38906</NextStation>
     <DistanceFromTheLastStat>237</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>03:57</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:57</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>6</LineId>
@@ -250,7 +250,7 @@
     <PrevStation>38905</PrevStation>
     <NextStation>38907</NextStation>
     <DistanceFromTheLastStat>486</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>08:06</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:26</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>6</LineId>
@@ -259,7 +259,7 @@
     <PrevStation>38906</PrevStation>
     <NextStation>38907</NextStation>
     <DistanceFromTheLastStat>221</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>03:41</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:41</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>7</LineId>
@@ -286,7 +286,7 @@
     <PrevStation>39041</PrevStation>
     <NextStation>39042</NextStation>
     <DistanceFromTheLastStat>81</DistanceFromTheLastStat>
-<TravelTimeFromTheLastStation>01:21</TravelTimeFromTheLastStation>
+<TravelTimeFromTheLastStation>00:21</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>8</LineId>
@@ -304,7 +304,7 @@
     <PrevStation>38834</PrevStation>
     <NextStation>38852</NextStation>
     <DistanceFromTheLastStat>63</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>01:03</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>01:00</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>8</LineId>
@@ -313,7 +313,7 @@
     <PrevStation>38837</PrevStation>
     <NextStation>38876</NextStation>
     <DistanceFromTheLastStat>270</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>04:30</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:30</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>8</LineId>
@@ -322,7 +322,7 @@
     <PrevStation>38852</PrevStation>
     <NextStation>38908</NextStation>
     <DistanceFromTheLastStat>362</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>06:02</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:51</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>8</LineId>
@@ -331,7 +331,7 @@
     <PrevStation>38867</PrevStation>
     <NextStation>38908</NextStation>
     <DistanceFromTheLastStat>132</DistanceFromTheLastStat>
-   <TravelTimeFromTheLastStation>02:12</TravelTimeFromTheLastStation>
+   <TravelTimeFromTheLastStation>00:45</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>9</LineId>
@@ -349,7 +349,7 @@
     <PrevStation>38861</PrevStation>
     <NextStation>38883</NextStation>
     <DistanceFromTheLastStat>3919</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>17:19</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:19</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>9</LineId>
@@ -358,7 +358,7 @@
     <PrevStation>38854</PrevStation>
     <NextStation>38884</NextStation>
     <DistanceFromTheLastStat>1898</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>07:38</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:38</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>9</LineId>
@@ -394,7 +394,7 @@
     <PrevStation>38831</PrevStation>
     <NextStation>38905</NextStation>
     <DistanceFromTheLastStat>2520</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>18:00</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:18</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>10</LineId>
@@ -403,7 +403,7 @@
     <PrevStation>38904</PrevStation>
     <NextStation>38906</NextStation>
     <DistanceFromTheLastStat>237</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>03:57</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:57</TravelTimeFromTheLastStation>
   </LineStation>
   <LineStation>
     <LineId>10</LineId>
@@ -412,6 +412,6 @@
     <PrevStation>38905</PrevStation>
     <NextStation>38906</NextStation>
     <DistanceFromTheLastStat>486</DistanceFromTheLastStat>
-    <TravelTimeFromTheLastStation>08:06</TravelTimeFromTheLastStation>
+    <TravelTimeFromTheLastStation>00:56</TravelTimeFromTheLastStation>
   </LineStation>
 </ArrayOfLineStation>
