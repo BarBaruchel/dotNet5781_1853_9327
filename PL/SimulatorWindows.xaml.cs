@@ -135,8 +135,6 @@ namespace PL
 
 
 
-
-
             /*isSimulatorActive = !isSimulatorActive;  ///////////
             if (isSimulatorActive)
             {
