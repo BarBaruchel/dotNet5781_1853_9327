@@ -17,13 +17,13 @@ namespace DL
         {
             DS.DataStore.Init();
             DS.DataStore.InitRepostory();
-            
+
 
         }// static ctor to ensure instance init is done just before first usage
         DLObject() { }// default => private 
         public static IDL Instance { get => instance; }// The public Instance property to use
         #endregion Singleton
-        
+
 
         #region Bus
         public void addBus(DO.Bus bus)
@@ -105,15 +105,15 @@ namespace DL
         public void updateLine(DO.Line line)
         {
             DO.Line lineToUpdate = DS.DataStore.Lines.Find(x => x.Id == line.Id);
-           if (lineToUpdate != null)
-             {
+            if (lineToUpdate != null)
+            {
                 lineToUpdate.Area = line.Area;
                 lineToUpdate.Code = line.Code;
                 lineToUpdate.FirstStation = line.FirstStation;
                 lineToUpdate.LastStation = line.LastStation;
                 return;
-             }
-             throw new NotExistException("The Id  number not exist", line.Id);
+            }
+            throw new NotExistException("The Id  number not exist", line.Id);
         }
         public void deleteLine(DO.Line line)
         {
@@ -159,7 +159,7 @@ namespace DL
             select station.Clone();
 
             ////// delete after
-           // XMLTools.SaveListToXMLSerializer<DO.Station>(result.ToList(), "Station.xml");
+            // XMLTools.SaveListToXMLSerializer<DO.Station>(result.ToList(), "Station.xml");
 
             return result;
         }
@@ -170,7 +170,7 @@ namespace DL
             {
                 stat = station.Clone();
                 List<DO.Station> stations = getAllStations().Cast<DO.Station>().ToList(); // DELET IN THE END
-                
+
                 return;
             }
             throw new NotExistException("The code number not exist", station.Code);
@@ -223,6 +223,11 @@ namespace DL
         {
             return DS.DataStore.LineStations.FirstOrDefault(item => item.LineId == lineId && item.Station == station);
         }
+
+        public IEnumerable<LineTrip> getAllLineTrips()
+        {
+            throw new NotImplementedException();
+        }
         #endregion LineStation
 
 
@@ -239,7 +244,7 @@ namespace DL
 
 
 
-      
-      
+
+
     }
 }

@@ -14,7 +14,7 @@ namespace DL
         #region singleton
         static readonly DLXML instance = new DLXML();
         public static IDL Instance { get => instance; }
-     
+
 
         static DLXML()
         {
@@ -44,19 +44,21 @@ namespace DL
         static XElement BusRoot = new XElement("Busses");
         static XElement StationRoot = new XElement("Stations");
         static XElement RunningNumbersRoot = new XElement("IDS");
+        static XElement LineTripRoot = new XElement("LineTrip");
 
         static string BusPath = @"Bus.xml";
         static string lineStationPath = @"LineStation.xml";
         static string LinePath = @"Line.xml";
         static string StationPath = @"Station.xml";
         static string RunningNumbersPath = @"RunningNumbers.xml";
+        static string LineTripPath = @"LineTrip.xml";
         //List<DO.Bus> Buses = new List<DO.Bus>();
         //List<DO.LineStation> lineStations = new List<LineStation>();
 
-   
+
         private DLXML()
         {
-    
+
         }
         //public void AddPerson(DO.Person person)
         //{
@@ -285,19 +287,37 @@ namespace DL
         {
             XElement lineStationRootElem = XMLTools.LoadListFromXMLElement(lineStationPath);
             List<DO.LineStation> lineStations = (from p in lineStationRootElem.Elements()
-                                              select new LineStation()
-                                              {
-                                                  LineId = Convert.ToInt32(p.Element("LineId").Value),
-                                                  LineStationIndex = Convert.ToInt32(p.Element("LineStationIndex").Value),
-                                                  Station = Convert.ToInt32(p.Element("Station").Value),
-                                                  DistanceFromTheLastStat = Convert.ToDouble(p.Element("DistanceFromTheLastStat").Value),
-                                                  NextStation = Convert.ToInt32(p.Element("NextStation").Value),
-                                                  TravelTimeFromTheLastStation = TimeSpan.Parse(p.Element("TravelTimeFromTheLastStation").Value.ToString()),
-                                                  PrevStation = Convert.ToInt32(p.Element("PrevStation").Value)
-                                              }).ToList();
+                                                 select new LineStation()
+                                                 {
+                                                     LineId = Convert.ToInt32(p.Element("LineId").Value),
+                                                     LineStationIndex = Convert.ToInt32(p.Element("LineStationIndex").Value),
+                                                     Station = Convert.ToInt32(p.Element("Station").Value),
+                                                     DistanceFromTheLastStat = Convert.ToDouble(p.Element("DistanceFromTheLastStat").Value),
+                                                     NextStation = Convert.ToInt32(p.Element("NextStation").Value),
+                                                     TravelTimeFromTheLastStation = TimeSpan.Parse(p.Element("TravelTimeFromTheLastStation").Value.ToString()),
+                                                     PrevStation = Convert.ToInt32(p.Element("PrevStation").Value)
+                                                 }).ToList();
 
             return lineStations;
 
         }
+
+        public IEnumerable<DO.LineTrip> getAllLineTrips()
+        {
+            XElement lineTripRootElem = XMLTools.LoadListFromXMLElement(LineTripPath);
+            List<DO.LineTrip> lineTrips = (from p in lineTripRootElem.Elements()
+                                           select new LineTrip()
+                                           {
+                                               LineId = Convert.ToInt32(p.Element("LineId").Value),
+                                               Id = Convert.ToInt32(p.Element("Id").Value),
+                                               StartAt = TimeSpan.Parse(p.Element("StartAt").Value.ToString()),
+                                               FinishAt = TimeSpan.Parse(p.Element("FinishAt").Value.ToString()),
+                                               Frequency = TimeSpan.Parse(p.Element("Frequency").Value.ToString()),
+                                           }).ToList();
+
+            return lineTrips;
+
+        }
+
     }
 }

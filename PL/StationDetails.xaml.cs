@@ -1,6 +1,7 @@
 ﻿using BLAPI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,23 @@ namespace PL
         IBl bl;
         BO.Station station;
         List<BO.LineStation> BOLineStations;
-        public StationDetails(IBl bl,  BO.Station station,List<BO.LineStation> BOLineStations)
+        public StationDetails(IBl bl, BO.Station station, List<BO.LineStation> BOLineStations)
         {
             InitializeComponent();
             this.bl = bl;
             this.station = station;
-            this.BOLineStations =  BOLineStations;
+            this.BOLineStations = BOLineStations;
             AddressTextBlock.Text = station.Address;
             LatTextBlock.Text = station.Location.Latitude.ToString();
             LonTextBlock.Text = station.Location.Longitude.ToString();
             StationDataGrid.ItemsSource = BOLineStations;
+        }
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SimulatorWindows windows = new SimulatorWindows(bl, BOLineStations);
+            windows.ShowDialog();
         }
     }
 }

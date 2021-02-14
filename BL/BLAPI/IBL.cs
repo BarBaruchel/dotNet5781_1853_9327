@@ -20,7 +20,7 @@ namespace BLAPI
         DO.Bus BOBusToDoBus(BO.Bus bus);
         BO.Bus DOBusToBOBus(DO.Bus bus);
         BO.Bus getBusByLicense(int licenseNum);
-        
+
 
 
         #endregion Bus
@@ -63,16 +63,20 @@ namespace BLAPI
         #region LineStation
 
         void AddFollowingStation(BO.LineStation lineStation, double distanceFromThePrevToFollowing, TimeSpan timeFromThePrevToFollowing);
-        IEnumerable<object> getLineStationByCode(int code);
+        IEnumerable<LineStation> getLineStationByCode(int code);
         void UpdateDistanceLineStation(int lineId, int station, double distance);
         void UpdateTimeLineStation(int lineId, int station, TimeSpan time);
         void updateLineStation(BO.LineStation lineStation);
         double getDistanceBetweenTwoStations(BO.LineStation from, BO.LineStation to);
         DO.LineStation BOLineStationToDOLineStation(BO.LineStation lineStation);
-        IEnumerable<object> getLineStationsForLine(BO.Line line);
+        IEnumerable<LineStation> getLineStationsForLine(BO.Line line);
         BO.LineStation DOLineStationToBOLineStation(DO.LineStation lineStation);
 
         #endregion LineStation
+
+
+        List<LineTiming> startSimulator(List<BO.LineStation> BOLineStations, TimeSpan startTime);
+        TimeSpan updateTime(LineTiming lineTiming, int rate);
 
     }
 }

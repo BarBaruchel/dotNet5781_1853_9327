@@ -85,6 +85,9 @@
     <Compile Include="ShowAllStations.xaml.cs">
       <DependentUpon>ShowAllStations.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SimulatorWindows.xaml.cs">
+      <DependentUpon>SimulatorWindows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StationDetails.xaml.cs">
       <DependentUpon>StationDetails.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowAllStations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SimulatorWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -30,7 +30,7 @@ namespace PL
 
         private void LoginManager_Click(object sender, RoutedEventArgs e)
         {
-            bool isAdmin = bl.loginAdmin(username.Text, password.Text);
+            bool isAdmin = bl.loginAdmin(username.Text, passwordPB.Password);
             if (!isAdmin)
                 MessageBox.Show("Username or password incorrect");
             else
@@ -39,7 +39,6 @@ namespace PL
                 ManagerWindow newWindow = new ManagerWindow();
                 newWindow.Show();
             }
-
         }
     }
 }

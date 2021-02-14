@@ -41,7 +41,6 @@ namespace DLAPI
         void updateStation(DO.Station station);
         void deleteStation(DO.Station station);
        
-
         #endregion Station
 
 
@@ -52,6 +51,9 @@ namespace DLAPI
 
         #endregion LineStation
 
+        #region LineTrip
+        IEnumerable<DO.LineTrip> getAllLineTrips();
+        #endregion LineTrip
 
 
 
