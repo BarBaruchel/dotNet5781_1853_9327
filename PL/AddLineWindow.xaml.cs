@@ -46,7 +46,21 @@ namespace PL
 
         private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
         {
+            string codeCheck = CodeNumber.Text;
+            for (int i = 0; i < codeCheck.Length; i++)
+            {
+                if (!IsNumber(codeCheck[i]))
+                {
+                    MessageBox.Show("please enter only numbers that up then a zero to The Code");
+                    return;
+                }
+            }
             int code = Convert.ToInt32(CodeNumber.Text);
+            if (code <= 0)
+            {
+                MessageBox.Show("please enter only numbers that up then a zero to The Code");
+                return;
+            }
             BO.AREAS area = (BO.AREAS)AreaCb.SelectedItem;
             int firstStation = int.Parse(FirstCb.Text);
             int lastStation = int.Parse(SecondCb.Text);
@@ -64,6 +78,10 @@ namespace PL
                 MessageBox.Show(ms.Message);
             }
             Close();
+        }
+        private bool IsNumber(char c)
+        {
+            return Char.IsNumber(c);
         }
     }
 

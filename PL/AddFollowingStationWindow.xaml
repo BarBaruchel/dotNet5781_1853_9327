@@ -10,8 +10,8 @@
         <Label Content="Enter distance between the two station:" VerticalAlignment="Top" RenderTransformOrigin="2.915,2.507" Height="48" Margin="29,167,509.333,0"/>
         <TextBox Name="DistanceTb" HorizontalAlignment="Left" Height="48" Margin="304,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <Label Content="Choose following station:" HorizontalAlignment="Left" Margin="29,53,0,0" VerticalAlignment="Top" Height="40" Width="255"/>
-        <ComboBox Name="FollowingCb"  HorizontalAlignment="Left" Margin="304,53,0,0" VerticalAlignment="Top" Width="158" Height="40" RenderTransformOrigin="0.5,0.5"></ComboBox>
-        <Label Content="Enter Time Travel between two station:(hh:mm)" HorizontalAlignment="Left" Margin="29,257,0,0" VerticalAlignment="Top" Width="270" Height="45"/>
+        <ComboBox Name="FollowingCb" HorizontalAlignment="Left" Margin="304,53,0,0" VerticalAlignment="Top" Width="158" Height="40" RenderTransformOrigin="0.5,0.5"></ComboBox>
+        <Label Content="Enter Travel Time between two station:(hh:mm)" HorizontalAlignment="Left" Margin="29,257,0,0" VerticalAlignment="Top" Width="270" Height="45"/>
         <Button Content="Confirm Add" HorizontalAlignment="Left" Margin="617,333,0,0" VerticalAlignment="Top" Width="111" Height="44" Click="ConfirmAddButton_Click"/>
         <TextBox Name="TravelTimeTb" HorizontalAlignment="Left" Height="42" Margin="304,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
     </Grid>

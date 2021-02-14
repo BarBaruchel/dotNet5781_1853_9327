@@ -86,18 +86,64 @@ namespace PL
         {
 
         }
-
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            isSimulatorActive = !isSimulatorActive;  ///////////
+            isSimulatorActive = !isSimulatorActive;
             if (isSimulatorActive)
             {
                 Btn.Content = "Stop";
                 TimeTB.IsReadOnly = true;
                 RateTB.IsReadOnly = true;
-                if (TimeTB.GetType() != typeof(TimeSpan))
+                startTime = TimeSpan.Parse(TimeTB.Text);
+                string checkRate = RateTB.Text;
+                for (int i = 0; i < checkRate.Length; i++)
+                {
+                    if (!IsNumber(checkRate[i]))
+                    {
+                        MessageBox.Show("please enter a number (not string or below than zero)");
+                        Btn.Content = "Start";
+                        watch.Stop();
+                        TimeTB.IsReadOnly = false;
+                        RateTB.IsReadOnly = false;
+                        return;
+                    }
+                }
+                rate = Convert.ToInt32(RateTB.Text);
+                if (rate<=0)
+                {
+                    MessageBox.Show("please enter a number that zero or under");
+                    Btn.Content = "Start";
+                    watch.Stop();
+                    TimeTB.IsReadOnly = false;
+                    RateTB.IsReadOnly = false;
+                    return;
+                }
+                clockWorker.RunWorkerAsync();
+                this.LineTimings = bl.startSimulator(BOLineStations, startTime);
+                RefreshLineTimings();
+            }
+            else
+            {
+                Btn.Content = "Start";
+                watch.Stop();
+                TimeTB.IsReadOnly = false;
+                RateTB.IsReadOnly = false;
+                clockWorker.CancelAsync();
+            }
+
+
+
+
+
+
+
+            /*isSimulatorActive = !isSimulatorActive;  ///////////
+            if (isSimulatorActive)
+            {
+                Btn.Content = "Stop";
+                TimeTB.IsReadOnly = true;
+                RateTB.IsReadOnly = true;
+               if (TimeTB.GetType() != typeof(TimeSpan))
                 {
                     MessageBox.Show("please enter a Time in this form 00:00:00");
                     Btn.Content = "Start";
@@ -128,7 +174,7 @@ namespace PL
                 TimeTB.IsReadOnly = false;
                 RateTB.IsReadOnly = false;
                 clockWorker.CancelAsync();
-            }
+            }*/
 
         }
 
@@ -147,6 +193,10 @@ namespace PL
 
 
 
+        }
+        private bool IsNumber(char c)
+        {
+            return Char.IsNumber(c);
         }
     }
 }

@@ -50,13 +50,6 @@
     <LastStation>39042</LastStation>
   </Line>
   <Line>
-    <Id>8</Id>
-    <Code>140</Code>
-    <Area>GENERAL</Area>
-    <FirstStation>38834</FirstStation>
-    <LastStation>38908</LastStation>
-  </Line>
-  <Line>
     <Id>9</Id>
     <Code>933</Code>
     <Area>CENTER</Area>

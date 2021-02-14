@@ -19,15 +19,6 @@
     <Status>INTREATMENT</Status>
   </Bus>
   <Bus>
-    <StartPeilut>2021-01-03T00:00:00</StartPeilut>
-    <LastTreat>2021-01-28T23:24:04.8366404+02:00</LastTreat>
-    <KiloFromLastTreat>3495</KiloFromLastTreat>
-    <LicenseNum>1764342</LicenseNum>
-    <Kilometrage>2123380942</Kilometrage>
-    <Fuel>1</Fuel>
-    <Status>READYFORRIDE</Status>
-  </Bus>
-  <Bus>
     <StartPeilut>2003-10-28T00:00:00</StartPeilut>
     <LastTreat>2008-09-27T00:00:00</LastTreat>
     <KiloFromLastTreat>8863</KiloFromLastTreat>
@@ -86,6 +77,15 @@
     <LastTreat>2021-01-28T23:24:04.8366404+02:00</LastTreat>
     <KiloFromLastTreat>19000</KiloFromLastTreat>
     <LicenseNum>98739119</LicenseNum>
+    <Kilometrage>0</Kilometrage>
+    <Fuel>1200</Fuel>
+    <Status>READYFORRIDE</Status>
+  </Bus>
+  <Bus>
+    <StartPeilut>2021-01-03T00:00:00</StartPeilut>
+    <LastTreat>2021-02-14T22:32:44.8878107+02:00</LastTreat>
+    <KiloFromLastTreat>0</KiloFromLastTreat>
+    <LicenseNum>1764342</LicenseNum>
     <Kilometrage>0</Kilometrage>
     <Fuel>1200</Fuel>
     <Status>READYFORRIDE</Status>

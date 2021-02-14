@@ -33,11 +33,44 @@ namespace PL
             InitializeComponent();
             FollowingCb.ItemsSource = stations;
             FollowingCb.DisplayMemberPath = "Code";
+            initComboBox();
+        }
+        private void initComboBox()
+        {
+            FollowingCb.SelectedIndex = 0; // choose by defult the first if the user still not press on any number in the comboBox 
         }
 
         private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
         {
+            string distanceCheck = DistanceTb.Text;
+            for (int i = 0; i < distanceCheck.Length; i++)
+            {
+                if (!IsNumber(distanceCheck[i]))
+                {
+                    MessageBox.Show("please enter only numbers to the distance ");
+                    return;
+                }
+            }
             double distance= Convert.ToInt32(DistanceTb.Text);
+            if (distance<=0)
+            {
+                MessageBox.Show("please enter number tht bigger the a zero to the distance ");
+                return;
+            }
+            string travelTimeCheck = TravelTimeTb.Text;
+            for (int i = 0; i < travelTimeCheck.Length; i++)
+            {
+                if ((travelTimeCheck[2]).Equals(":")||(travelTimeCheck[5]).Equals(":"))
+                {
+                    MessageBox.Show("please enter `:` in the right place in the Time in this form 00:00:00 ");
+                    return;
+                }
+                if (!IsNumber(travelTimeCheck[i])&& ( i != 2)&& (i!=5))
+                {
+                    MessageBox.Show("please enter only numbers to the travel Time ");
+                    return;
+                }
+            }
             string stringTime = TravelTimeTb.Text;
             string[] values = stringTime.Split(':');
             TimeSpan ts = new TimeSpan(Convert.ToInt32(values[0]), Convert.ToInt32(values[1]), 0);
@@ -64,6 +97,10 @@ namespace PL
                 }
                 Close();
             }
+        }
+        private bool IsNumber(char c)
+        {
+            return Char.IsNumber(c);
         }
     }
 }

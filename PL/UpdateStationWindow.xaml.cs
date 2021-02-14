@@ -32,29 +32,69 @@ namespace PL
         }
         private void ConfirmUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-
-           
-            double lati = Convert.ToDouble(LatitudeTb.Text);
-            double longi = Convert.ToDouble(LongitudeTb.Text);
-            GeoCoordinate location = new GeoCoordinate(lati, longi);
-            string name = NameTb.Text;
-            string address = AddressTb.Text;
-            BO.Station newstation = new BO.Station();
-            newstation.Code = station.Code;
-            newstation.Location.Latitude = location.Latitude;
-            newstation.Location.Longitude = location.Longitude;
-            newstation.Name = name;
-            newstation.Address = address;
-            try
+            string longiCheck = LongitudeTb.Text;
+            for (int i = 0; i < longiCheck.Length; i++)
             {
-                bl.updateStation(newstation);
+                if (!IsNumber(longiCheck[i]))
+                {
+                    MessageBox.Show("please enter only numbers to the Longitude ");
+                    return;
+                }
             }
-            catch (BO.NotExistStationException ms)
+            double longi = Convert.ToDouble(LongitudeTb.Text);
+                if ((longi > 90.00) || (longi < -90.00))
+                {
+                   MessageBox.Show("please enter Longitude between -90.00 to 90.00 ");
+                    return;
+                }
+            string latiCheck = LatitudeTb.Text;
+            for (int i = 0; i < latiCheck.Length; i++)
             {
-                MessageBox.Show(ms.Message);
+                if (!IsNumber(latiCheck[i]))
+                {
+                    MessageBox.Show("please enter only numbers to the Latitude");
+                    return;
+                }
+            }
+            double lati = Convert.ToDouble(LatitudeTb.Text);
+            if ((lati > 90.00) || (lati < -90.00))
+            {
+                MessageBox.Show("please enter Latitude between -90.00 to 90.00 ");
                 return;
             }
-            Close();
+            GeoCoordinate location = new GeoCoordinate(lati, longi);
+            if(NameTb.GetType()!= typeof(string))
+            {
+                MessageBox.Show("please enter only letters to the Name");
+                return;
+            }
+                string name = NameTb.Text;
+            if (AddressTb.GetType() != typeof(string))
+            {
+                MessageBox.Show("please enter only letters to the Address ");
+                return;
+            }
+            string address = AddressTb.Text;
+                BO.Station newstation = new BO.Station();
+                newstation.Code = station.Code;
+                newstation.Location.Latitude = location.Latitude;
+                newstation.Location.Longitude = location.Longitude;
+                newstation.Name = name;
+                newstation.Address = address;
+                try
+                {
+                    bl.updateStation(newstation);
+                }
+                catch (BO.NotExistStationException ms)
+                {
+                    MessageBox.Show(ms.Message);
+                    return;
+                }
+                Close();
+        }
+        private bool IsNumber(char c)
+        {
+            return Char.IsNumber(c);
         }
     }
 }
