@@ -69,7 +69,7 @@ namespace PL
             foreach (BO.LineTiming lt in this.LineTimings)
             {
                 lt.TimeToArrive = bl.updateTime(lt, rate);
-                if (lt.TimeToArrive.Hours < 1 && lt.TimeToArrive.Minutes < 1 && lt.TimeToArrive.Seconds < 1)
+                if ((lt.TimeToArrive.Hours < 1) && (lt.TimeToArrive.Minutes < 1) && (lt.TimeToArrive.Seconds < 1))
                 {
                     linesToRemove.Add(lt);
                     this.LastStationTB.Text = lt.LineId.ToString();
@@ -88,13 +88,22 @@ namespace PL
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+                startTime = TimeSpan.Parse(TimeTB.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Plesase enter in ths format : XX:XX:XX!");
+                return;
+            }
             isSimulatorActive = !isSimulatorActive;
             if (isSimulatorActive)
             {
                 Btn.Content = "Stop";
                 TimeTB.IsReadOnly = true;
                 RateTB.IsReadOnly = true;
-                startTime = TimeSpan.Parse(TimeTB.Text);
                 string checkRate = RateTB.Text;
                 for (int i = 0; i < checkRate.Length; i++)
                 {
@@ -131,49 +140,6 @@ namespace PL
                 clockWorker.CancelAsync();
             }
 
-
-
-
-
-            /*isSimulatorActive = !isSimulatorActive;  ///////////
-            if (isSimulatorActive)
-            {
-                Btn.Content = "Stop";
-                TimeTB.IsReadOnly = true;
-                RateTB.IsReadOnly = true;
-               if (TimeTB.GetType() != typeof(TimeSpan))
-                {
-                    MessageBox.Show("please enter a Time in this form 00:00:00");
-                    Btn.Content = "Start";
-                    watch.Stop();
-                    TimeTB.IsReadOnly = false;
-                    RateTB.IsReadOnly = false;
-                    return;
-                }
-                startTime = TimeSpan.Parse(TimeTB.Text);
-                if (RateTB.GetType() != typeof(int))  // check the input of Rate Text if it is`nt from int type
-                {
-                    MessageBox.Show("please enter a number (not string or below than zero)");
-                    Btn.Content = "Start";
-                    watch.Stop();
-                    TimeTB.IsReadOnly = false;
-                    RateTB.IsReadOnly = false;
-                    return;
-                }
-                rate = Convert.ToInt32(RateTB.Text);
-                clockWorker.RunWorkerAsync();
-                this.LineTimings = bl.startSimulator(BOLineStations, startTime);
-                RefreshLineTimings();
-            }
-            else
-            {
-                Btn.Content = "Start";
-                watch.Stop();
-                TimeTB.IsReadOnly = false;
-                RateTB.IsReadOnly = false;
-                clockWorker.CancelAsync();
-            }*/
-
         }
 
         private void startClock()
@@ -198,3 +164,4 @@ namespace PL
         }
     }
 }
+

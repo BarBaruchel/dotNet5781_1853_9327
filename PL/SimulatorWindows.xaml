@@ -20,7 +20,7 @@
                 <DataGridTextColumn Header="Start Time" Binding="{Binding StartTime}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="LastStationTB" HorizontalAlignment="Left" Margin="511,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="115" Height="37"/>
+        <TextBlock x:Name="LastStationTB" HorizontalAlignment="Left" Margin="511,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="115" Height="28"/>
         <Label Content="Last bus on station:" HorizontalAlignment="Left" Margin="378,350,0,0" VerticalAlignment="Top" Width="128" Height="37"/>
 
     </Grid>

@@ -74,9 +74,9 @@ namespace BLAPI
 
         #endregion LineStation
 
-
+        #region LineTiming
         List<LineTiming> startSimulator(List<BO.LineStation> BOLineStations, TimeSpan startTime);
         TimeSpan updateTime(LineTiming lineTiming, int rate);
-
+        #endregion LineTiming
     }
 }

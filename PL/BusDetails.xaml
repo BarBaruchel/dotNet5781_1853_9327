@@ -41,10 +41,5 @@
         <TextBlock HorizontalAlignment="Left" Margin="154,286,0,0" TextWrapping="Wrap" Text="{Binding Status}" VerticalAlignment="Top" Height="24" Width="125" FontFamily="Californian FB"/>
         <Button Content="Treatment" Name="TreatmentBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,368,0,0" VerticalAlignment="Top" Width="75" Click="TreatmentBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
         <Button Content="Tidluk" Name="TidlukBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,324,0,0" VerticalAlignment="Top" Width="75" Click="TidlukBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
-        <Label Content="Remaining Time &#xD;&#xA;for Tidluk:" FontSize="18" HorizontalAlignment="Left" Margin="63,315,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.658,-0.288" Width="130" Height="54" FontFamily="Californian FB"/>
-        <TextBlock x:Name="RemainingTimeTidlukTb" HorizontalAlignment="Left" Margin="198,320,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="49" Width="149" FontFamily="Californian FB" FontSize="24"/>
-        <TextBlock  FontFamily="Californian FB" FontSize="18" HorizontalAlignment="Left" Margin="366,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="145" RenderTransformOrigin="0.887,0.476" Grid.ColumnSpan="2"><Run Text="Remaining Time "/><LineBreak/><Run Text="for Treatment:"/></TextBlock>
-        <TextBlock x:Name="RemainingTimeTreatTb" HorizontalAlignment="Right" Margin="0,324,141.333,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="41" Width="136" RenderTransformOrigin="1.517,1.304" FontSize="24" Grid.Column="1" FontFamily="Californian FB"/>
-
     </Grid>
 </Window>

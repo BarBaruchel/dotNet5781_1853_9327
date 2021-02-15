@@ -22,6 +22,7 @@ namespace PL
     {
         IBl bl;
         int lineId, station;
+        TimeSpan time = new TimeSpan();
         public TimeWindow(IBl bl, int lineId, int station)
         {
             this.bl = bl;
@@ -32,7 +33,16 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           // DateTime time = (Convert.ToDateTime(EnterTimeTb.Text));
+            try
+            {
+
+                time = TimeSpan.Parse(EnterTimeTb.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Plesase enter in ths format : XX:XX:XX!");
+                return;
+            }
             string stringTime = EnterTimeTb.Text;
             string[] values = stringTime.Split(':');
             TimeSpan ts = new TimeSpan(Convert.ToInt32(values[0]), Convert.ToInt32(values[1]),0);

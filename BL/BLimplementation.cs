@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BO;
 using BLAPI;
+using BO;
 using DLAPI;
 
 namespace BL
@@ -501,7 +501,7 @@ namespace BL
         }
         #endregion LineStation
 
-
+        #region LineTiming
         public List<LineTiming> startSimulator(List<LineStation> BOLineStations, TimeSpan startTime)
         {
             List<Line> lines = (from stations in BOLineStations
@@ -548,6 +548,7 @@ namespace BL
             lineTiming.TimeToArrive -= new TimeSpan(0, 0, rate);
             return lineTiming.TimeToArrive;
         }
+        #endregion LineTiming
     }
 
 

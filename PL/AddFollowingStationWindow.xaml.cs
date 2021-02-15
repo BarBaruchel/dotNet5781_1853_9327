@@ -23,6 +23,7 @@ namespace PL
         IBl bl;
         int lineId;
         int station;
+        TimeSpan time = new TimeSpan();
         List<BO.Station> stations = new List<BO.Station>();
         public AddFollowingStationWindow(IBl bl, int lineId, int station)
         {
@@ -42,6 +43,16 @@ namespace PL
 
         private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+                time = TimeSpan.Parse(TravelTimeTb.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Plesase enter in ths format : XX:XX:XX!");
+                return;
+            }
             string distanceCheck = DistanceTb.Text;
             for (int i = 0; i < distanceCheck.Length; i++)
             {
@@ -54,22 +65,8 @@ namespace PL
             double distance= Convert.ToInt32(DistanceTb.Text);
             if (distance<=0)
             {
-                MessageBox.Show("please enter number tht bigger the a zero to the distance ");
+                MessageBox.Show("please enter number tht bigger then a zero to the distance ");
                 return;
-            }
-            string travelTimeCheck = TravelTimeTb.Text;
-            for (int i = 0; i < travelTimeCheck.Length; i++)
-            {
-                if ((travelTimeCheck[2]).Equals(":")||(travelTimeCheck[5]).Equals(":"))
-                {
-                    MessageBox.Show("please enter `:` in the right place in the Time in this form 00:00:00 ");
-                    return;
-                }
-                if (!IsNumber(travelTimeCheck[i])&& ( i != 2)&& (i!=5))
-                {
-                    MessageBox.Show("please enter only numbers to the travel Time ");
-                    return;
-                }
             }
             string stringTime = TravelTimeTb.Text;
             string[] values = stringTime.Split(':');
@@ -83,19 +80,27 @@ namespace PL
             }
             else
             {
-                BO.LineStation newline = new BO.LineStation();
-                newline.Station = station;
-                newline.LineId = lineId;
-                newline.NextStation = codeF;
-                try
+                if (lineStation.Station == codeF)
                 {
-                    bl.AddFollowingStation(newline, distance, ts);
+                    MessageBox.Show(@"the chosen station is the station it`s selef,
+                          please choose another station");
                 }
-                catch (BO.WrongInputException ms)
+                else
                 {
-                    MessageBox.Show(ms.Message);
+                    BO.LineStation newline = new BO.LineStation();
+                    newline.Station = station;
+                    newline.LineId = lineId;
+                    newline.NextStation = codeF;
+                    try
+                    {
+                        bl.AddFollowingStation(newline, distance, ts);
+                    }
+                    catch (BO.WrongInputException ms)
+                    {
+                        MessageBox.Show(ms.Message);
+                    }
+                    Close();
                 }
-                Close();
             }
         }
         private bool IsNumber(char c)
