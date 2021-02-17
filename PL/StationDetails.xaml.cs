@@ -30,6 +30,7 @@ namespace PL
             this.bl = bl;
             this.station = station;
             this.BOLineStations = BOLineStations;
+            NumberStationTBl.Text = station.Code.ToString();
             AddressTextBlock.Text = station.Address;
             LatTextBlock.Text = station.Location.Latitude.ToString();
             LonTextBlock.Text = station.Location.Longitude.ToString();

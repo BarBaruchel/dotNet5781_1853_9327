@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="LineDetails" Height="450" Width="1150">
+        Title="LineDetails" Height="450" Width="1150" Icon="Images/line.jpg">
     <Grid x:Name="Grid" Background="#FFEBD0B9">
         <DataGrid Name="LineDetailsDataGrid" IsReadOnly="True"  AutoGenerateColumns="False"  HorizontalAlignment="Left" Height="211" Margin="23,92,0,0" VerticalAlignment="Top" Width="1100">
             <DataGrid.Columns>
@@ -20,7 +20,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <!-- Add update distance button to all the rows, for each bus in the list -->
-                            <Button x:Name="UpdateDisBtn" Background="Green" Content="Update Dis" Click="UpdateDisBtn_Click" FontFamily="Century Gothic"></Button>
+                            <Button x:Name="UpdateDisBtn" Background="#FFEAA47B" Content="Update Dis" Click="UpdateDisBtn_Click" FontFamily="Century Gothic"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -28,7 +28,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <!-- Add update time button to all the rows, for each bus in the list -->
-                            <Button x:Name="UpdateTimeBtn" Background="Green"  Content="Update Time" Click="UpdateTimeBtn_Click" FontFamily="Century Gothic"></Button>
+                            <Button x:Name="UpdateTimeBtn" Background="#FFEAA47B"  Content="Update Time" Click="UpdateTimeBtn_Click" FontFamily="Century Gothic"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -36,14 +36,14 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <!-- Add Following Station button to all the rows, for each bus in the list -->
-                            <Button x:Name="AddFollowingStationBtn" Background="Green"  Content="Add Following Station" Click="AddFollowingStationBtn_Click" FontFamily="Century Gothic"></Button>
+                            <Button x:Name="AddFollowingStationBtn" Background="#FFEAA47B"  Content="Add Following Station" Click="AddFollowingStationBtn_Click" FontFamily="Century Gothic"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Name="IdTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap"  RenderTransformOrigin="4.301,2.844" Margin="255,0,0,346.667" Height="32" VerticalAlignment="Bottom" Width="76" FontSize="18"/>
-        <Label Content="Line Id:" HorizontalAlignment="Left" Margin="181,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.654,-0.058" Height="32" Width="90" FontSize="18"/>
+        <TextBlock Name="IdTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap"  RenderTransformOrigin="4.301,2.844" Margin="271,0,0,346.667" Height="34" VerticalAlignment="Bottom" Width="100" FontSize="17"/>
+        <Label Content="Line Id:" HorizontalAlignment="Left" Margin="170,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.654,-0.058" Height="46" Width="101" FontSize="18" FontFamily="Verdana"/>
 
     </Grid>
 </Window>

@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="SimulatorWindows" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="TimeTB" HorizontalAlignment="Left" Height="52" Margin="161,120,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="196"/>
-        <Label Content="Time" HorizontalAlignment="Left" Margin="19,120,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="RateTB" HorizontalAlignment="Left" Height="49" Margin="161,223,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="196"/>
-        <Label Content="Rate" HorizontalAlignment="Left" Margin="19,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.1,0.033" Width="94"/>
-        <Button x:Name="Btn" Content="Start" HorizontalAlignment="Left" Margin="91,310,0,0" VerticalAlignment="Top" Width="153" Height="77" Click="Button_Click"/>
+    <Grid Background="#FFE5B8CD">
+        <TextBox x:Name="TimeTB" HorizontalAlignment="Left" Height="52" Margin="161,120,0,0" TextWrapping="Wrap" Text="00:00:00" VerticalAlignment="Top" Width="196" FontSize="17"/>
+        <Label Content="Time:" HorizontalAlignment="Left" Margin="19,120,0,0" VerticalAlignment="Top" Width="120" Height="52" FontSize="17"/>
+        <TextBox x:Name="RateTB" HorizontalAlignment="Left" Height="49" Margin="161,223,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="196" FontSize="17"/>
+        <Label Content="Rate:" HorizontalAlignment="Left" Margin="19,219,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.1,0.033" Width="94" Height="53" FontSize="17"/>
+        <Button x:Name="Btn" Content="Start" HorizontalAlignment="Left" Margin="91,310,0,0" VerticalAlignment="Top" Width="153" Height="77" Click="Button_Click" Background="#FFDC849A" FontSize="20" FontFamily="Sylfaen"/>
         <DataGrid x:Name="LinesDG" Margin="378,101,10,115" IsReadOnly="True"  AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Line Number"  Binding="{Binding LineId}"  Width="*"  FontFamily="Cooper Black"/>
@@ -20,8 +20,8 @@
                 <DataGridTextColumn Header="Start Time" Binding="{Binding StartTime}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="LastStationTB" HorizontalAlignment="Left" Margin="511,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="115" Height="28"/>
-        <Label Content="Last bus on station:" HorizontalAlignment="Left" Margin="378,350,0,0" VerticalAlignment="Top" Width="128" Height="37"/>
+        <TextBlock x:Name="LastStationTB" HorizontalAlignment="Left" Margin="548,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="111" Height="28" FontSize="15"/>
+        <Label Content="Last bus on station:" HorizontalAlignment="Left" Margin="378,350,0,0" VerticalAlignment="Top" Width="165" Height="37" FontSize="17"/>
 
     </Grid>
 </Window>

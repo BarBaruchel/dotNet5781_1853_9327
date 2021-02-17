@@ -47,7 +47,6 @@ namespace PL
 
         private void RefreshLineTimings()
         {
-
             this.LinesDG.ItemsSource = this.LineTimings;
             this.LinesDG.Items.Refresh();
         }
@@ -74,7 +73,6 @@ namespace PL
                     linesToRemove.Add(lt);
                     this.LastStationTB.Text = lt.LineId.ToString();
                 }
-
             }
             foreach (BO.LineTiming linetoRemove in linesToRemove)
             {
@@ -84,18 +82,25 @@ namespace PL
         }
         private void clockWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
-
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-
                 startTime = TimeSpan.Parse(TimeTB.Text);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Plesase enter in ths format : XX:XX:XX!");
+                MessageBox.Show("Plesase enter in ths format : XX:XX:XX! to the Time");
+                return;
+            }
+            try
+            {
+                rate = Convert.ToInt32(RateTB.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("please enter a number to the Rate");
                 return;
             }
             isSimulatorActive = !isSimulatorActive;
@@ -109,7 +114,7 @@ namespace PL
                 {
                     if (!IsNumber(checkRate[i]))
                     {
-                        MessageBox.Show("please enter a number (not string or below than zero)");
+                        MessageBox.Show("please enter a number (not string or below than zero) to the Rate");
                         Btn.Content = "Start";
                         watch.Stop();
                         TimeTB.IsReadOnly = false;
@@ -120,7 +125,7 @@ namespace PL
                 rate = Convert.ToInt32(RateTB.Text);
                 if (rate<=0)
                 {
-                    MessageBox.Show("please enter a number that zero or under");
+                    MessageBox.Show("please enter a number that zero or under to the Rate");
                     Btn.Content = "Start";
                     watch.Stop();
                     TimeTB.IsReadOnly = false;
@@ -144,23 +149,23 @@ namespace PL
 
         private void startClock()
         {
-            //  DispatcherTimer timer = new DispatcherTimer();
-            ///  timer.Interval = TimeSpan.FromSeconds(1);
-            // timer.Tick += tickevent;
-            // timer.Start();
             watch.Start();
-
         }
 
-        private void tickevent(object sender, EventArgs e)
-        {
-
-
-
-        }
         private bool IsNumber(char c)
         {
             return Char.IsNumber(c);
+        }
+
+        int countDigit(int n)
+        {
+            int count = 0;
+            while (n != 0)
+            {
+                n = n / 10;
+                ++count;
+            }
+            return count;
         }
     }
 }

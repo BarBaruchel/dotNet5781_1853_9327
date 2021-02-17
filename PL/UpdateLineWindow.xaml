@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="UpdateLineWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Enter Line number:" VerticalAlignment="Top" RenderTransformOrigin="2.915,2.507" Height="33" Margin="65,35,604.333,0"/>
-        <TextBox Name="CodeNumber" HorizontalAlignment="Left" Height="33" Margin="249,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155"/>
-        <Label Content="Choose the right area:" HorizontalAlignment="Left" Margin="65,123,0,0" VerticalAlignment="Top" Height="28" Width="148" RenderTransformOrigin="0.5,0.5" >
+        Title="UpdateLineWindow" Height="450" Width="800" Icon="Images/line.jpg">
+    <Grid Background="#FFAEF2A9">
+        <Label Content="Enter Line number:" VerticalAlignment="Top" RenderTransformOrigin="2.915,2.507" Height="33" Margin="65,35,581.333,0" FontFamily="Sitka Subheading" FontSize="15"/>
+        <TextBox Name="CodeNumber" HorizontalAlignment="Left" Height="33" Margin="249,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" FontSize="15"/>
+        <Label Content="Choose the right area:" HorizontalAlignment="Left" Margin="65,123,0,0" VerticalAlignment="Top" Height="34" Width="161" RenderTransformOrigin="0.5,0.5" FontFamily="Sitka Subheading" FontSize="15" >
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -20,10 +20,11 @@
             </Label.RenderTransform>
         </Label>
         <ComboBox Name="AreaCb"  HorizontalAlignment="Left" Margin="249,124,0,0" VerticalAlignment="Top" Width="155" Height="30" ItemsSource="{Binding AREAS}" />
-        <Label Content="Choose first station:" HorizontalAlignment="Left" Margin="65,224,0,0" VerticalAlignment="Top" Height="32" Width="124"/>
-        <ComboBox Name="FirstCb"  HorizontalAlignment="Left" Margin="249,224,0,0" VerticalAlignment="Top" Width="155" Height="32"/>
-        <ComboBox Name="SecondCb"  HorizontalAlignment="Left" Margin="249,299,0,0" VerticalAlignment="Top" Width="155" Height="34"/>
-        <Label Content="Choose last station" HorizontalAlignment="Left" Margin="65,299,0,0" VerticalAlignment="Top" Width="124" Height="34"/>
-        <Button Content="Confirm Update" HorizontalAlignment="Left" Margin="617,333,0,0" VerticalAlignment="Top" Width="111" Height="44" Click="ConfirmUpdateButton_Click"/>
+        <Label Content="Choose first station:" HorizontalAlignment="Left" Margin="65,224,0,0" VerticalAlignment="Top" Height="32" Width="147" FontFamily="Sitka Subheading" FontSize="15"/>
+        <ComboBox Name="FirstCb"  HorizontalAlignment="Left" Margin="249,224,0,0" VerticalAlignment="Top" Width="155" Height="32" FontSize="15"/>
+        <ComboBox Name="SecondCb"  HorizontalAlignment="Left" Margin="249,299,0,0" VerticalAlignment="Top" Width="155" Height="34" FontSize="15"/>
+        <Label Content="Choose last station:" HorizontalAlignment="Left" Margin="65,299,0,0" VerticalAlignment="Top" Width="147" Height="34" FontFamily="Sitka Subheading" FontSize="15"/>
+        <Button Content="Confirm Update" HorizontalAlignment="Left" Margin="617,333,0,0" VerticalAlignment="Top" Width="123" Height="44" Click="ConfirmUpdateButton_Click" FontFamily="Sitka Subheading" FontSize="15" Background="#FFBDF39C"/>
+        <Image HorizontalAlignment="Left" Height="154" Margin="452,102,0,0" VerticalAlignment="Top" Width="331" Source="Images/line.jpg" Stretch="None" FlowDirection="RightToLeft"/>
     </Grid>
 </Window>

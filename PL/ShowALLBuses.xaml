@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="ShowALLBus" Height="450" Width="800">
-    <Grid RenderTransformOrigin="0.472,0.559">
+        Title="ShowALLBus" Height="450" Width="800" Icon="Images/bus.jpg" >
+    <Grid RenderTransformOrigin="0.472,0.559" Background="#FFA4D0D3">
 
         <DataGrid MouseDoubleClick="BusesDataGrid_MouseDoubleClick" IsReadOnly="True"  AutoGenerateColumns="False" Name="BusesDataGrid" HorizontalAlignment="Left" Height="271" Margin="45,47,0,0" VerticalAlignment="Top" Width="597">
             <DataGrid.Columns>
@@ -31,6 +31,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Image HorizontalAlignment="Left" Height="191" Margin="667,67,0,0" VerticalAlignment="Top" Width="116" Source="Images/bus.jpg" SnapsToDevicePixels="True" Stretch="Fill"/>
 
 
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="BusDetails" Height="450" Width="800">
+        Title="BusDetails" Height="450" Width="800" Icon="Images/bus.jpg">
     <Grid x:Name="mainGrid" Background="#FFEBD0B9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="228*"/>
@@ -39,7 +39,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="426,199,0,0" TextWrapping="Wrap" Text="{Binding KiloFromLastTreat}" VerticalAlignment="Top" Height="26" Width="120" Grid.ColumnSpan="2" FontFamily="Californian FB"/>
         <TextBlock HorizontalAlignment="Left" Margin="269,243,0,0" TextWrapping="Wrap" Text="{Binding LastTreat, StringFormat={}{0:dd/MM/yyyy}}" VerticalAlignment="Top" Height="27" Width="131" FontFamily="Californian FB"/>
         <TextBlock HorizontalAlignment="Left" Margin="154,286,0,0" TextWrapping="Wrap" Text="{Binding Status}" VerticalAlignment="Top" Height="24" Width="125" FontFamily="Californian FB"/>
-        <Button Content="Treatment" Name="TreatmentBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,368,0,0" VerticalAlignment="Top" Width="75" Click="TreatmentBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
-        <Button Content="Tidluk" Name="TidlukBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="232.667,324,0,0" VerticalAlignment="Top" Width="75" Click="TidlukBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875"/>
+        <Button Content="Treatment" Name="TreatmentBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,340,0,0" VerticalAlignment="Top" Width="96" Click="TreatmentBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875" Height="40"/>
+        <Button Content="Tidluk" Name="TidlukBtn" Grid.Column="1" HorizontalAlignment="Left" Margin="211.667,275,0,0" VerticalAlignment="Top" Width="96" Click="TidlukBtn_Click" FontFamily="Candara" FontSize="16" Background="#FFC19875" Height="40"/>
     </Grid>
 </Window>

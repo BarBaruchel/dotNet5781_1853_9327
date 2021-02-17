@@ -52,38 +52,11 @@ namespace DL
         static string StationPath = @"Station.xml";
         static string RunningNumbersPath = @"RunningNumbers.xml";
         static string LineTripPath = @"LineTrip.xml";
-        //List<DO.Bus> Buses = new List<DO.Bus>();
-        //List<DO.LineStation> lineStations = new List<LineStation>();
+   
 
 
-        private DLXML()
-        {
-
-        }
-        //public void AddPerson(DO.Person person)
-        //{
-        //    XElement personsRootElem = XMLTools.LoadListFromXMLElement(personsPath);
-
-        //    XElement per1 = (from p in personsRootElem.Elements()
-        //                     where int.Parse(p.Element("ID").Value) == person.ID
-        //                     select p).FirstOrDefault();
-
-        //    if (per1 != null)
-        //        throw new DO.BadPersonIdException(person.ID, "Duplicate person ID");
-
-        //    XElement personElem = new XElement("Person", new XElement("ID", person.ID),
-        //                          new XElement("Name", person.Name),
-        //                          new XElement("Street", person.Street),
-        //                          new XElement("HouseNumber", person.HouseNumber.ToString()),
-        //                          new XElement("City", person.City),
-        //                          new XElement("BirthDate", person.BirthDate),
-        //                          new XElement("PersonalStatus", person.PersonalStatus.ToString()),
-        //                          new XElement("Duration", person.Duration.ToString()));
-
-        //    personsRootElem.Add(personElem);
-
-        //    XMLTools.SaveListToXMLElement(personsRootElem, personsPath);
-        //}
+        private DLXML() { }
+   
         public void addBus(Bus bus)
         {
             List<DO.Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);

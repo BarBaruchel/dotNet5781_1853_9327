@@ -211,5 +211,29 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\station.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\line.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\travelTime.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="travelTime.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Road.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

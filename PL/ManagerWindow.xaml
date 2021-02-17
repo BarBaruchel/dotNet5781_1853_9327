@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="ManagerWindow" Height="450" Width="800">
-    <Grid>
-        <Button Name="ShowBuses" Content="Show Buses" HorizontalAlignment="Left" Margin="120,102,0,0" VerticalAlignment="Top" Width="165" Height="86" Click="ShowBuses_Click"/>
-        <Button Name="ShowLines" Content="Show Lines" HorizontalAlignment="Left" Margin="492,102,0,0" VerticalAlignment="Top" Width="156" Height="86" Click="ShowLines_Click"/>
-        <Button Name="ShowStations" Content="Show Stations" HorizontalAlignment="Left" Margin="312,223,0,0" VerticalAlignment="Top" Width="181" Height="83" Click="ShowStations_Click"/>
+        Title="ManagerWindow" Height="450" Width="800" Icon="Images/user.jpg">
+    <Grid ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFBBCC62" Offset="0.003"/>
+                <GradientStop Color="#FFB247A9" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Name="ShowBuses" Content="Show Buses" HorizontalAlignment="Left" Margin="120,102,0,0" VerticalAlignment="Top" Width="165" Height="86" Click="ShowBuses_Click" FontFamily="Narkisim" FontSize="18" FontStretch="SemiCondensed" FontStyle="Oblique"/>
+        <Button Name="ShowLines" Content="Show Lines" HorizontalAlignment="Left" Margin="492,102,0,0" VerticalAlignment="Top" Width="156" Height="86" Click="ShowLines_Click" FontFamily="Narkisim" FontSize="18" FontStyle="Oblique"/>
+        <Button Name="ShowStations" Content="Show Stations" HorizontalAlignment="Left" Margin="312,223,0,0" VerticalAlignment="Top" Width="181" Height="83" Click="ShowStations_Click" FontFamily="Narkisim" FontSize="18" FontStyle="Oblique"/>
 
     </Grid>
 </Window>

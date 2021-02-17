@@ -6,19 +6,22 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="StationDetails" Height="450" Width="800">
-    <Grid>
-        <Label Content=" Address:" HorizontalAlignment="Left" Margin="54,23,0,0" VerticalAlignment="Top" Height="37" Width="96"/>
-        <TextBlock Name="AddressTextBlock"   HorizontalAlignment="Left" Margin="189,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="306"/>
-        <Label Content=" Location Latitude:" HorizontalAlignment="Left" Margin="54,65,0,0" VerticalAlignment="Top" Width="96" Height="36"/>
-        <TextBlock  Name="LatTextBlock" HorizontalAlignment="Left" Margin="189,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="95"/>
-        <Label Content="Location Longitude:" HorizontalAlignment="Left" Margin="329,65,0,0" VerticalAlignment="Top" Width="135" Height="39"/>
-        <TextBlock  Name="LonTextBlock"  HorizontalAlignment="Left" Margin="469,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="122"/>
-        <DataGrid Name="StationDataGrid" Margin="36,130,62,101" AutoGenerateColumns="False" IsReadOnly="True">
+    <Grid Background="#FFF3C2C2">
+        <Label Content=" Address:" HorizontalAlignment="Left" Margin="54,75,0,0" VerticalAlignment="Top" Height="32" Width="74" FontFamily="Segoe UI Emoji" FontSize="15"/>
+        <TextBlock Name="AddressTextBlock"   HorizontalAlignment="Left" Margin="133,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="362" FontSize="15"/>
+        <Label Content=" Location Latitude:" HorizontalAlignment="Left" Margin="36,119,0,0" VerticalAlignment="Top" Width="131" Height="40" RenderTransformOrigin="0.523,1.505" FontFamily="Segoe UI Emoji" FontSize="15"/>
+        <TextBlock  Name="LatTextBlock" HorizontalAlignment="Left" Margin="189,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="95" FontSize="15"/>
+        <Label Content="Location Longitude:" HorizontalAlignment="Left" Margin="329,119,0,0" VerticalAlignment="Top" Width="140" Height="35" FontSize="15"/>
+        <TextBlock  Name="LonTextBlock"  HorizontalAlignment="Left" Margin="474,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="117" FontSize="15"/>
+        <DataGrid Name="StationDataGrid" Margin="36,185,62.333,100.667" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Line`s Number" Binding="{Binding LineId}" Width="*" FontFamily="Cooper Black" />
                 <DataGridTextColumn Header="Last Station`s Name " Binding="{Binding LastStationName}" Width="1.5*" FontFamily="Cooper Black"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Simulator" HorizontalAlignment="Left" Margin="495,351,0,0" VerticalAlignment="Top" Width="177" Height="46" Click="Button_Click_1"/>
+        <Button Content="Simulator" HorizontalAlignment="Left" Margin="566,351,0,0" VerticalAlignment="Top" Width="165" Height="46" Click="Button_Click_1" Background="#FFBB4B4B" FontFamily="Segoe UI Emoji" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Details for station:" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="162" Height="42" FontSize="18" FontFamily="Segoe UI Emoji"/>
+        <TextBlock x:Name="NumberStationTBl" HorizontalAlignment="Left" Margin="344,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="120" FontSize="18"/>
+        <Image  HorizontalAlignment="Left" Height="113" Margin="596,17,0,0" VerticalAlignment="Top" Width="173" Source="Images/station.jpg" Stretch="Fill"/>
     </Grid>
 </Window>

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="ShowAllStations" Height="450" Width="800">
-    <Grid>
+        Title="ShowAllStations" Height="450" Width="800" Icon="Images/station.jpg">
+    <Grid Background="#FF95E8BA">
         <DataGrid MouseDoubleClick="ShowAllStationsDataGrid_MouseDoubleClick" IsReadOnly="True"  AutoGenerateColumns="False" Name="ShowAllStationsDataGrid" HorizontalAlignment="Left" Height="271" Margin="45,47,0,0" VerticalAlignment="Top" Width="597">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="Code" Header="Code" Binding="{Binding Code}" Width="*" FontFamily="Cooper Black" />
@@ -15,12 +15,13 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <!-- Add update button to all the rows, for each bus in the list -->
-                            <Button x:Name="UpdateBtn" Background="Green"  Content="Update" Click="UpdateBtn_Click" FontFamily="Century Gothic"></Button>
+                            <Button x:Name="UpdateBtn" Background="#FF41AA6A"  Content="Update" Click="UpdateBtn_Click" FontFamily="Century Gothic"></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add Station" HorizontalAlignment="Left" Margin="640,348,0,0" VerticalAlignment="Top" Width="111" Height="40" Click="AddStationButton_Click"/>
+        <Button Content="Add Station" HorizontalAlignment="Left" Margin="640,348,0,0" VerticalAlignment="Top" Width="111" Height="40" Click="AddStationButton_Click" Background="#FF98DE7C" FontFamily="Sitka Small" FontSize="15"/>
+        <Image HorizontalAlignment="Left" Height="155" VerticalAlignment="Top" Width="120" Margin="663,71,0,0" RenderTransformOrigin="0.5,0.5" Source="Images/station.jpg" Stretch="Fill"/>
     </Grid>
 </Window>

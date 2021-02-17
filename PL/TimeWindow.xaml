@@ -5,11 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="TimeWindow" Height="450" Width="800">
+        Title="TimeWindow" Height="450" Width="800" Icon="travelTime.jpg">
     <Grid>
-        <Label Content="Enter Travel Time From The Previous Station :" HorizontalAlignment="Left" Margin="156,48,0,0" VerticalAlignment="Top" Height="56" Width="426" FontSize="32" FontFamily="Niagara Engraved"/>
-        <Button Content="CONFIRM ADD TIME" HorizontalAlignment="Left" Margin="580,255,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="Button_Click" RenderTransformOrigin="0.195,1.595" Background="#FFCEEB0D" FontFamily="Imprint MT Shadow"/>
-        <TextBox x:Name="EnterTimeTb" HorizontalAlignment="Left" Height="63" Margin="198,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/travelTime.jpg" Opacity="0.78"/>
+        </Grid.Background>
+        <Label Content="Enter Travel Time From The Previous Station :" HorizontalAlignment="Left" Margin="47,48,0,0" VerticalAlignment="Top" Height="56" Width="511" FontSize="32" FontFamily="Niagara Engraved" FontWeight="Bold" FontStyle="Oblique"/>
+        <Button Content="CONFIRM ADD TIME" HorizontalAlignment="Left" Margin="580,298,0,0" VerticalAlignment="Top" Width="170" Height="63" Click="Button_Click" RenderTransformOrigin="0.195,1.595" Background="#FF93CACA" FontFamily="Imprint MT Shadow"/>
+        <TextBox x:Name="EnterTimeTb" HorizontalAlignment="Left" Height="70" Margin="198,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232"/>
 
     </Grid>
 </Window>
