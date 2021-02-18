@@ -14,7 +14,7 @@ namespace BO
         private int currentStation;  //the current station that we press on in the window  
         private string lastStation;
         private TimeSpan timeToArrive = new TimeSpan();  // How much longer will we have to wait for the bus to arrive
-        private TimeSpan arrivalTime = new TimeSpan(); //What time will the bus arrive?
+        private TimeSpan arrivalTime = new TimeSpan(); //What time will the bus arrive
         private TimeSpan startTime = new TimeSpan();  //when the bus start to drive from the first station
 
         public int LineId

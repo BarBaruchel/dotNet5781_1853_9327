@@ -29,11 +29,11 @@
     <LastStation>38866</LastStation>
   </Line>
   <Line>
-		<Id>5</Id>
-		<Code>2</Code>
-		<Area>SOUTH</Area>
-		<FirstStation>38881</FirstStation>
-		<LastStation>38885</LastStation>
+    <Id>5</Id>
+    <Code>2</Code>
+    <Area>SOUTH</Area>
+    <FirstStation>38881</FirstStation>
+    <LastStation>38885</LastStation>
   </Line>
   <Line>
     <Id>6</Id>
@@ -48,13 +48,6 @@
     <Area>GENERAL</Area>
     <FirstStation>39039</FirstStation>
     <LastStation>39042</LastStation>
-  </Line>
-  <Line>
-    <Id>8</Id>
-    <Code>140</Code>
-    <Area>GENERAL</Area>
-    <FirstStation>38834</FirstStation>
-    <LastStation>38908</LastStation>
   </Line>
   <Line>
     <Id>9</Id>
