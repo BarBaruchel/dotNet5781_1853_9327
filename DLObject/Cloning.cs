@@ -9,7 +9,7 @@ namespace DL
 {
     internal static class Cloning
     {
-        public static Bus Clone(this Bus source)
+        public static Bus Clone(this Bus source)  //The function get Bus variable and do deep copying and send the new variable
         {
             return new Bus
             {
@@ -23,7 +23,7 @@ namespace DL
             };
         }
 
-        public static Station Clone(this Station source)
+        public static Station Clone(this Station source)   //The function get Station variable and do deep copying and send the new variable
         {
             return new Station
             {
@@ -33,7 +33,7 @@ namespace DL
                 Name = source.Name
             };
         }
-        public static AdjacentStations Clone(this AdjacentStations source)
+        public static AdjacentStations Clone(this AdjacentStations source)   //The function get AdjacentStations variable and do deep copying and send the new variable
         {
             return new AdjacentStations
             {
@@ -45,7 +45,7 @@ namespace DL
             };
         }
 
-        public static BusOnTrip Clone(this BusOnTrip source)
+        public static BusOnTrip Clone(this BusOnTrip source)    //The function get BusOnTrip variable and do deep copying and send the new variable
         {
             return new BusOnTrip
             {
@@ -59,7 +59,7 @@ namespace DL
                 NextStationAt = source.NextStationAt
             };
         }
-        public static Line Clone(this Line source)
+        public static Line Clone(this Line source)   //The function get Line variable and do deep copying and send the new variable
         {
             return new Line
             {
@@ -70,11 +70,11 @@ namespace DL
                 LastStation = source.LastStation
             };
         }
-        public static LineStation Clone(this LineStation source)
+        public static LineStation Clone(this LineStation source)   //The function get LineStation variable and do deep copying and send the new variable
         {
             return new LineStation
             {
-                // בקובץ DAL אין NAME
+                //In the Dal layer there is no Name field
                 LineId = source.LineId,
                 Station = source.Station,
                 LineStationIndex = source.LineStationIndex,
@@ -84,7 +84,7 @@ namespace DL
                 DistanceFromTheLastStat = source.DistanceFromTheLastStat
             };
         }
-        public static LineTrip Clone(this LineTrip source)
+        public static LineTrip Clone(this LineTrip source) //The function get LineTrip variable and do deep copying and send the new variable
         {
             return new LineTrip
             {
@@ -96,7 +96,7 @@ namespace DL
             };
         }
 
-        public static Trip Clone(this Trip source)
+        public static Trip Clone(this Trip source)  //The function get Trip variable and do deep copying and send the new variable
         {
             return new Trip
             {
@@ -110,7 +110,7 @@ namespace DL
 
             };
         }
-        public static UserTrips Clone(this UserTrips source)
+        public static UserTrips Clone(this UserTrips source)  //The function get UserTrips variable and do deep copying and send the new variable
         {
             return new UserTrips
             {
@@ -124,7 +124,7 @@ namespace DL
             };
         }
 
-        public static User Clone(this User source)
+        public static User Clone(this User source)  //The function get User variable and do deep copying and send the new variable
         {
             return new User
             {

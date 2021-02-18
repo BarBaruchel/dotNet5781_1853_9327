@@ -21,10 +21,7 @@ namespace BLAPI
         BO.Bus DOBusToBOBus(DO.Bus bus);
         BO.Bus getBusByLicense(int licenseNum);
 
-
-
         #endregion Bus
-
 
 
         #region Line
@@ -73,6 +70,7 @@ namespace BLAPI
         BO.LineStation DOLineStationToBOLineStation(DO.LineStation lineStation);
 
         #endregion LineStation
+
 
         #region LineTiming
         List<LineTiming> startSimulator(List<BO.LineStation> BOLineStations, TimeSpan startTime);

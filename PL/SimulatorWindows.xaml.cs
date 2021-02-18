@@ -32,7 +32,7 @@ namespace PL
         List<BO.LineStation> BOLineStations;
         List<BO.LineTiming> LineTimings = new List<BO.LineTiming>();
         BackgroundWorker clockWorker = new BackgroundWorker();
-        public SimulatorWindows(IBl bl, List<BO.LineStation> BOLineStations)
+        public SimulatorWindows(IBl bl, List<BO.LineStation> BOLineStations) // the window get IBL, and the LineStation
         {
             this.bl = bl;
             this.BOLineStations = BOLineStations;
@@ -45,13 +45,13 @@ namespace PL
         }
 
 
-        private void RefreshLineTimings()
-        {
+        private void RefreshLineTimings()   // בגלל שעשינו שינויים בכפתורי התידלוק והטיפול נקרא לריפרש שיחפש שוב את האוטובוס ע"י מספר רישוי ויעדכן את הנתונים לתןך 
+        {  // המיין גריד נקודה דאטה קונטקס ויציג את הנתונים בחלון
             this.LinesDG.ItemsSource = this.LineTimings;
             this.LinesDG.Items.Refresh();
         }
-        private void clockWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
+        private void clockWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)  //the funtion start the clock and report progress while it`s running
+        {  
             startClock();
             while (watch.IsRunning)
             {
@@ -59,7 +59,7 @@ namespace PL
                 clockWorker.ReportProgress(rate);
             }
         }
-        private void clockWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        private void clockWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e) // the function update the Time TextBox in the window acorrding to the variables
         {
             TimeSpan elapsed = new TimeSpan(0, 0, e.ProgressPercentage);
             startTime = (startTime + elapsed);
@@ -83,7 +83,7 @@ namespace PL
         private void clockWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)  //the function check the input of the user and if he enter correctly it`s send it to BL layer to startSimulator
         {
             try
             {
@@ -144,20 +144,19 @@ namespace PL
                 RateTB.IsReadOnly = false;
                 clockWorker.CancelAsync();
             }
-
         }
 
-        private void startClock()
+        private void startClock()  //the funtion start the clock 
         {
             watch.Start();
         }
 
-        private bool IsNumber(char c)
+        private bool IsNumber(char c)   //the function check if the char that send it`s number
         {
             return Char.IsNumber(c);
         }
 
-        int countDigit(int n)
+        int countDigit(int n)   // the function count the digit and return the count
         {
             int count = 0;
             while (n != 0)

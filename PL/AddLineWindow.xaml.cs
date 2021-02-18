@@ -24,7 +24,7 @@ namespace PL
         IBl bl;
         List<BO.Station> stations = new List<BO.Station>();
       
-        public AddLineWindow(IBl bl)
+        public AddLineWindow(IBl bl)  //the window get IBL
         {
             this.bl = bl;
             stations = bl.getAllStations().Cast<BO.Station>().ToList();
@@ -44,7 +44,7 @@ namespace PL
             SecondCb.SelectedIndex = 1;
         }
 
-        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e) //the function check the input of the user and if is enter correctly it`s and it to BL layer to add the station
         {
             string codeCheck = CodeNumber.Text;
             for (int i = 0; i < codeCheck.Length; i++)
@@ -79,7 +79,7 @@ namespace PL
             }
             Close();
         }
-        private bool IsNumber(char c)
+        private bool IsNumber(char c)  //the function check if the char that send it`s number
         {
             return Char.IsNumber(c);
         }

@@ -10,7 +10,5 @@ namespace BO
     {
         public string userName;
         public string password;
-
-
     }
 }

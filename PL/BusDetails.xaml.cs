@@ -24,7 +24,7 @@ namespace PL
        IBl bl;
         private Bus bOBus;
 
-        public BusDetails(Bus bOBus)
+        public BusDetails(Bus bOBus)   //the window get the Bus that the user press on to update the details
         {
             InitializeComponent();
             this.bOBus = bOBus;
@@ -38,13 +38,13 @@ namespace PL
             mainGrid.DataContext = bl.getBusByLicense(bOBus.LicenseNum);
         }
 
-        private void TidlukBtn_Click(object sender, RoutedEventArgs e)
+        private void TidlukBtn_Click(object sender, RoutedEventArgs e)  // the funcation send the bus to the BL layer to update the fuel
         {
             bl.fuelBus(bOBus);
             RefreshBus();
         }
 
-        private void TreatmentBtn_Click(object sender, RoutedEventArgs e)
+        private void TreatmentBtn_Click(object sender, RoutedEventArgs e) // the funcation send the bus to the BL layer to update the bus`s treatment
         {
             bl.treatBus(bOBus);
             RefreshBus();

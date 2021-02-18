@@ -16,7 +16,7 @@ namespace BO
         public int NextStation { get; set; }
         public double DistanceFromTheLastStat { get; set; } // distance from previous BusStation
         public TimeSpan TravelTimeFromTheLastStation { get; set; }  // Travel time from previous BusStation
-        public string LastStationName { get; set; }
+        public string LastStationName { get; set; }                // Name of the last station  
     }
 }
 

@@ -27,19 +27,19 @@ namespace PL
             bl = this.bl = BLAPI.BLFactory.getBL(); 
         }
 
-        private void ShowBuses_Click(object sender, RoutedEventArgs e)
+        private void ShowBuses_Click(object sender, RoutedEventArgs e)  //the function open the ShowALLBuses window
         {
             ShowALLBuses window = new ShowALLBuses(bl);
             window.Show();
         }
 
-        private void ShowLines_Click(object sender, RoutedEventArgs e)
+        private void ShowLines_Click(object sender, RoutedEventArgs e)   //the function open the ShowAllLines window
         {
             ShowAllLines window = new ShowAllLines(bl);
             window.Show();
         }
 
-        private void ShowStations_Click(object sender, RoutedEventArgs e)
+        private void ShowStations_Click(object sender, RoutedEventArgs e)   //the function open the ShowAllStations window
         {
             ShowAllStations window = new ShowAllStations(bl);
             window.ShowDialog();

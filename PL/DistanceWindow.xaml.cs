@@ -23,7 +23,7 @@ namespace PL
     {
         IBl bl;
         int lineId, station;
-        public DistanceWindow(IBl bl, int lineId, int station)
+        public DistanceWindow(IBl bl, int lineId, int station)  // the window get IBL ,the LineId of the line that user press on and station number  
         {
             this.bl = bl;
             this.lineId = lineId;
@@ -31,7 +31,7 @@ namespace PL
             InitializeComponent();
         }
 
-        private void DistanceSlider_KeyDown(object sender, KeyEventArgs e)
+        private void DistanceSlider_KeyDown(object sender, KeyEventArgs e)  // the function send the distance that the user chosen and send it to the BL layer to update the distance between the station
         {
             if (e.Key == Key.Return)
             {

@@ -25,8 +25,8 @@ namespace PL
         int station;
         TimeSpan time = new TimeSpan();
         List<BO.Station> stations = new List<BO.Station>();
-        public AddFollowingStationWindow(IBl bl, int lineId, int station)
-        {
+        public AddFollowingStationWindow(IBl bl, int lineId, int station)  // the window get IBL ,the LineId of the line that user press on and station number
+        { 
             this.bl = bl;
             this.lineId = lineId;
             this.station = station;
@@ -41,11 +41,10 @@ namespace PL
             FollowingCb.SelectedIndex = 0; // choose by defult the first if the user still not press on any number in the comboBox 
         }
 
-        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)  //the function check the input of the user and if he enter correctly it`s send it to BL layer to add the station
         {
             try
             {
-
                 time = TimeSpan.Parse(TravelTimeTb.Text);
             }
             catch (Exception ex)
@@ -103,7 +102,7 @@ namespace PL
                 }
             }
         }
-        private bool IsNumber(char c)
+        private bool IsNumber(char c)  //the function check if the char that send it`s number
         {
             return Char.IsNumber(c);
         }

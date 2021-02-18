@@ -18,6 +18,7 @@ namespace DLAPI
         
         #endregion Bus
 
+
         #region Lines
 
         IEnumerable<DO.Line> getAllLines();
@@ -27,6 +28,7 @@ namespace DLAPI
         DO.Line getLineById(int id);
 
         #endregion Line
+
 
         #region User
         User getAdmin();
@@ -51,11 +53,10 @@ namespace DLAPI
 
         #endregion LineStation
 
+
         #region LineTrip
         IEnumerable<DO.LineTrip> getAllLineTrips();
         #endregion LineTrip
-
-
 
     }
 }

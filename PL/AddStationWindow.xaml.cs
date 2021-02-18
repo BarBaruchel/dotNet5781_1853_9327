@@ -22,13 +22,13 @@ namespace PL
     public partial class AddStationWindow : Window
     {
         IBl bl;
-        public AddStationWindow(IBl bl)
+        public AddStationWindow(IBl bl)    //the window get IBL
         {
             this.bl = bl;
             InitializeComponent();
         }
 
-        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmAddButton_Click(object sender, RoutedEventArgs e)  //the function check the input of the user and if is enter correctly it`s and it to BL layer to add the station
         {
 
             string codeCheck = CodeTb.Text;
@@ -107,7 +107,7 @@ namespace PL
             Close();
         }
 
-        private bool IsNumber(char c)
+        private bool IsNumber(char c)  //the function check if the char that send it`s number
         {
             return Char.IsNumber(c);
         }

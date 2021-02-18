@@ -13,11 +13,5 @@ namespace DO
         public AREAS Area { get; set; }
         public int FirstStation { get; set; }
         public int LastStation { get; set; }
-
-
-
-
-
-
     }
 }

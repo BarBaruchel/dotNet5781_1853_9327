@@ -24,7 +24,7 @@ namespace PL
         IBl bl;
         BO.Line line = new BO.Line();
         List<BO.Station> stations = new List<BO.Station>();
-        public UpdateLineWindow(IBl bl, BO.Line line)
+        public UpdateLineWindow(IBl bl, BO.Line line)           // the window get IBL ,the line that user press on to update
         {
             this.bl = bl;
             this.line = line;
@@ -44,7 +44,7 @@ namespace PL
             AreaCb.SelectedIndex = 0;
             SecondCb.SelectedIndex = 1;
         }
-        private void ConfirmUpdateButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmUpdateButton_Click(object sender, RoutedEventArgs e)  //the function check the input of the user and if he enter correctly it`s send it to BL layer to update the Line
         {
             int id = line.Id;
             int code = Convert.ToInt32(CodeNumber.Text);

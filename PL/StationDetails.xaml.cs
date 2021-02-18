@@ -24,7 +24,7 @@ namespace PL
         IBl bl;
         BO.Station station;
         List<BO.LineStation> BOLineStations;
-        public StationDetails(IBl bl, BO.Station station, List<BO.LineStation> BOLineStations)
+        public StationDetails(IBl bl, BO.Station station, List<BO.LineStation> BOLineStations)   // the window get IBL ,the station and the LineStation that user press on to update  
         {
             InitializeComponent();
             this.bl = bl;
@@ -38,7 +38,7 @@ namespace PL
         }
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)  //the fuction open the SimulatorWindows window
         {
             SimulatorWindows windows = new SimulatorWindows(bl, BOLineStations);
             windows.ShowDialog();

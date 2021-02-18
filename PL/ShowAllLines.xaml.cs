@@ -21,18 +21,18 @@ namespace PL
     public partial class ShowAllLines : Window
     {
         IBl bl;
-        public ShowAllLines(IBl bl)
+        public ShowAllLines(IBl bl)  // the window get IBL
         {
             this.bl = bl;
             InitializeComponent();
             LinesDataGrid.ItemsSource = bl.getAllLines();// עידכון הדאטה גריד
         }
-        private void RefreshLines()
-        {
+        private void RefreshLines()    // בגלל שעשינו שינויים בכפתורי התידלוק והטיפול נקרא לריפרש שיחפש שוב את האוטובוס ע"י מספר רישוי ויעדכן את הנתונים לתןך 
+        {  // המיין גריד נקודה דאטה קונטקס ויציג את הנתונים בחלון
             LinesDataGrid.ItemsSource = bl.getAllLines();
             LinesDataGrid.Items.Refresh();
         }
-        private void LinesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void LinesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)  // the function open the LineDetails window of the bus that the user press on 
         {
             BO.Line row = (BO.Line)LinesDataGrid.SelectedItems[0];
             int id = row.Id;
@@ -40,7 +40,7 @@ namespace PL
             LineDetails lineDetails = new LineDetails(bl, BOLine);
             lineDetails.Show();
         }
-        private void AddLineButton_Click(object sender, RoutedEventArgs e)
+        private void AddLineButton_Click(object sender, RoutedEventArgs e)  // the function open the AddLineWindow window 
         {
             AddLineWindow Addline = new AddLineWindow(bl);
             Addline.ShowDialog();
@@ -55,7 +55,7 @@ namespace PL
             updateLine.ShowDialog();
             RefreshLines();
         }
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)  //the function read the Line that the user press on and send it to the BL layer to delete the line
         {
             BO.Line row = (BO.Line)LinesDataGrid.SelectedItems[0];
             int id = row.Id;

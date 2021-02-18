@@ -18,24 +18,6 @@ namespace DL
 
         static DLXML()
         {
-            /*
-          
-            DS.DataStore.Init();
-            DS.DataStore.InitRepostory();
-
-            //DS.DataStore.Init();
-            //DS.DataStore.InitRepostory();
-
-            List<DO.Bus> buses = DS.DataStore.Busses;
-            XElement bussesRoot = XMLTools.LoadListFromXMLElement(dir + BusPath);
-            foreach (Bus bus in buses)
-            {
-                bussesRoot.Add(XMLTools.BusToXML(bus));
-            }
-            bussesRoot.Save(dir + BusPath);
-
-            */
-
         }
         #endregion singleton
 
@@ -56,8 +38,9 @@ namespace DL
 
 
         private DLXML() { }
-   
-        public void addBus(Bus bus)
+
+        #region Bus
+        public void addBus(Bus bus)   //the function get Bus variable and check if it`s already exist in the xml, if yes throw excepation, else add it
         {
             List<DO.Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
             if (buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum) != null)
@@ -72,14 +55,14 @@ namespace DL
             var ser = new XmlSerializer(typeof(Bus));
             return (Bus)ser.Deserialize(element.CreateReader());
         }
-        public IEnumerable<DO.Bus> getAllBusses()
+        public IEnumerable<DO.Bus> getAllBusses()   //the funcation return all the list of all busses
         {
             List<DO.Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
 
             return from bus in buses
                    select bus;
         }
-        public void updateBus(Bus bus)
+        public void updateBus(Bus bus)  //the function get Bus variable and check if it`s  exist in then xml, if no throw excepation, else update it
         {
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
             Bus busToUpdate = buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum);
@@ -88,9 +71,8 @@ namespace DL
             buses.Remove(busToUpdate);
             buses.Add(bus);
             XMLTools.SaveListToXMLSerializer<Bus>(buses, BusPath);
-
         }
-        public void deleteBus(Bus bus)
+        public void deleteBus(Bus bus)  //the function get Bus variable and check if it`s  exist in the xml, if no throw excepation, else delete it
         {
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
             Bus busToDelete = buses.FirstOrDefault(x => x.LicenseNum == bus.LicenseNum);
@@ -99,7 +81,7 @@ namespace DL
             buses.Remove(busToDelete);
             XMLTools.SaveListToXMLSerializer<Bus>(buses, BusPath);
         }
-        public Bus getBusByLicenseNum(int licenseNum)
+        public Bus getBusByLicenseNum(int licenseNum)  //the function get licenseNum and return the bus that found
         {
             List<Bus> buses = XMLTools.LoadListFromXMLSerializer<Bus>(BusPath);
             Bus busToReturn = (from bus in buses
@@ -110,15 +92,17 @@ namespace DL
                 throw new NotExistException("License num doesnt exist!", licenseNum);
             return busToReturn;
         }
+        #endregion Bus
 
-        public IEnumerable<DO.Line> getAllLines()
+        #region Line
+        public IEnumerable<DO.Line> getAllLines()  //the funcation return all the list of all Lines
         {
             List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
 
             return from line in lines
                    select line;
         }
-        public void addLine(Line line)
+        public void addLine(Line line)  //the function get Line variable and check if it`s already exist in the xml, if yes throw excepation, else add it
         {
             List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
             XElement RunningNumbersRoot = XMLTools.LoadListFromXMLElement(RunningNumbersPath);
@@ -130,7 +114,7 @@ namespace DL
             XMLTools.SaveListToXMLElement(RunningNumbersRoot, RunningNumbersPath);
         }
 
-        public void updateLine(Line line)
+        public void updateLine(Line line)  ////the function get Line variable and check if it`s  exist in the xml, if no throw excepation, else update it
         {
             List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
             Line lineToUpdate = lines.FirstOrDefault(x => x.Id == line.Id);
@@ -141,7 +125,7 @@ namespace DL
             XMLTools.SaveListToXMLSerializer<Line>(lines, LinePath);
         }
 
-        public void deleteLine(Line line)
+        public void deleteLine(Line line)  //the function get Line variable and check if it`s  exist in the xml, if no throw excepation, else delete it
         {
             List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
             Line lineToDelete = lines.FirstOrDefault(x => x.Id == line.Id);
@@ -151,7 +135,7 @@ namespace DL
             XMLTools.SaveListToXMLSerializer<Line>(lines, LinePath);
         }
 
-        public Line getLineById(int id)
+        public Line getLineById(int id)  //the function get id and return the line that found
         {
             List<DO.Line> lines = XMLTools.LoadListFromXMLSerializer<Line>(LinePath);
             Line lineToReturn = (from line in lines
@@ -159,14 +143,18 @@ namespace DL
                                  select line).FirstOrDefault();
             return lineToReturn;
         }
+        #endregion Line
 
-        public User getAdmin()
+        #region User
+        public User getAdmin()   //create a admin user and return it
         {
             User admin = new User { UserName = "Ranit", Password = "Bar", Admin = true };
             return admin;
         }
+        #endregion User
 
-        public void addStation(Station station)
+        #region Station
+        public void addStation(Station station)  //the function get Station variable and check if it`s already exist in the xml, if yes throw excepation, else add it
         {
             List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<Station>(StationPath);
             if (stations.FirstOrDefault(x => x.Code == station.Code) != null)
@@ -182,24 +170,9 @@ namespace DL
                 StationRoot.Save(StationPath);
             }
             throw new AlreadyExistsException("The code number already exist", station.Code);
-
         }
-
-        public void addLineStation(LineStation lineStation)
-        {
-            XElement lineStationRoot = XMLTools.LoadListFromXMLElement(lineStationPath);
-
-            XElement line1 = (from p in lineStationRoot.Elements()
-                              where int.Parse(p.Element("LineId").Value) == lineStation.LineId
-                              select p).FirstOrDefault();
-            if (line1 != null)
-                throw new AlreadyExistsException("This is already exists!", lineStation.LineId);
-
-
-            LineStationRoot.Add(lineStation.LineStationToXML());
-            LineStationRoot.Save(lineStationPath);
-        }
-        public IEnumerable<DO.Station> getAllStations()
+        
+        public IEnumerable<DO.Station> getAllStations() //the funcation return all the Station of all Lines
         {
             List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<Station>(StationPath);
 
@@ -207,7 +180,7 @@ namespace DL
                    select station;
         }
 
-        public void updateStation(Station station)
+        public void updateStation(Station station)  //the function get Station variable and check if it`s exist in the xml, if no throw excepation, else update it
         {
             List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<DO.Station>(StationPath);
             Station stationToUpdate = stations.FirstOrDefault(x => x.Code == station.Code);
@@ -218,7 +191,7 @@ namespace DL
             XMLTools.SaveListToXMLSerializer<Station>(stations, StationPath);
         }
 
-        public void deleteStation(Station station)
+        public void deleteStation(Station station)  //the function get Station variable and check if it`s  exist in the xml, if no throw excepation, else delete it
         {
             List<DO.Station> stations = XMLTools.LoadListFromXMLSerializer<DO.Station>(StationPath);
             Station stationToDelete = stations.FirstOrDefault(x => x.Code == station.Code);
@@ -228,7 +201,24 @@ namespace DL
             XMLTools.SaveListToXMLSerializer<Station>(stations, StationPath);
 
         }
-        public void updateLineStation(LineStation lineStation)
+        #endregion Station
+
+        #region LineStation
+        public void addLineStation(LineStation lineStation)   //the function get LineStation variable and check if it`s already exist in the xml, if yes throw excepation, else add it
+        {
+            XElement lineStationRoot = XMLTools.LoadListFromXMLElement(lineStationPath);
+
+            XElement line1 = (from p in lineStationRoot.Elements()
+                              where int.Parse(p.Element("LineId").Value) == lineStation.LineId
+                              select p).FirstOrDefault();
+            if (line1 != null)
+                throw new AlreadyExistsException("This is already exists!", lineStation.LineId);
+
+            LineStationRoot.Add(lineStation.LineStationToXML());
+            LineStationRoot.Save(lineStationPath);
+        } 
+
+        public void updateLineStation(LineStation lineStation) //the function get LineStation variable and check if it`s exist in the xml, if no throw excepation, else update it
         {
             XElement lineStationRootElem = XMLTools.LoadListFromXMLElement(lineStationPath);
             XElement line1 = (from p in lineStationRootElem.Elements()
@@ -246,17 +236,9 @@ namespace DL
             line1.Element("TravelTimeFromTheLastStation").Value = lineStation.TravelTimeFromTheLastStation.ToString();
 
             XMLTools.SaveListToXMLElement(lineStationRootElem, lineStationPath);
-
-
-
         }
 
-        /*public double getDistanceBetweenTwoStations(LineStation from, LineStation to)
-        {
-            throw new NotImplementedException();
-        }*/
-
-        public IEnumerable<DO.LineStation> getAllLineStations()
+        public IEnumerable<DO.LineStation> getAllLineStations() //the funcation return all the LineStation of all Lines
         {
             XElement lineStationRootElem = XMLTools.LoadListFromXMLElement(lineStationPath);
             List<DO.LineStation> lineStations = (from p in lineStationRootElem.Elements()
@@ -272,10 +254,11 @@ namespace DL
                                                  }).ToList();
 
             return lineStations;
-
         }
+        #endregion LineStation
 
-        public IEnumerable<DO.LineTrip> getAllLineTrips()
+        #region LineTrip
+        public IEnumerable<DO.LineTrip> getAllLineTrips()  //the funcation return all the LineTrip of all Lines
         {
             XElement lineTripRootElem = XMLTools.LoadListFromXMLElement(LineTripPath);
             List<DO.LineTrip> lineTrips = (from p in lineTripRootElem.Elements()
@@ -289,9 +272,7 @@ namespace DL
                                            }).ToList();
 
             return lineTrips;
-
         }
-
-
+        #endregion LineTrip
     }
 }

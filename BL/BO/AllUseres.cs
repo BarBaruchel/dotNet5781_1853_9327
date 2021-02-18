@@ -9,7 +9,5 @@ namespace BO
     class AllUseres
     {
         List<BO.User> useresList;
-
-
     }
 }

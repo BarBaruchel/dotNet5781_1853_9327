@@ -8,7 +8,7 @@ namespace DO
 {
 
 
-    public class AlreadyExistsException : Exception
+    public class AlreadyExistsException : Exception  // if the variable is exist throw this exception
     {
         public int ID;
         public int CODE = 0;
@@ -24,12 +24,10 @@ namespace DO
             if (CODE != 0)
                 return base.ToString() + "bad id :  " + ID + "bad code : " + CODE;
             return base.ToString() + "bad id :  " + ID;
-
-
         }
     }
 
-    public class NotExistException : Exception
+    public class NotExistException : Exception  // if the variable is`nt exist throw this exception
     {
         public int ID;
         public int CODE = 0;
@@ -48,31 +46,18 @@ namespace DO
                 return base.ToString() + "bad id :  " + ID;
             }
             return base.ToString() + "bad id :  " + ID + "bad code :  " + CODE;
-
-
-
         }
-
-
     }
-    public class NotExistStationException : Exception
+    public class NotExistStationException : Exception //if the station variable is`nt exist throw this exception
     {
-
         public int CODE;
 
         public NotExistStationException(string message, int code) : base(message) => CODE = code;
 
-
-
         public override string ToString()
         {
-
             return base.ToString() + "bad code : " + CODE;
-
-
-
         }
-
     }
     [Serializable]
     public class XMLFileLoadCreateException : Exception

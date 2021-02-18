@@ -23,7 +23,7 @@ namespace PL
         IBl bl;
         int lineId, station;
         TimeSpan time = new TimeSpan();
-        public TimeWindow(IBl bl, int lineId, int station)
+        public TimeWindow(IBl bl, int lineId, int station)  // the window get IBL ,the LineId of the line that user press on and station number 
         {
             this.bl = bl;
             this.lineId = lineId;
@@ -31,11 +31,10 @@ namespace PL
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)  // the function send the time that the user chosen and send it to the BL layer to update the time between the station
         {
             try
             {
-
                 time = TimeSpan.Parse(EnterTimeTb.Text);
             }
             catch (Exception ex)

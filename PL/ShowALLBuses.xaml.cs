@@ -23,7 +23,7 @@ namespace PL
     {
         IBl bl;
 
-        public ShowALLBuses(IBl bl)
+        public ShowALLBuses(IBl bl)  // the window get IBL
         {
             this.bl = bl;
 
@@ -36,7 +36,6 @@ namespace PL
             BusesDataGrid.ItemsSource = bl.getAllBusses();
         }
 
-     
         private void TreatButtonClick(object sender, RoutedEventArgs e) // press on the one of the treat button  in one of the bus in the table start processor
 
         {
@@ -52,7 +51,7 @@ namespace PL
             bl.fuelBus(bl.getBusByLicense(licenseNum));
             RefreshBuses();
         }
-        private void BusesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void BusesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)  // the function open the BusDetails window of the bus that the user press on 
         {
             BO.Bus row = (BO.Bus)BusesDataGrid.SelectedItems[0];
             int licenseNum = row.LicenseNum;

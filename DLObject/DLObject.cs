@@ -26,7 +26,7 @@ namespace DL
 
 
         #region Bus
-        public void addBus(DO.Bus bus)
+        public void addBus(DO.Bus bus) //the function get Bus variable and check if it`s already exist in the DS, if yes throw excepation, else add it
         {
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle == null)
@@ -35,26 +35,24 @@ namespace DL
             }
             throw new AlreadyExistsException("The rishuy number already exist", vehicle.LicenseNum);
         }
-        private Bus ExistBus(int license)
+        private Bus ExistBus(int license)    //the function get Bus variable and check if it`s exist in the DS and return it (if not exist return null)
         {
             return DS.DataStore.Busses.FirstOrDefault(item => item.LicenseNum == license);
         }
-        public IEnumerable<DO.Bus> getAllBusses()
+        public IEnumerable<DO.Bus> getAllBusses()  //the funcation return all the list of all busses
         {
             /// LINQ
             IEnumerable<Bus> result =
             from bus in DS.DataStore.Busses
             select bus.Clone();
 
-            ////// delete after
-            //XMLTools.SaveListToXMLSerializer<DO.Bus>(result.ToList(), "Bus.xml");
             return result;
         }
-        public DO.Bus getBusByLicenseNum(int licenseNum)
+        public DO.Bus getBusByLicenseNum(int licenseNum) //the function get licenseNum and return the clone of the bus that found
         {
             return DS.DataStore.Busses.Find(x => x.LicenseNum == licenseNum).Clone();
         }
-        public void updateBus(DO.Bus bus)
+        public void updateBus(DO.Bus bus)    //the function get Bus variable and check if it`s  exist in the DS, if no throw excepation, else update it
         {
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle != null)
@@ -64,7 +62,7 @@ namespace DL
             }
             throw new NotExistException("The rishuy number not exist", vehicle.LicenseNum);
         }
-        public void deleteBus(DO.Bus bus)
+        public void deleteBus(DO.Bus bus) //the function get Bus variable and check if it`s  exist in the DS, if no throw excepation, else delete it
         {
             Bus vehicle = ExistBus(bus.LicenseNum);
             if (vehicle != null)
@@ -78,31 +76,29 @@ namespace DL
 
 
         #region Lines
-        public DO.Line getLineById(int id)
+        public DO.Line getLineById(int id)   //the function get id and return the clone of the line that found
         {
             return DS.DataStore.Lines.Find(x => x.Id == id).Clone();
         }
-        public IEnumerable<DO.Line> getAllLines()
+        public IEnumerable<DO.Line> getAllLines()  //the funcation return all the list of all Lines
         {
             /// LINQ
             IEnumerable<Line> result =
             from line in DS.DataStore.Lines
             select line.Clone();
 
-            ////// delete after
-            //XMLTools.SaveListToXMLSerializer<DO.Line>(result.ToList(), "Line.xml");
             return result;
         }
-        public void addLine(DO.Line line)
+        public void addLine(DO.Line line)  //the function get Line variable and check if it`s already exist in the DS, if yes throw excepation, else add it
         {
             line.Id = ++DS.DataStore.RunningNum;
             DS.DataStore.Lines.Add(line);
         }
-        private Line ExistLine(int id)
+        private Line ExistLine(int id)  //the function get Line variable and check if it`s exist in the DS and return it (if not exist return null)
         {
             return DS.DataStore.Lines.FirstOrDefault(item => item.Id == id).Clone();
         }
-        public void updateLine(DO.Line line)
+        public void updateLine(DO.Line line)  //the function get Line variable and check if it`s  exist in the DS, if no throw excepation, else update it
         {
             DO.Line lineToUpdate = DS.DataStore.Lines.Find(x => x.Id == line.Id);
             if (lineToUpdate != null)
@@ -115,7 +111,7 @@ namespace DL
             }
             throw new NotExistException("The Id  number not exist", line.Id);
         }
-        public void deleteLine(DO.Line line)
+        public void deleteLine(DO.Line line)  //the function get Line variable and check if it`s  exist in the DS, if no throw excepation, else delete it
         {
             Line lin = ExistLine(line.Id);
             if (lin != null)
@@ -129,7 +125,7 @@ namespace DL
 
 
         #region User
-        public User getAdmin()
+        public User getAdmin()  //the funcation return the clone admin user from the DS
         {
             return DS.DataStore.admin.Clone();
         }
@@ -137,7 +133,7 @@ namespace DL
 
 
         #region Station
-        public void addStation(DO.Station station)
+        public void addStation(DO.Station station)  //the function get Station variable and check if it`s already exist in the DS, if yes throw excepation, else add it
         {
             Station stat = ExistStation(station.Code);
             if (stat == null)
@@ -147,23 +143,20 @@ namespace DL
             }
             throw new AlreadyExistsException("The code number already exist", station.Code);
         }
-        private Station ExistStation(int code)
+        private Station ExistStation(int code)  //the function get Station variable and check if it`s exist in the DS and return it (if not exist return null)
         {
             return DS.DataStore.Stations.FirstOrDefault(item => item.Code == code);
         }
-        public IEnumerable<DO.Station> getAllStations()
+        public IEnumerable<DO.Station> getAllStations()   //the funcation return all the Station of all Lines
         {
             /// LINQ
             IEnumerable<Station> result =
             from station in DS.DataStore.Stations
             select station.Clone();
 
-            ////// delete after
-            // XMLTools.SaveListToXMLSerializer<DO.Station>(result.ToList(), "Station.xml");
-
             return result;
         }
-        public void updateStation(DO.Station station)
+        public void updateStation(DO.Station station)  //the function get Station variable and check if it`s exist in the DS, if no throw excepation, else update it
         {
             Station stat = ExistStation(station.Code);
             if (stat != null)
@@ -175,7 +168,7 @@ namespace DL
             }
             throw new NotExistException("The code number not exist", station.Code);
         }
-        public void deleteStation(DO.Station station)
+        public void deleteStation(DO.Station station)  //the function get Station variable and check if it`s  exist in the DS, if no throw excepation, else delete it
         {
             Station stat = ExistStation(station.Code);
             if (stat != null)
@@ -189,7 +182,7 @@ namespace DL
 
 
         #region LineStation
-        public void addLineStation(DO.LineStation lineStation)
+        public void addLineStation(DO.LineStation lineStation)  //the function get LineStation variable and check if it`s already exist in the DS, if yes throw excepation, else add it
         {
             LineStation lineS = ExistLineStation(lineStation.LineId, lineStation.Station);
             if (lineS == null)
@@ -198,18 +191,15 @@ namespace DL
             }
             throw new NotExistException("The Id station number not exist", lineS.LineId, lineS.Station);
         }
-        public IEnumerable<DO.LineStation> getAllLineStations()
+        public IEnumerable<DO.LineStation> getAllLineStations()  //the funcation return all the LineStation of all Lines
         {
             IEnumerable<LineStation> result =
           from station in DS.DataStore.LineStations
           select station.Clone();
 
-            ////// delete after
-            //XMLTools.SaveListToXMLSerializer<DO.LineStation>(result.ToList(), "LineStation.xml");
-
             return result;
         }
-        public void updateLineStation(DO.LineStation lineStation)
+        public void updateLineStation(DO.LineStation lineStation) //the function get LineStation variable and check if it`s exist in the DS, if no throw excepation, else update it
         {
             LineStation lineStat = ExistLineStation(lineStation.LineId, lineStation.Station);
             if (lineStat != null)
@@ -219,32 +209,20 @@ namespace DL
             }
             throw new NotExistException("The Id station number not exist", lineStat.LineId, lineStat.Station);
         }
-        private LineStation ExistLineStation(int lineId, int station)
+        private LineStation ExistLineStation(int lineId, int station)  //the function get LineStation variable and check if it`s exist in the DS and return it (if not exist return null)
         {
             return DS.DataStore.LineStations.FirstOrDefault(item => item.LineId == lineId && item.Station == station);
         }
 
-        public IEnumerable<LineTrip> getAllLineTrips()
-        {
-            throw new NotImplementedException();
-        }
         #endregion LineStation
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        #region LineTrip
+        public IEnumerable<LineTrip> getAllLineTrips() //the funcation return all the LineTrip of all Lines
+        {
+            throw new NotImplementedException();
+        }
+        #endregion LineTrip
 
     }
 }

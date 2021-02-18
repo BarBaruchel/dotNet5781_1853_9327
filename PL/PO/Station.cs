@@ -12,8 +12,6 @@ namespace PO
     {
         private string name;
         private string address;
-
-
         public int Code { get; set; }
         public GeoCoordinate Location { get; set; } = new GeoCoordinate();
         public string Address 

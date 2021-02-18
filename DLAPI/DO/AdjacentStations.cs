@@ -12,6 +12,5 @@ namespace DO
         public int station2 { get; set; }
         public double Distance { get; set; }
         public TimeSpan Time { get; set; }
-
     }
 }

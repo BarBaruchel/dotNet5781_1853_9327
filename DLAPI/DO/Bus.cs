@@ -15,7 +15,6 @@ namespace DO
         public int Kilometrage { get; set; }
         public int Fuel { get; set; }
         public STATUS Status { get; set; }
-
     }
 }
 

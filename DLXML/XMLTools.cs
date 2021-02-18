@@ -21,7 +21,7 @@ namespace DL
         }
 
         #region SaveLoadWithXElement
-        public static void SaveListToXMLElement(XElement rootElem, string filePath)
+        public static void SaveListToXMLElement(XElement rootElem, string filePath)  //save XElement that the func get and enter it to the xml file (filePath)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace DL
                 throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
-        public static XElement LoadListFromXMLElement(string filePath)
+        public static XElement LoadListFromXMLElement(string filePath)  //load XElement from the xml file (filePath) that the func get and return it 
         {
             try
             {
@@ -55,7 +55,7 @@ namespace DL
         #endregion
 
         #region SaveLoadWithXMLSerializer
-        public static void SaveListToXMLSerializer<T>(List<T> list, string filePath)
+        public static void SaveListToXMLSerializer<T>(List<T> list, string filePath) //save list that the func get and enter it to the xml file (filePath)
         {
             try
             {
@@ -69,7 +69,7 @@ namespace DL
                 throw new DO.XMLFileLoadCreateException(filePath, $"fail to create xml file: {filePath}", ex);
             }
         }
-        public static List<T> LoadListFromXMLSerializer<T>(string filePath)
+        public static List<T> LoadListFromXMLSerializer<T>(string filePath)  //load list from the xml file (filePath) that the func get and return it 
         {
             try
             {
@@ -91,7 +91,7 @@ namespace DL
             }
         }
         #endregion
-        public static XElement LineStationToXML(this DO.LineStation lineStation)
+        public static XElement LineStationToXML(this DO.LineStation lineStation)  //the func get LineStation variable and create new XElement and enter it to the xml
         {
             return new XElement("LineStation",
                 new XElement("LineId", lineStation.LineId),
@@ -102,7 +102,7 @@ namespace DL
                 new XElement("DistanceFromTheLastStat", lineStation.DistanceFromTheLastStat),
                 new XElement("TravelTimeFromTheLastStation", lineStation.TravelTimeFromTheLastStation.ToString()));
         }
-        public static XElement BusToXML(this DO.Bus bus)
+        public static XElement BusToXML(this DO.Bus bus)    //the func get Bus variable and create new XElement and enter it to the xml
         {
             return new XElement("Bus",
                 new XElement("StartPeilut", bus.StartPeilut.ToString()),
@@ -113,7 +113,6 @@ namespace DL
                 new XElement("Fuel", bus.Fuel),
                 new XElement("Status", bus.Status) );
         }
-
     }
 }
 

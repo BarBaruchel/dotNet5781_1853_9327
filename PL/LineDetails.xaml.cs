@@ -22,18 +22,18 @@ namespace PL
     {
         IBl bl;
         BO.Line line = new BO.Line();
-        public LineDetails(IBl bl ,BO.Line line)
+        public LineDetails(IBl bl ,BO.Line line) // the window get IBL ,the line that user press on to update  
         {
             InitializeComponent();
             this.bl = bl;
             LineDetailsDataGrid.ItemsSource = bl.getLineStationsForLine(line);
             this.line = line;
             IdTextBlock.Text = line.Id.ToString();
-
         }
-        private void RefreshLines()
-        {
-            LineDetailsDataGrid.ItemsSource = bl.getLineStationsForLine(line);//.Cast<BO.LineStation>().ToList().GroupBy(x => x.LineId).
+
+        private void RefreshLines()// בגלל שעשינו שינויים בכפתורי התידלוק והטיפול נקרא לריפרש שיחפש שוב את האוטובוס ע"י מספר רישוי ויעדכן את הנתונים לתןך 
+        {  // המיין גריד נקודה דאטה קונטקס ויציג את הנתונים בחלון
+            LineDetailsDataGrid.ItemsSource = bl.getLineStationsForLine(line);
             LineDetailsDataGrid.Items.Refresh();
         }
         private void UpdateTimeBtn_Click(object sender, RoutedEventArgs e) // press on the one of the Update Time button  in one of the station in the table start processor
@@ -56,7 +56,7 @@ namespace PL
             newWindow.ShowDialog();
             RefreshLines();
         }
-        private void AddFollowingStationBtn_Click(object sender, RoutedEventArgs e)
+        private void AddFollowingStationBtn_Click(object sender, RoutedEventArgs e)  //the function read the input that the user enter and send it to the BL layer to enter a new following station 
         {
             BO.LineStation row = (BO.LineStation)LineDetailsDataGrid.SelectedItems[0];
             int lineId = row.LineId;
@@ -66,13 +66,5 @@ namespace PL
             newWindow.ShowDialog();
             RefreshLines();
         }
-        /*   private void BusesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-           {
-               BO.Bus row = (BO.Bus)LineDetailsDataGrid.SelectedItems[0];
-               int licenseNum = row.LicenseNum;
-               BO.Bus BOBus = bl.getBusByLicense(licenseNum);
-               BusDetails busDetails = new BusDetails(BOBus);
-               busDetails.Show();
-           }*/
     }
 }

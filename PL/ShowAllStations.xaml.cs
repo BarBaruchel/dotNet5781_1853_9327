@@ -21,18 +21,18 @@ namespace PL
     public partial class ShowAllStations : Window
     {
         IBl bl;
-        public ShowAllStations(IBl bl)
+        public ShowAllStations(IBl bl)  // the window get IBL
         {
             InitializeComponent();
             this.bl = bl;
             ShowAllStationsDataGrid.ItemsSource = bl.getAllStations();
         }
-        private void RefreshStations()
-        {
+        private void RefreshStations()// בגלל שעשינו שינויים בכפתורי התידלוק והטיפול נקרא לריפרש שיחפש שוב את האוטובוס ע"י מספר רישוי ויעדכן את הנתונים לתןך 
+        {  // המיין גריד נקודה דאטה קונטקס ויציג את הנתונים בחלון
             ShowAllStationsDataGrid.ItemsSource = bl.getAllStations();
             ShowAllStationsDataGrid.Items.Refresh();
         }
-        private void ShowAllStationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void ShowAllStationsDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e) // the function send the line that the user press on and open new window that will show the station that line go through
         {
             BO.Station row = (BO.Station)ShowAllStationsDataGrid.SelectedItems[0];
             int code = row.Code;
@@ -42,7 +42,7 @@ namespace PL
             StationDetail.ShowDialog();
         }
 
-        private void AddStationButton_Click(object sender, RoutedEventArgs e)
+        private void AddStationButton_Click(object sender, RoutedEventArgs e)  // the function open the AddStationWindow window 
         {
             AddStationWindow addstation = new AddStationWindow(bl);
             addstation.ShowDialog();

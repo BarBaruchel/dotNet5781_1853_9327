@@ -28,14 +28,13 @@ namespace PL
             InitializeComponent();
         }
 
-        private void LoginManager_Click(object sender, RoutedEventArgs e)
+        private void LoginManager_Click(object sender, RoutedEventArgs e)  // the function check if the userName and password are correct
         {
             bool isAdmin = bl.loginAdmin(username.Text, passwordPB.Password);
             if (!isAdmin)
                 MessageBox.Show("Username or password incorrect");
             else
             {
-
                 ManagerWindow newWindow = new ManagerWindow();
                 newWindow.Show();
             }

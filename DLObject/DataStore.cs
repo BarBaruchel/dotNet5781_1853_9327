@@ -26,7 +26,7 @@ namespace DS
         private static Random rand = new Random();
 
         public static void Init()
-        {
+        {  //create one admin user
             admin = new User();
             admin.UserName = "Ranit";
             admin.Password = "Bar";
@@ -105,7 +105,7 @@ namespace DS
             Bus nBus = new Bus();
             nBus.Kilometrage = rand.Next();
             nBus.KiloFromLastTreat = nBus.Kilometrage;
-            nBus.StartPeilut = new DateTime(2019, 1, 3);  //לפחות אוטובוס אחד יהיה לאחר תאריך טיפול הבא
+            nBus.StartPeilut = new DateTime(2019, 1, 3);  //לפחות אוטובוס אחד יהיה לאחר תאריך טיפול הבא //At least one bus will be after the next treatment date
             nBus.LastTreat = new DateTime(2019, 2, 3);
             rand = new Random();
             int rishuyN = rand.Next(10000000, 100000000);
@@ -130,7 +130,7 @@ namespace DS
             }
             busses.Add(nBus);
             busses[3].StartPeilut = new DateTime(2021, 1, 3);
-            busses[3].Fuel = 1;  // לפחות אוטובוס אחד יהיה עם מעט דלק
+            busses[3].Fuel = 1;  // לפחות אוטובוס אחד יהיה עם מעט דלק   //At least one bus will be with little fuel
             busses[3].LastTreat = DateTime.Now;
             ///<summary>
             /// update the status of the bus
@@ -1083,8 +1083,6 @@ namespace DS
             newLS.DistanceFromTheLastStat = dist;
             newLS.TravelTimeFromTheLastStation = TimeSpan.FromMinutes(distance);
             lineStations.Add(newLS);
-
         }
-
     }
 }

@@ -14,7 +14,6 @@ namespace PO
         private int firstStation;
         private int lastStation;
 
-
         public int Id{ get; set; }
         public int Code
         {

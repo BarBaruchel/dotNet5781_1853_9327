@@ -23,14 +23,14 @@ namespace PL
     {
         IBl bl;
         BO.Station station;
-        public UpdateStationWindow(IBl bl, BO.Station station)
+        public UpdateStationWindow(IBl bl, BO.Station station)  // the window get IBL ,the station that user press on to update
         {
             this.bl = bl;
             this.station = station;
             InitializeComponent();
 
         }
-        private void ConfirmUpdateButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmUpdateButton_Click(object sender, RoutedEventArgs e)  //the function check the input of the user and if he enter correctly it`s send it to BL layer to update the station
         {
             string longiCheck = LongitudeTb.Text;
             for (int i = 0; i < longiCheck.Length; i++)
@@ -92,7 +92,7 @@ namespace PL
                 }
                 Close();
         }
-        private bool IsNumber(char c)
+        private bool IsNumber(char c) //the function check if the char that send it`s number
         {
             return Char.IsNumber(c);
         }
