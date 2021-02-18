@@ -51,6 +51,11 @@ namespace PL
             BO.AREAS area = (BO.AREAS)AreaCb.SelectedItem;
             int firstStation = int.Parse(FirstCb.Text);
             int lastStation = int.Parse(SecondCb.Text);
+            if (lastStation==firstStation)
+            {
+                MessageBox.Show("please choose different last Station");
+                return;
+            }
             BO.Line newline = new BO.Line();
             newline.Id = id;
             newline.Code = code;
